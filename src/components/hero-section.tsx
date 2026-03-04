@@ -38,14 +38,14 @@ export default function HeroSection() {
                     <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
                     <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
                 </div>
-                <section className="relative overflow-visible">
-                    <div className="relative pt-16 md:pt-24 lg:pt-28">
+                <section className="relative overflow-visible min-h-[100dvh] flex flex-col">
+                    <div className="relative pt-12 pb-6 md:pt-24 lg:pt-28 flex-1 flex flex-col">
                         <div
                             aria-hidden
                             className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
                         />
 
-                        <div className="mx-auto max-w-7xl px-6">
+                        <div className="mx-auto max-w-7xl px-6 flex-1 flex flex-col justify-center">
                             <div className="text-center mx-auto lg:mt-0">
                                 <AnimatedGroup variants={transitionVariants}>
                                     <Link
@@ -67,7 +67,7 @@ export default function HeroSection() {
                                     </Link>
                                 </AnimatedGroup>
 
-                                <h1 className="mx-auto mt-4 md:mt-6 max-w-5xl text-balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl lg:mt-8 xl:text-8xl font-bold leading-[1.1] text-center">
+                                <h1 className="mx-auto mt-6 md:mt-8 max-w-5xl text-balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] text-center">
                                     <TextEffect
                                         preset="fade-in-blur"
                                         speedSegment={0.3}
@@ -91,7 +91,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     delay={0.5}
                                     as="p"
-                                    className="mx-auto mt-3 md:mt-4 max-w-2xl text-balance text-xs md:text-base text-muted-foreground opacity-90 font-inter font-medium">
+                                    className="mx-auto mt-6 md:mt-6 max-w-2xl text-balance text-xs md:text-base text-muted-foreground opacity-90 font-inter font-medium">
                                     Data-driven SEO strategies to outpace your competition and drive digital growth.
                                 </TextEffect>
 
@@ -107,7 +107,7 @@ export default function HeroSection() {
                                         },
                                         ...transitionVariants,
                                     }}
-                                    className="mt-6 md:mt-8 flex flex-col items-center justify-center gap-3 md:flex-row">
+                                    className="mt-6 md:mt-10 flex flex-col items-center justify-center gap-3 md:flex-row">
                                     <Button
                                         key={1}
                                         asChild
@@ -143,37 +143,36 @@ export default function HeroSection() {
                                 },
                                 ...transitionVariants,
                             }}>
-                            <div className="mask-b-from-55% relative mx-auto mt-8 md:mt-12 lg:mt-16 overflow-hidden px-4 md:px-6 lg:px-0">
-                                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-2 md:p-3 shadow-2xl shadow-zinc-950/20 ring-1">
-                                    {/* Multi-layered Blur Gradient to Merge with Section Below */}
-                                    <div className="absolute inset-x-0 bottom-0 z-10 h-24 md:h-32 lg:h-40 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
-                                    <div className="absolute inset-x-0 -bottom-1 h-8 md:h-12 lg:h-16 bg-background z-10 pointer-events-none" />
-
+                            <div className="mask-b-from-55% relative mx-auto mt-8 md:mt-16 lg:mt-20 overflow-visible px-4 md:px-6 lg:px-0">
+                                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border shadow-2xl shadow-zinc-950/20 ring-1">
                                     {/* Blur Gradient Effect Backgrounds */}
                                     <div className="absolute -top-24 left-1/2 -z-10 h-[20rem] md:h-[30rem] lg:h-[40rem] w-[20rem] md:w-[40rem] lg:w-[60rem] -translate-x-1/2 opacity-20 blur-[80px] md:blur-[100px] dark:opacity-10 pointer-events-none">
                                         <div className="aspect-[1155/678] w-full bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-40" 
                                              style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }} 
                                         />
                                     </div>
-                                    
                                     <Image
-                                        className="bg-background aspect-[4/3] md:aspect-[16/10] lg:aspect-[15/8] relative hidden rounded-[10px] md:rounded-2xl dark:block w-full h-auto object-cover object-top"
-                                        src="/assets/images/mail2.webp"
+                                        className="relative hidden rounded-xl md:rounded-2xl dark:block w-full h-auto"
+                                        src="/assets/images/hero-img-dark.png"
                                         alt="seospeeder SEO Dashboard Dark Mode"
-                                        width={2700}
-                                        height={1440}
+                                        width={1899}
+                                        height={1080}
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                                         priority
                                     />
                                     <Image
-                                        className="z-2 border-border/25 aspect-[4/3] md:aspect-[16/10] lg:aspect-[15/8] relative rounded-[10px] md:rounded-2xl border dark:hidden w-full h-auto object-cover object-top"
-                                        src="/assets/images/mail2-light.webp"
+                                        className="relative rounded-xl md:rounded-2xl dark:hidden w-full h-auto"
+                                        src="/assets/images/hero-img-light.png"
                                         alt="seospeeder SEO Dashboard Light Mode"
-                                        width={2700}
-                                        height={1440}
+                                        width={1899}
+                                        height={1080}
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                                         priority
                                     />
+
+                                    {/* Multi-layered Blur Gradient to Merge with Section Below */}
+                                    <div className="absolute inset-x-0 bottom-0 z-10 h-16 md:h-24 lg:h-28 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
+                                    <div className="absolute inset-x-0 -bottom-1 h-4 md:h-8 lg:h-10 bg-background z-10 pointer-events-none" />
                                 </div>
                             </div>
                         </AnimatedGroup>
