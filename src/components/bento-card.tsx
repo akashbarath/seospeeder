@@ -365,7 +365,7 @@ const ThreadsDashboard = () => (
         },
         {
           title: "Create a Task",
-          desc: "Organize with team.",
+          desc: "Organise with team.",
           icon: Tick01Icon,
         },
       ].map((card, i) => (

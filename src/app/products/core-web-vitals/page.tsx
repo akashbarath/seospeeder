@@ -2,8 +2,8 @@ import { OptimizationDetail } from "@/components/optimization-detail";
 import { Zap } from "lucide-react";
 
 export const metadata = {
-  title: "Core Web Vitals Optimization | SEO Speeder",
-  description: "Directly improve your Google search rankings by passing LCP, FID, and CLS. Data-driven optimization for Core Web Vitals.",
+  title: "Core Web Vitals Optimisation | SEO Speeder",
+  description: "Directly improve your Google search rankings by passing LCP, FID, and CLS. Data-driven optimisation for Core Web Vitals.",
 };
 
 export default function CoreWebVitalsPage() {

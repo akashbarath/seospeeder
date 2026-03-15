@@ -347,7 +347,7 @@ export default function FeaturesGrid11() {
     );
 }
 
-// --- Specialized Components for Premium Feel ---
+// --- Specialised Components for Premium Feel ---
 
 function PremiumCard({ children, className }: { children: React.ReactNode; className?: string }) {
     const cardRef = useRef<HTMLDivElement>(null);

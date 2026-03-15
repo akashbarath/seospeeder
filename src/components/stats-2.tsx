@@ -10,37 +10,37 @@ const stats = [
   {
     value: "99+",
     label: "PageSpeed",
-    description: "Lightning-fast performance that satisfies Google's most demanding Core Web Vitals across all devices.",
+    description: "We literally make your site load in the blink of an eye. Google loves fast sites, and we make sure yours passes every Core Web Vitals test with flying colours so you can easily grab those top search spots.",
     icon: Zap,
   },
   {
     value: "3.5x",
     label: "ROI Boost",
-    description: "Technical speed isn't just a metric—it's the engine that drives higher search visibility and customer conversions.",
+    description: "Think of speed as the secret sauce for your bottom line. When your site feels snappy, people actually stick around, read your stuff, and buy what you're selling. We help you turn site speed into real business growth.",
     icon: TrendingUp,
   },
   {
     value: "100%",
     label: "Indexation",
-    description: "Ensure every critical page is crawled and indexed by search engines instantly with our priority API.",
+    description: "There's nothing worse than publishing great content that Google never finds. We hook up a priority pipeline straight to search engines, so your new pages get scooped up and ranked the second they go live.",
     icon: Search,
   },
   {
     value: "0.5s",
     label: "LCP",
-    description: "Largest Contentful Paint optimized for near-instant visual loading, keeping bounce rates at zero.",
+    description: "Ever click a link and stare at a blank white screen? Yeah, we hate that too. We optimise the biggest stuff on your page so it pops into view instantly. People don't like waiting, so we just remove the wait entirely.",
     icon: Trophy,
   },
   {
     value: "0px",
     label: "CLS",
-    description: "Perfect visual stability with zero layout shift, providing a premium experience for every visitor.",
+    description: "We make sure buttons don't jump around when visitors try to click them. By locking everything in place instantly, we deliver a premium, smooth experience that protects your hard-earned traffic.",
     icon: Target,
   },
   {
     value: "24/7",
     label: "Monitoring",
-    description: "Continuous performance audits and real-time alerts to ensure your scores never dip.",
+    description: "We're your website's personal bodyguard. We monitor your performance around the clock and alert you if anything drops, so you never have to worry about unnoticed speed issues hurting your rankings.",
     icon: ShieldCheck,
   }
 ];
@@ -68,7 +68,7 @@ export function Stats() {
             Tablet: Horizontal with condensed width
             Desktop: Horizontal with full expansion
           */}
-          <div className="flex flex-col lg:flex-row w-full gap-3 md:gap-4 items-stretch justify-center h-auto lg:h-[480px] min-h-[500px] lg:min-h-0">
+          <div className="flex flex-col lg:flex-row w-full gap-3 md:gap-4 items-stretch justify-center h-auto lg:h-[400px] min-h-[400px] lg:min-h-0">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -77,13 +77,13 @@ export function Stats() {
                   // Height logic for mobile, Width for desktop
                   flexGrow: activeStat === index ? 3 : 1,
                   // Mobile: Minimum height for non-active, fixed for active
-                  minHeight: activeStat === index ? "240px" : "100px",
+                  minHeight: activeStat === index ? "320px" : "100px",
                 }}
                 transition={{ 
                   type: "spring",
-                  stiffness: 120,
-                  damping: 20,
-                  mass: 1
+                  stiffness: 80,
+                  damping: 25,
+                  mass: 1.2
                 }}
                 onHoverStart={() => setActiveStat(index)}
                 onMouseEnter={() => setActiveStat(index)}
@@ -107,7 +107,7 @@ export function Stats() {
 
                    {/* Inner Card Content */}
                    <div className={cn(
-                     "relative w-full h-full bg-card/95 backdrop-blur-3xl rounded-[calc(1.8rem-1.5px)] md:rounded-[calc(2rem-2px)] lg:rounded-[calc(1.5rem-2px)] p-6 md:p-8 flex flex-col justify-between z-10 overflow-hidden transition-all duration-500",
+                     "relative w-full h-full bg-card/95 backdrop-blur-3xl rounded-[calc(1.8rem-1.5px)] md:rounded-[calc(2rem-2px)] lg:rounded-[calc(1.5rem-2px)] p-6 md:p-6 md:pb-5 flex flex-col justify-between z-10 overflow-hidden transition-all duration-500",
                      activeStat !== index ? "items-center lg:items-start" : "items-start"
                    )}>
                      {/* Soft interior glow */}
@@ -171,9 +171,6 @@ export function Stats() {
                           </motion.div>
                         )}
                      </AnimatePresence>
-
-                     {/* Card Content Footer (Empty for now to maintain layout) */}
-                     <div className="h-2" />
                    </div>
                 </div>
               </motion.div>

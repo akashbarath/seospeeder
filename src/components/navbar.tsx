@@ -57,7 +57,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
               <Icons.logo className="-mt-1 size-5 md:size-6 text-primary" />
               <p className="text-primary text-lg font-bold tracking-tight">
-                SEO Speeder
+                SEO SPEEDER
               </p>
             </Link>
 

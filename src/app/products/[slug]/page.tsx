@@ -24,7 +24,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <div className="p-8 rounded-3xl border bg-card shadow-sm">
-            <h2 className="text-2xl font-bold mb-4">Optimization Service</h2>
+            <h2 className="text-2xl font-bold mb-4">Optimisation Service</h2>
             <p className="text-muted-foreground leading-relaxed">
               Our {product.label} performance optimization service focuses on delivers measurable results. 
               We dive deep into the architecture to ensure maximum speed and efficiency.

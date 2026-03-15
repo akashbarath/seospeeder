@@ -39,7 +39,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Strategy Optimization
+                Strategy Optimisation
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />

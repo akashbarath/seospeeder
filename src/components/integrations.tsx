@@ -26,7 +26,7 @@ const data: Integration[] = [
 	{
 		src: "https://storage.efferd.com/logo/supabase.svg",
 		name: "Supabase",
-		description: "Real-time data architecture with low-latency backend optimization.",
+		description: "Real-time data architecture with low-latency backend optimisation.",
 	},
 	{
 		src: "https://storage.efferd.com/logo/notion.svg",
@@ -42,7 +42,7 @@ const data: Integration[] = [
 	{
 		src: "https://storage.efferd.com/logo/shopify.svg",
 		name: "Shopify",
-		description: "Precision speed optimizations for high-conversion e-commerce engines.",
+		description: "Precision speed optimisations for high-conversion e-commerce engines.",
 	},
 ];
 

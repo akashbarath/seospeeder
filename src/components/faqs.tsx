@@ -41,7 +41,7 @@ export function FaqsSection() {
 						Frequently Asked Questions
 					</h2>
 					<p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto font-inter">
-						Everything you need to know about our SEO and speed optimization services.
+						Everything you need to know about our SEO and speed optimisation services.
 					</p>
 				</div>
 
@@ -215,28 +215,28 @@ const faqs = [
 		category: "services",
 		title: "How does seospeeder improve my Core Web Vitals?",
 		content:
-			"We systematically eliminate bottlenecks like render-blocking JavaScript, unoptimized assets, and slow server response times. Our focus is on passing Google's Core Web Vitals (LCP, CLS, INP) for both mobile and desktop, directly boosting your SEO rankings and conversion rates.",
+			"We systematically eliminate bottlenecks like render-blocking JavaScript, unoptimised assets, and slow server response times. Our focus is on passing Google's Core Web Vitals (LCP, CLS, INP) for both mobile and desktop, directly boosting your SEO rankings and conversion rates.",
 	},
 	{
 		id: 2,
 		category: "services",
-		title: "What platforms do you specialize in?",
+		title: "What platforms do you specialise in?",
 		content:
-			"We are architect-level experts in WordPress, Shopify, Magento, Webflow, Wix, Laravel, and custom PHP environments. Whether you run a high-traffic WooCommerce store or a custom SaaS application, we optimize for your specific tech stack.",
+			"We are architect-level experts in WordPress, Shopify, Magento, Webflow, Wix, Laravel, and custom PHP environments. Whether you run a high-traffic WooCommerce store or a custom SaaS application, we optimise for your specific tech stack.",
 	},
 	{
 		id: 3,
 		category: "services",
 		title: "Will this break my site or change the design?",
 		content:
-			"Absolutely not. We optimize the engine, not the paint. All work is performed with zero downtime and strict version control. Your website's design, functionality, and user experience will remain 100% pixel-perfect—just significantly faster.",
+			"Absolutely not. We optimise the engine, not the paint. All work is performed with zero downtime and strict version control. Your website's design, functionality, and user experience will remain 100% pixel-perfect—just significantly faster.",
 	},
 	{
 		id: 4,
 		category: "services",
 		title: "What is the typical turnaround time?",
 		content:
-			"We move fast. Standard optimizations are completed within 2–5 business days. We begin with a deep-dive technical audit and deploy fixes rapidly to get your site passing speed tests and indexing faster on Google immediately.",
+			"We move fast. Standard optimisations are completed within 2–5 business days. We begin with a deep-dive technical audit and deploy fixes rapidly to get your site passing speed tests and indexing faster on Google immediately.",
 	},
 	{
 		id: 5,
@@ -250,7 +250,7 @@ const faqs = [
 		category: "pricing",
 		title: "Is this a one-time fee or monthly?",
 		content:
-			"Our core speed optimization is a comprehensive one-time service. However, we offer optional monthly 'Speed Guard' plans to monitor Core Web Vitals continuously and fix new issues as you publish content or add plugins.",
+			"Our core speed optimisation is a comprehensive one-time service. However, we offer optional monthly 'Speed Guard' plans to monitor Core Web Vitals continuously and fix new issues as you publish content or add plugins.",
 	},
 	{
 		id: 7,
@@ -264,6 +264,6 @@ const faqs = [
 		category: "support",
 		title: "How do I get a quote?",
 		content:
-			"Click 'Test Your Website' above to request a comprehensive manual audit. Our engineers will analyze your site's specific bottlenecks and provide a custom roadmap and quote within 24 hours.",
+			"Click 'Test Your Website' above to request a comprehensive manual audit. Our engineers will analyse your site's specific bottlenecks and provide a custom roadmap and quote within 24 hours.",
 	},
 ];

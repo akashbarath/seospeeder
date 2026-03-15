@@ -5,7 +5,7 @@ export default function BlogPage() {
     <div className="container mx-auto px-4 py-24 min-h-screen">
       <h1 className="text-4xl font-bold mb-8">Our Blog</h1>
       <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-        Stay updated with the latest trends in web performance and SEO optimization.
+        Stay updated with the latest trends in web performance and SEO optimisation.
       </p>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Placeholder for blog posts */}

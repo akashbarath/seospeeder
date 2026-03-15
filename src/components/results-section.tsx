@@ -52,20 +52,20 @@ export function ResultsSection() {
               >
                 <ImageComparisonImage
                   src={mounted && resolvedTheme !== 'dark' ? "/assets/images/success-light.png" : "/assets/images/success-dark.png"}
-                  alt="SEO Speeder Optimization"
+                  alt="SEO Speeder Optimisation"
                   position="left"
                   className="object-cover"
                 />
                 <ImageComparisonImage
                   src={mounted && resolvedTheme !== 'dark' ? "/assets/images/failure-light.png" : "/assets/images/failure-dark.png"}
-                  alt="Standard Optimization"
+                  alt="Standard Optimisation"
                   position="right"
                   className="object-cover"
                 />
                 <ImageComparisonSlider className="w-0.5 bg-white/30" />
               </ImageComparison>
               <p className="text-center text-sm text-zinc-500 font-semibold font-inter">
-                Drag the slider to compare standard optimization vs SEO Speeder
+                Drag the slider to compare standard optimisation vs SEO Speeder
               </p>
             </div>
 
@@ -74,14 +74,14 @@ export function ResultsSection() {
             {/* 4. Measurable Metrics */}
             <div ref={metricsRef} className="grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-10">
               <MetricItem 
-                icon={<Zap className="w-5 h-5 text-amber-500" />}
+                icon={<Zap className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
                 value={99}
                 suffix="+"
                 label="Mobile Performance"
                 description="Google PageSpeed score, up from 45."
               />
               <MetricItem 
-                icon={<Activity className="w-5 h-5 text-blue-500" />}
+                icon={<Activity className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
                 value={0.5}
                 suffix="s"
                 decimals={1}
@@ -89,14 +89,14 @@ export function ResultsSection() {
                 description="Reduced from 3.2s. Instant visual load."
               />
               <MetricItem 
-                icon={<Trophy className="w-5 h-5 text-yellow-500" />}
+                icon={<Trophy className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
                 value={100}
                 suffix="%"
                 label="SEO Health"
                 description="Perfect technical audit score."
               />
               <MetricItem 
-                icon={<Search className="w-5 h-5 text-purple-500" />}
+                icon={<Search className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
                 value={42}
                 prefix="+"
                 suffix="%"

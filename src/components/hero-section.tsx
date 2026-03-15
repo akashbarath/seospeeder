@@ -92,7 +92,7 @@ export default function HeroSection() {
                                     delay={0.5}
                                     as="p"
                                     className="mx-auto mt-6 md:mt-6 max-w-2xl text-balance text-xs md:text-base text-muted-foreground opacity-90 font-inter font-medium">
-                                    Data-driven SEO strategies to outpace your competition and drive digital growth.
+                                    Data-driven SEO strategies to outpace your competition, boost your search visibility, and drive sustainable digital growth.
                                 </TextEffect>
 
                                 <AnimatedGroup

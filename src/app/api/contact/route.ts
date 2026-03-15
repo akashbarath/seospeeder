@@ -161,7 +161,7 @@ export async function POST(request: Request) {
       font-size: 14px;
     }
     
-    /* Mobile / Tablet Optimizations */
+    /* Mobile / Tablet Optimisations */
     @media screen and (max-width: 600px) {
       .wrapper { padding: 20px 10px; }
       .inner-padding { padding: 32px 24px; }

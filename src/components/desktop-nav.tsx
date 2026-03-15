@@ -20,14 +20,14 @@ export function DesktopNav() {
 			<NavigationMenuList className="gap-2 lg:gap-1 space-x-0">
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-base font-semibold">
-						<Link className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="/about">
+						<Link className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="/about#about-section">
 							About
 						</Link>
 					</NavigationMenuLink>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter">
-						Optimization
+						Optimisation
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[400px] gap-2 p-4 md:w-[650px] md:grid-cols-2 lg:w-[950px] lg:grid-cols-3">
@@ -42,7 +42,7 @@ export function DesktopNav() {
 						</ul>
 						<div className="border-t p-4">
 							<p className="text-muted-foreground text-sm font-inter font-medium leading-relaxed">
-								Need help optimizing?{" "}
+								Need help optimising?{" "}
 								<Link 
 									href="/contact" 
 									className="font-medium text-foreground inline-block"

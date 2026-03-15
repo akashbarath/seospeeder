@@ -411,7 +411,7 @@ function DashboardVisual() {
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="relative z-10 space-y-6 p-6 md:py-10 md:ps-10 md:pe-2 text-balance pointer-events-none">
+			<div className="relative z-10 space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10 pointer-events-none">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:scale-110 transition-transform duration-500">
 					<LayoutDashboard className="size-5 text-primary/80" />
 				</div>
@@ -419,8 +419,8 @@ function DashboardVisual() {
 					<FeatureTitle className="text-base group-hover:text-primary transition-colors duration-300">
 						Technical SEO Command Center
 					</FeatureTitle>
-					<FeatureDescription>
-						Monitor Core Web Vitals, site health, and backlink profiles from a unified dashboard.
+					<FeatureDescription className="text-pretty pr-4 sm:pr-0 max-w-[340px] md:max-w-[400px]">
+						Monitor Core Web Vitals, site health, and backlink profiles from a unified dashboard with real-time alerts and actionable insights.
 					</FeatureDescription>
 				</div>
 			</div>
@@ -463,8 +463,8 @@ function PresenceVisual() {
 					<FeatureTitle className="text-base group-hover:text-primary transition-colors duration-300">
 						Global Search Dominance
 					</FeatureTitle>
-					<FeatureDescription>
-						Optimize for international markets and languages with automated localized SEO strategies.
+					<FeatureDescription className="text-pretty pr-4 sm:pr-0 max-w-[340px] md:max-w-[400px]">
+						Optimise for international markets and languages with automated localised SEO strategies and intelligent content mapping.
 					</FeatureDescription>
 				</div>
 			</div>
@@ -480,7 +480,7 @@ function PresenceVisual() {
 					}}
 					className="w-full h-full"
 				>
-					<CobeGlobe className="-top-[10%] sm:-top-[12%] right-[-10%] sm:right-0 absolute" />
+					<CobeGlobe className="-top-[10%] sm:-top-[12%] right-[-20%] sm:-right-[15%] absolute" />
 				</motion.div>
 			</div>
 		</div>

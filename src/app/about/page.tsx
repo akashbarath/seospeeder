@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { TextEffect } from '@/components/motion-primitives/text-effect';
 import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
@@ -8,9 +10,15 @@ import FeaturesGrid11 from "@/components/features-11";
 import { CallToAction } from "@/components/cta";
 import { CoreValues } from "@/components/core-values";
 
+import { useLayoutEffect } from 'react';
+
 export default function AboutPage() {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24 min-h-screen max-w-5xl">
+    <div id="about-section" className="container mx-auto px-4 py-16 md:py-24 min-h-screen max-w-5xl scroll-mt-24">
       <div className="grid gap-16 md:gap-24">
         {/* Hero Section */}
         <section className="space-y-6">
@@ -22,9 +30,9 @@ export default function AboutPage() {
             About SEO Speeder
           </TextEffect>
           
-          <div className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed max-w-3xl">
+          <div className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed font-inter">
             <TextEffect per='char' preset='fade' as='span'>
-              {"Founded with a vision to democratize "}
+              {"Founded with a vision to democratise "}
             </TextEffect>
             <TextHighlighter 
               triggerType="auto" 
@@ -37,7 +45,7 @@ export default function AboutPage() {
               </TextEffect>
             </TextHighlighter>
             <TextEffect per='char' preset='fade' as='span' delay={2.2}>
-              {", SEO Speeder is more than just an optimization tool. We are a team of performance-obsessed engineers and SEO strategists dedicated to helping modern businesses thrive in an era where "}
+              {", SEO Speeder is more than just an optimisation tool. We are a team of performance-obsessed engineers and SEO strategists dedicated to helping modern businesses thrive in an era where "}
             </TextEffect>
             <TextEffect per='char' preset='fade' as='span' delay={7.8}>
               speed is the ultimate competitive advantage.
@@ -53,10 +61,10 @@ export default function AboutPage() {
                 <Target className="text-primary size-8" />
                 Our Philosophy
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Our proprietary AI-driven engine analyzes thousands of performance metrics in real-time to deliver {" "}
+              <p className="text-lg text-muted-foreground leading-relaxed font-medium font-inter">
+                Our proprietary AI-driven engine analyses thousands of performance metrics in real-time to deliver {" "}
                 <TextHighlighter triggerType="auto" highlightColor="hsl(var(--primary) / 0.15)" className="text-foreground font-semibold">
-                  precision optimizations
+                  precision optimisations
                 </TextHighlighter>
                 {" "} that static tools simply cannot match. From {" "}
                 <TextHighlighter triggerType="auto" highlightColor="hsl(var(--primary) / 0.15)" className="text-foreground font-semibold">
@@ -67,7 +75,7 @@ export default function AboutPage() {
                   digital excellence
                 </TextHighlighter>.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed font-medium font-inter">
                 We believe that the web should be accessible, fast, and delightful for everyone. By removing the technical barriers to performance, we empower creators and businesses to focus on what they do best: creating value for their users.
               </p>
             </div>
@@ -75,10 +83,10 @@ export default function AboutPage() {
 
           <div className="bg-muted/30 rounded-3xl p-10 border-2 border-primary/10 shadow-inner grid grid-cols-2 gap-8">
             {[
-              { label: "Precision", value: "99.9%", desc: "Optimization Accuracy" },
+              { label: "Precision", value: "99.9%", desc: "Optimisation Accuracy" },
               { label: "Traffic", value: "2.4x", desc: "Average Growth" },
               { label: "Speed", value: "500ms", desc: "LCP Improvement" },
-              { label: "Scale", value: "150M+", desc: "Pages Optimized" }
+              { label: "Scale", value: "150M+", desc: "Pages Optimised" }
             ].map((stat, i) => (
               <div key={i} className="space-y-1">
                 <span className="text-4xl font-bold text-primary tracking-tight">{stat.value}</span>
@@ -97,7 +105,7 @@ export default function AboutPage() {
           <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
             {[
               { year: "2022", title: "The Inception", desc: "SEO Speeder was founded with a mission to make speed accessible to all." },
-              { year: "2023", title: "Scale Phase", desc: "Surpassed 50M optimized pages and launched our proprietary AI core." },
+              { year: "2023", title: "Scale Phase", desc: "Surpassed 50M optimised pages and launched our proprietary AI core." },
               { year: "2024", title: "Global Expansion", desc: "Opened 12 new edge locations and secured 500+ enterprise partnerships." },
               { year: "2025", title: "The Future", desc: "Pioneering the next generation of predictive performance engineering." }
             ].map((milestone, i) => (
@@ -127,7 +135,7 @@ export default function AboutPage() {
                         {milestone.year}
                       </span>
                       <h3 className="font-bold text-2xl tracking-tight text-foreground transition-colors duration-500 ease-in-out">{milestone.title}</h3>
-                      <p className="text-muted-foreground text-base leading-relaxed transition-colors duration-500 ease-in-out group-hover/card:text-foreground/90">{milestone.desc}</p>
+                      <p className="text-muted-foreground text-base leading-relaxed font-medium transition-colors duration-500 ease-in-out group-hover/card:text-foreground/90">{milestone.desc}</p>
                     </div>
                   </div>
                 </div>

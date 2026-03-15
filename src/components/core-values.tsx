@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const values = [
   {
     title: "Transparency First",
-    description: "Honest reporting and clear metrics. We give you full visibility into every optimization.",
+    description: "Honest reporting and clear metrics. We give you full visibility into every optimisation.",
     icon: Eye
   },
   {
@@ -25,7 +25,7 @@ const values = [
   },
   {
     title: "Results Driven",
-    description: "Revenue is what matters. Every optimization is designed to improve your bottom line.",
+    description: "Revenue is what matters. Every optimisation is designed to improve your bottom line.",
     icon: TrendingUp
   },
   {

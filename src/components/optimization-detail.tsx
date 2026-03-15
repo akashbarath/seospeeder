@@ -63,7 +63,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 					<AnimatedGroup variants={transitionVariants}>
 						<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-2 border-primary/20 text-primary text-sm font-semibold mb-6">
 							<Icon className="size-4" />
-							<span>{platform} Optimization</span>
+							<span>{platform} Optimisation</span>
 						</div>
 					</AnimatedGroup>
 
@@ -80,7 +80,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 						delay={0.2}
 						className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-inter mb-10"
 					>
-						{`${description} Our specialized ${platform} speed optimization service eliminates bottlenecks and supercharges your performance metrics.`}
+						{`${description} Our specialised ${platform} speed optimisation service eliminates bottlenecks and supercharges your performance metrics.`}
 					</TextEffect>
 
 					<AnimatedGroup variants={transitionVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -105,7 +105,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 							{
 								icon: Zap,
 								title: "Zero Downtime",
-								text: "Our optimizations are non-destructive and performed in a safe staging environment before deployment.",
+								text: "Our optimisations are non-destructive and performed in a safe staging environment before deployment.",
 							},
 							{
 								icon: Shield,
@@ -137,7 +137,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 				<div className="text-center max-w-2xl mx-auto">
 					<h2 className="text-3xl font-bold mb-6">Start your {platform} transformation today.</h2>
 					<p className="text-muted-foreground mb-8 font-inter">
-						Don't let slow load times kill your conversions. Get a free, detailed manual audit from our specialized engineers.
+						Don't let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
 					</p>
 					<Button size="lg" className="h-12 px-10 rounded-xl font-bold text-base" asChild>
 						<Link href="/contact" className="flex items-center gap-2">

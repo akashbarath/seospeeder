@@ -2,8 +2,8 @@ import { OptimizationDetail } from "@/components/optimization-detail";
 import { Flame } from "lucide-react";
 
 export const metadata = {
-  title: "CodeIgniter Speed Optimization | SEO Speeder",
-  description: "Optimize your CodeIgniter applications for peak performance. Professional speed tuning for legacy and modern CI projects.",
+  title: "CodeIgniter Speed Optimisation | SEO Speeder",
+  description: "Optimise your CodeIgniter applications for peak performance. Professional speed tuning for legacy and modern CI projects.",
 };
 
 export default function CodeIgniterPage() {

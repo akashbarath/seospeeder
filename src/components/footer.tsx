@@ -15,12 +15,12 @@ import { toast } from "sonner";
 
 const footerLinks = [
 	{
-		title: "Optimization",
+		title: "Optimisation",
 		links: [
 			{ name: "AI SEO Auditor", href: "#" },
 			{ name: "Keyword Explorer", href: "#" },
-			{ name: "Backlink Analyzer", href: "#" },
-			{ name: "Content Optimizer", href: "#" },
+			{ name: "Backlink Analyser", href: "#" },
+			{ name: "Content Optimiser", href: "#" },
 			{ name: "Site Speed Pro", href: "#" },
 		],
 	},
@@ -37,7 +37,7 @@ const footerLinks = [
 	{
 		title: "Company",
 		links: [
-			{ name: "About Us", href: "/about" },
+			{ name: "About Us", href: "/about#about-section" },
 			{ name: "Case Studies", href: "/case-studies" },
 			{ name: "Pricing", href: "/pricing" },
 			{ name: "Careers", href: "/careers" },
@@ -99,13 +99,13 @@ export default function FooterSection() {
 						<Link href="/" className="flex items-center gap-3 group">
 							<Icons.logo className="-mt-1 size-6 transition-opacity duration-300 group-hover:opacity-70 text-primary" />
 							<p className="text-primary ml-1 text-lg font-bold tracking-tight">
-								SEO Speeder
+								SEO SPEEDER
 							</p>
 						</Link>
 						<p className="max-w-xs text-sm text-muted-foreground font-inter leading-relaxed">
 							Data-driven AI SEO strategies designed to outpace
 							your competition, drive qualified leads, and
-							maximize your digital growth.
+							maximise your digital growth.
 						</p>
 						<div className="flex items-center gap-3">
 							{socialLinks.map((social, idx) => (

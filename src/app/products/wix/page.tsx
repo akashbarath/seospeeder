@@ -2,7 +2,7 @@ import { OptimizationDetail } from "@/components/optimization-detail";
 import { Layers } from "lucide-react";
 
 export const metadata = {
-  title: "Wix Speed Optimization | SEO Speeder",
+  title: "Wix Speed Optimisation | SEO Speeder",
   description: "Get the most out of your Wix site. Improve loading speed and SEO rankings for your Wix business or portfolio site.",
 };
 

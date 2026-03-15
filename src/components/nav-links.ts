@@ -20,7 +20,7 @@ export const productLinks: LinkItemType[] = [
 	{
 		label: "WordPress",
 		href: "/products/wordpress",
-		description: "Speed optimization for WordPress sites",
+		description: "Speed optimisation for WordPress sites",
 		icon: Globe,
 	},
 	{
@@ -32,13 +32,13 @@ export const productLinks: LinkItemType[] = [
 	{
 		label: "Magento",
 		href: "/products/magento",
-		description: "E-commerce performance optimization",
+		description: "E-commerce performance optimisation",
 		icon: ShoppingBag,
 	},
 	{
 		label: "Laravel",
 		href: "/products/laravel",
-		description: "Framework optimization services",
+		description: "Framework optimisation services",
 		icon: Code2,
 	},
 	{
@@ -50,13 +50,13 @@ export const productLinks: LinkItemType[] = [
 	{
 		label: "Core PHP",
 		href: "/products/core-php",
-		description: "Custom PHP application optimization",
+		description: "Custom PHP application optimisation",
 		icon: Code2,
 	},
 	{
 		label: "React JS",
 		href: "/products/react-js",
-		description: "React application optimization",
+		description: "React application optimisation",
 		icon: Code2,
 	},
 	{
@@ -74,13 +74,13 @@ export const productLinks: LinkItemType[] = [
 	{
 		label: "SquareSpace",
 		href: "/products/squarespace",
-		description: "SquareSpace site optimization",
+		description: "SquareSpace site optimisation",
 		icon: Layers,
 	},
 	{
 		label: "Webflow",
 		href: "/products/webflow",
-		description: "No-code platform optimization",
+		description: "No-code platform optimisation",
 		icon: Workflow,
 	},
 	{
@@ -92,7 +92,7 @@ export const productLinks: LinkItemType[] = [
 	{
 		label: "Server Side",
 		href: "/products/server-side",
-		description: "Backend and server optimization",
+		description: "Backend and server optimisation",
 		icon: Server,
 	},
 	{
@@ -130,13 +130,13 @@ export const companyLinks: LinkItemType[] = [
 	},
 	{
 		label: "App Store Optimisation",
-		href: "/services/app-store-optimization",
+		href: "/services/app-store-optimisation",
 		description: "Enhance app discoverability",
 		icon: ShoppingBag,
 	},
 	{
 		label: "Social Media Optimisation",
-		href: "/services/social-media-optimization",
+		href: "/services/social-media-optimisation",
 		description: "Increase interaction on social networks",
 		icon: Users,
 	},
@@ -163,7 +163,7 @@ export const companyLinks: LinkItemType[] = [
 export const companyLinks2: LinkItemType[] = [
 	{
 		label: "About Us",
-		href: "/about",
+		href: "/about#about-section",
 		icon: Users,
 	},
 	{

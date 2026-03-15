@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     role: "Technologist",
     avatar: "/assets/avatars/male-1.png",
     content:
-      "Implementation was seamless. Our Core Web Vitals score went from 65 to 98 overnight. The automated optimizations are a game-changer for our engineering team.",
+      "Implementation was seamless. Our Core Web Vitals score went from 65 to 98 overnight. The automated optimisations are a game-changer for our engineering team.",
     rating: 5,
     date: "2 days ago",
   },
@@ -129,7 +129,7 @@ export function TestimonialSection() {
               <span className="section-title-word inline-block ml-2 md:ml-3">worldwide.</span>
             </h2>
             <p className="section-desc text-muted-foreground text-lg md:text-xl font-primary leading-relaxed max-w-lg">
-              Don&apos;t just take our word for it. See how SEOSpeeder transforms website performance and rankings for businesses like yours.
+              Don&apos;t just take our word for it. See how seospeeder transforms website performance and rankings for businesses like yours.
             </p>
             
              <div className="trust-stats flex items-center gap-6 pt-4 border-t border-border/50">
