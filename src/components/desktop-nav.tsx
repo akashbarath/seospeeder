@@ -13,7 +13,7 @@ import React from "react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { LightRays } from "@/components/ui/light-rays";
 
-export function DesktopNav() {
+export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 	const [isAuditHovered, setIsAuditHovered] = React.useState(false);
 
 	return (
@@ -31,14 +31,16 @@ export function DesktopNav() {
 						Optimisation
 					</NavigationMenuTrigger>
 					<NavigationMenuContent className="relative overflow-hidden">
-						<LightRays
-							className="absolute inset-0 z-0"
-							count={6}
-							color="rgba(140, 200, 255, 0.35)"
-							blur={30}
-							speed={18}
-							length="120%"
-						/>
+						{!hasScrolled && (
+							<LightRays
+								className="absolute inset-0 z-0"
+								count={6}
+								color="rgba(140, 200, 255, 0.35)"
+								blur={30}
+								speed={18}
+								length="120%"
+							/>
+						)}
 						<ul className="relative z-10 grid w-[400px] gap-2 p-4 md:w-[650px] md:grid-cols-2 lg:w-[950px] lg:grid-cols-3">
 							{productLinks.map((item, i) => (
 								<NavigationMenuLink
@@ -77,14 +79,16 @@ export function DesktopNav() {
 						Digital Marketing
 					</NavigationMenuTrigger>
 					<NavigationMenuContent className="relative overflow-hidden">
-						<LightRays
-							className="absolute inset-0 z-0"
-							count={5}
-							color="rgba(140, 200, 255, 0.35)"
-							blur={30}
-							speed={18}
-							length="120%"
-						/>
+						{!hasScrolled && (
+							<LightRays
+								className="absolute inset-0 z-0"
+								count={5}
+								color="rgba(140, 200, 255, 0.35)"
+								blur={30}
+								speed={18}
+								length="120%"
+							/>
+						)}
 						<ul className="relative z-10 grid w-[500px] gap-3 p-4 md:w-[600px] md:grid-cols-3 lg:w-[700px]">
 							<div className="space-y-3 col-span-3">
 								<h4 className="text-sm font-semibold leading-none px-2 font-inter">SEO Services</h4>

@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} font-primary antialiased`}>
+      <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} font-primary antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

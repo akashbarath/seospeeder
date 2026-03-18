@@ -63,7 +63,7 @@ export function Navbar() {
               </p>
             </Link>
 
-            <DesktopNav />
+            <DesktopNav hasScrolled={hasScrolled} />
 
             <div className="flex shrink-0 flex-row items-center gap-2 md:gap-3 lg:gap-4">
               <div className="flex items-center">
