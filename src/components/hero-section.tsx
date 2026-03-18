@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
+import { LightRays } from '@/components/ui/light-rays'
 
 
 const transitionVariants = {
@@ -40,6 +41,7 @@ export default function HeroSection() {
                 </div>
                 <section className="relative overflow-visible min-h-[100svh] flex flex-col">
                     <div className="relative pt-12 pb-6 md:pt-24 lg:pt-28 flex-1 flex flex-col">
+                        <LightRays />
                         <div
                             aria-hidden
                             className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
@@ -153,7 +155,7 @@ export default function HeroSection() {
                                     </div>
                                     <Image
                                         className="relative hidden rounded-xl md:rounded-2xl dark:block w-full h-auto"
-                                        src="/assets/images/home-report-dark.png"
+                                        src="/assets/images/hero-img-dark.png"
                                         alt="seospeeder SEO Dashboard Dark Mode"
                                         width={1899}
                                         height={1080}
@@ -162,7 +164,7 @@ export default function HeroSection() {
                                     />
                                     <Image
                                         className="relative rounded-xl md:rounded-2xl dark:hidden w-full h-auto"
-                                        src="/assets/images/home-report-light.png"
+                                        src="/assets/images/hero-img-light.png"
                                         alt="seospeeder SEO Dashboard Light Mode"
                                         width={1899}
                                         height={1080}
