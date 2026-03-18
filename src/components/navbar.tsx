@@ -33,24 +33,26 @@ export function Navbar() {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="sticky top-0 z-50 flex justify-center w-full px-4"
+      style={{ background: "transparent" }}
     >
       <motion.div
         initial={false}
         animate={{ 
-          scaleX: hasScrolled ? 1 : 1, // Placeholder if we wanted to scale
+          scaleX: hasScrolled ? 1 : 1,
           width: hasScrolled 
             ? (typeof window !== 'undefined' && window.innerWidth < 1024 ? "100%" : MAX_WIDTH) 
             : INITIAL_WIDTH 
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="w-full flex justify-center"
+        style={{ background: "transparent" }}
       >
         <div
           className={cn(
-            "w-full rounded-2xl transition-all duration-300",
+            "w-full rounded-2xl transition-all duration-500",
             hasScrolled
               ? "border-border bg-background/80 border-2 px-2 backdrop-blur-md shadow-lg shadow-zinc-950/5"
-              : "max-w-7xl px-4 md:px-8 shadow-none"
+              : "max-w-7xl px-4 md:px-8"
           )}
         >
           <div className="flex h-[56px] items-center justify-between p-2 md:px-8">
@@ -67,7 +69,7 @@ export function Navbar() {
               <div className="flex items-center">
                 <Button 
                   asChild 
-                  className="hidden lg:flex rounded-xl font-semibold h-9 px-6 shadow-lg shadow-zinc-950/10"
+                  className="hidden lg:flex rounded-xl font-semibold h-9 px-6 shadow-lg shadow-zinc-950/10 border-2 border-transparent hover:border-border transition-all"
                 >
                   <Link href="#audit" className="font-inter font-semibold">
                     Test Your Website

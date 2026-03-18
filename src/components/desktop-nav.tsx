@@ -11,6 +11,7 @@ import { LinkItem } from "@/components/sheard";
 import Link from "next/link";
 import React from "react";
 import { Highlighter } from "@/components/ui/highlighter";
+import { LightRays } from "@/components/ui/light-rays";
 
 export function DesktopNav() {
 	const [isAuditHovered, setIsAuditHovered] = React.useState(false);
@@ -20,17 +21,25 @@ export function DesktopNav() {
 			<NavigationMenuList className="gap-2 lg:gap-1 space-x-0">
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-base font-semibold">
-						<Link className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="/about#about-section">
+						<Link className="rounded-md p-2 border-2 border-transparent hover:border-border hover:bg-accent font-inter font-semibold transition-all" href="/about#about-section">
 							About
 						</Link>
 					</NavigationMenuLink>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter">
+					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter border-2 border-transparent hover:border-border transition-all">
 						Optimisation
 					</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className="grid w-[400px] gap-2 p-4 md:w-[650px] md:grid-cols-2 lg:w-[950px] lg:grid-cols-3">
+					<NavigationMenuContent className="relative overflow-hidden">
+						<LightRays
+							className="absolute inset-0 z-0"
+							count={6}
+							color="rgba(140, 200, 255, 0.35)"
+							blur={30}
+							speed={18}
+							length="120%"
+						/>
+						<ul className="relative z-10 grid w-[400px] gap-2 p-4 md:w-[650px] md:grid-cols-2 lg:w-[950px] lg:grid-cols-3">
 							{productLinks.map((item, i) => (
 								<NavigationMenuLink
 									asChild
@@ -40,7 +49,7 @@ export function DesktopNav() {
 								</NavigationMenuLink>
 							))}
 						</ul>
-						<div className="border-t p-4">
+						<div className="relative z-10 border-t p-4">
 							<p className="text-muted-foreground text-sm font-inter font-medium leading-relaxed">
 								Need help optimising?{" "}
 								<Link 
@@ -64,11 +73,19 @@ export function DesktopNav() {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter">
+					<NavigationMenuTrigger className="bg-transparent text-base font-semibold font-inter border-2 border-transparent hover:border-border transition-all">
 						Digital Marketing
 					</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className="grid w-[500px] gap-3 p-4 md:w-[600px] md:grid-cols-3 lg:w-[700px]">
+					<NavigationMenuContent className="relative overflow-hidden">
+						<LightRays
+							className="absolute inset-0 z-0"
+							count={5}
+							color="rgba(140, 200, 255, 0.35)"
+							blur={30}
+							speed={18}
+							length="120%"
+						/>
+						<ul className="relative z-10 grid w-[500px] gap-3 p-4 md:w-[600px] md:grid-cols-3 lg:w-[700px]">
 							<div className="space-y-3 col-span-3">
 								<h4 className="text-sm font-semibold leading-none px-2 font-inter">SEO Services</h4>
 							</div>
@@ -98,7 +115,7 @@ export function DesktopNav() {
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className="px-4 text-base font-semibold">
-						<Link className="rounded-md p-2 hover:bg-accent font-inter font-semibold" href="/contact">
+						<Link className="rounded-md p-2 border-2 border-transparent hover:border-border hover:bg-accent font-inter font-semibold transition-all" href="/contact">
 							Contact
 						</Link>
 					</NavigationMenuLink>
