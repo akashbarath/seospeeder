@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
+import { LightRays } from '@/components/ui/light-rays'
 
 
 const transitionVariants = {
@@ -40,6 +41,7 @@ export default function HeroSection() {
                 </div>
                 <section className="relative overflow-visible min-h-[100svh] flex flex-col">
                     <div className="relative pt-12 pb-6 md:pt-24 lg:pt-28 flex-1 flex flex-col">
+                        <LightRays />
                         <div
                             aria-hidden
                             className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
@@ -147,8 +149,8 @@ export default function HeroSection() {
                                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border shadow-2xl shadow-zinc-950/20 ring-1">
                                     {/* Blur Gradient Effect Backgrounds */}
                                     <div className="absolute -top-24 left-1/2 -z-10 h-[20rem] md:h-[30rem] lg:h-[40rem] w-[20rem] md:w-[40rem] lg:w-[60rem] -translate-x-1/2 opacity-20 blur-[80px] md:blur-[100px] dark:opacity-10 pointer-events-none">
-                                        <div className="aspect-[1155/678] w-full bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-40" 
-                                             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }} 
+                                        <div className="aspect-[1155/678] w-full bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-40"
+                                            style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
                                         />
                                     </div>
                                     <Image
