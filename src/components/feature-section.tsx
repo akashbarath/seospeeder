@@ -10,6 +10,7 @@ import {
 	LayoutDashboard, 
 	Globe,
 } from "lucide-react";
+import { Highlighter } from "@/components/ui/highlighter";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import {
@@ -84,12 +85,23 @@ export function FeatureSection() {
 	// Removed intro animations as per user request
 
 	return (
-		<div ref={container} className="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible">
-			{features.map((feature) => (
-				<FeatureCard className={cn("feature-card", feature.className)} key={feature.id}>
-					{feature.children}
-				</FeatureCard>
-			))}
+		<div ref={container} className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible">
+			<div className="text-center space-y-4 max-w-3xl mx-auto">
+				<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+					Next-Gen SEO <Highlighter color="hsl(var(--foreground) / 0.1)" padding={0} strokeWidth={1} iterations={1}>Infrastructure</Highlighter>
+				</h2>
+				<p className="text-muted-foreground text-lg sm:text-xl font-inter font-medium leading-relaxed">
+					Scale your organic growth with a comprehensive suite of AI-driven performance and ranking tools designed for the modern web.
+				</p>
+			</div>
+
+			<div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
+				{features.map((feature) => (
+					<FeatureCard className={cn("feature-card", feature.className)} key={feature.id}>
+						{feature.children}
+					</FeatureCard>
+				))}
+			</div>
 		</div>
 	);
 }
@@ -134,7 +146,7 @@ function FeatureDescription({
 function SetupVisual() {
 	return (
 		<>
-			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border-2 bg-background shadow-xl transition-all duration-700">
+			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border-2 bg-background shadow-xl transition-all duration-700 group-hover:border-primary/40">
 				{/* Background Glow */}
 				<div className="absolute inset-0 z-0 scale-150 bg-radial from-primary/10 via-transparent to-transparent blur-2xl group-hover:from-primary/25 transition-all duration-700" />
 				
@@ -181,7 +193,7 @@ function SetupVisual() {
 					}}
 					className="relative z-20"
 				>
-					<Zap className="visual-zap size-14 text-amber-500 fill-amber-500/10 filter drop-shadow(0 0 12px rgba(245,158,11,0.3))" />
+					<Zap className="visual-zap size-14 text-foreground fill-foreground/5 filter drop-shadow(0 0 10px rgba(0,0,0,0.05)) group-hover:text-primary transition-colors duration-300" />
 				</motion.div>
 			</div>
 
@@ -266,7 +278,7 @@ function UserBasedSecurity() {
 					transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
 					className="relative z-20 translate-z-10"
 				>
-					<Bot className="visual-sparkles size-14 text-teal-500 filter drop-shadow(0 0 15px rgba(20,184,166,0.4))" />
+					<Bot className="visual-sparkles size-14 text-foreground filter drop-shadow(0 0 12px rgba(0,0,0,0.1)) group-hover:text-primary transition-colors duration-300" />
 					
 					{/* Scanning Ray effect */}
 					<motion.div 
@@ -302,7 +314,7 @@ function ReportsVisual() {
 			<div className="h-44 md:h-48 w-full pt-2 relative overflow-visible visual-rankings">
 				<div className="absolute top-0 left-2 flex items-center gap-1.5 z-20 bg-background/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-border/50 shadow-sm scale-90 md:scale-100 origin-left">
 					<div className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-primary">
-						<TrendingUp className="size-3 text-emerald-500" />
+						<TrendingUp className="size-3 text-foreground group-hover:text-primary transition-colors duration-300" />
 					</div>
 					<div className="font-bold text-foreground text-[10px] md:text-xs font-inter">Goal: Top 3</div>
 				</div>
@@ -370,7 +382,7 @@ function ReportsVisual() {
 			)}
 		</div>
 			<div className="relative z-10 mt-6 space-y-1.5 text-center">
-				<FeatureTitle>Real-Time Rankings</FeatureTitle>
+				<FeatureTitle className="group-hover:text-primary transition-colors duration-300">Real-Time Rankings</FeatureTitle>
 				<FeatureDescription>
 					Track your keyword positions and organic growth with precision analytics and reporting.
 				</FeatureDescription>
@@ -413,7 +425,7 @@ function DashboardVisual() {
 		>
 			<div className="relative z-10 space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10 pointer-events-none">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:scale-110 transition-transform duration-500">
-					<LayoutDashboard className="size-5 text-violet-500" />
+					<LayoutDashboard className="size-5 text-foreground group-hover:text-primary transition-colors duration-300" />
 				</div>
 				<div className="space-y-2">
 					<FeatureTitle className="text-base group-hover:text-primary transition-colors duration-300">
@@ -457,7 +469,7 @@ function PresenceVisual() {
 		<div className="grid max-h-[600px] sm:max-h-120 sm:grid-cols-2 group/globe">
 			<div className="space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:bg-primary/5 transition-colors duration-500">
-					<Globe className="size-5 text-sky-500 group-hover:animate-spin" />
+					<Globe className="size-5 text-foreground group-hover:animate-spin group-hover:text-primary transition-colors duration-300" />
 				</div>
 				<div className="space-y-2">
 					<FeatureTitle className="text-base group-hover:text-primary transition-colors duration-300">

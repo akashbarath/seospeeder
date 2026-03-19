@@ -18,29 +18,29 @@ const values = [
     title: "Transparency First",
     description: "Honest reporting and clear metrics. We give you full visibility into every optimisation.",
     icon: Eye,
-    color: "sky-500",
-    rgb: "rgb(14, 165, 233)"
+    color: "primary",
+    rgb: "rgb(23, 23, 23)"
   },
   {
     title: "Innovation Always",
     description: "Constant iteration is our core. We keep you ahead of every technological shift.",
     icon: Lightbulb,
-    color: "amber-500",
-    rgb: "rgb(245, 158, 11)"
+    color: "primary",
+    rgb: "rgb(23, 23, 23)"
   },
   {
     title: "Results Driven",
     description: "Revenue is what matters. Every optimisation is designed to improve your bottom line.",
     icon: TrendingUp,
-    color: "emerald-500",
-    rgb: "rgb(16, 185, 129)"
+    color: "primary",
+    rgb: "rgb(23, 23, 23)"
   },
   {
     title: "Human Centric",
     description: "We engineer for people. Your team's ease and users' experience are uncompromisable.",
     icon: Users,
-    color: "violet-500",
-    rgb: "rgb(139, 92, 246)"
+    color: "primary",
+    rgb: "rgb(23, 23, 23)"
   }
 ];
 
@@ -70,13 +70,13 @@ function InteractiveCard({ value }: { value: typeof values[0] }) {
           <div className={cn("absolute inset-0 bg-gradient-to-br via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none rounded-[calc(1rem-2px)]", `from-${value.color}/5`)} />
           
           {/* Icon */}
-          <div className={cn("flex items-center justify-center size-10 rounded-xl bg-muted border-2 border-border/50 transition-all duration-500 ease-in-out shrink-0 relative z-10", `text-${value.color} group-hover/card:bg-${value.color} group-hover/card:text-white group-hover/card:border-${value.color}`)}>
+          <div className={cn("flex items-center justify-center size-10 rounded-xl bg-muted border-2 border-border/50 transition-all duration-500 ease-in-out shrink-0 relative z-10", `text-foreground group-hover/card:bg-primary group-hover/card:text-white group-hover/card:border-primary`)}>
             <value.icon className="size-5 transition-transform duration-500 ease-in-out group-hover/card:scale-110" strokeWidth={1.5} />
           </div>
 
           {/* Content Container */}
           <div className="flex flex-col gap-2 relative z-10">
-            <span className={cn("font-bold text-lg sm:text-xl tracking-tight text-foreground transition-colors duration-500 ease-in-out leading-tight", `group-hover/card:text-${value.color}`)}>
+            <span className={cn("font-bold text-lg sm:text-xl tracking-tight text-foreground transition-colors duration-500 ease-in-out leading-tight", `group-hover/card:text-primary`)}>
               {value.title}
             </span>
             <p className="text-sm text-muted-foreground leading-relaxed transition-colors duration-500 ease-in-out group-hover/card:text-foreground/80">
