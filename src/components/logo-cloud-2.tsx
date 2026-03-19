@@ -96,7 +96,7 @@ export default function LogoCloud() {
     }, [])
 
     return (
-        <section className="bg-background relative py-12 md:py-16 lg:py-20 z-20 -mt-12 md:-mt-16 lg:-mt-24">
+        <section className="bg-background relative py-6 md:py-8 lg:py-10 z-20 -mt-12 md:-mt-16 lg:-mt-24">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-32 md:h-40 lg:h-48 bg-background/60 blur-[40px] md:blur-[60px] lg:blur-[80px] pointer-events-none -z-10" />
             <div className="absolute inset-x-0 top-0 h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent to-background pointer-events-none -z-10" />
             <div className="mx-auto max-w-5xl px-6">

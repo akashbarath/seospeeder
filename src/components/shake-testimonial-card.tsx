@@ -98,7 +98,7 @@ export function TestimonialSection() {
   }, []);
 
   return (
-    <section ref={container} className="relative w-full py-16 md:py-24 overflow-hidden bg-background">
+    <section ref={container} className="relative w-full py-20 md:py-28 overflow-hidden bg-background">
       {/* SVG Gradient Definition */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <defs>

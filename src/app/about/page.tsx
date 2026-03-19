@@ -18,10 +18,10 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div id="about-section" className="container mx-auto px-4 py-16 md:py-24 min-h-screen max-w-5xl scroll-mt-24">
-      <div className="grid gap-16 md:gap-24">
+    <div id="about-section" className="container mx-auto px-4 py-20 md:py-28 min-h-screen max-w-5xl scroll-mt-24">
+      <div className="flex flex-col gap-16 md:gap-24">
         {/* Hero Section */}
-        <section className="space-y-6">
+        <section className="space-y-8">
           <TextEffect 
             per="char" 
             preset="fade-in-blur" 
@@ -30,26 +30,17 @@ export default function AboutPage() {
             About SEO Speeder
           </TextEffect>
           
-          <div className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed font-inter">
-            <TextEffect per='char' preset='fade' as='span'>
-              {"Founded with a vision to democratise "}
-            </TextEffect>
+          <div className="text-xl md:text-2xl text-foreground font-medium leading-relaxed font-inter text-justify transition-all duration-300">
+            <span>Founded with a vision to democratise </span>
             <TextHighlighter 
               triggerType="auto" 
               highlightColor="hsl(var(--primary) / 0.15)" 
-              className="text-foreground font-semibold"
+              className="text-foreground font-bold inline"
               transition={{ delay: 1.0, duration: 1 }}
             >
-              <TextEffect per='char' preset='fade' as='span' delay={1.0}>
-                high-performance web engineering
-              </TextEffect>
+              {"high-performance web engineering"}
             </TextHighlighter>
-            <TextEffect per='char' preset='fade' as='span' delay={2.2}>
-              {", SEO Speeder is more than just an optimisation tool. We are a team of performance-obsessed engineers and SEO strategists dedicated to helping modern businesses thrive in an era where "}
-            </TextEffect>
-            <TextEffect per='char' preset='fade' as='span' delay={7.8}>
-              speed is the ultimate competitive advantage.
-            </TextEffect>
+            <span>, SEO Speeder is more than just an optimisation tool. We are a team of performance-obsessed engineers and SEO strategists dedicated to helping modern businesses thrive in an era where speed is the ultimate competitive advantage.</span>
           </div>
         </section>
 
@@ -57,8 +48,8 @@ export default function AboutPage() {
         <section className="grid lg:grid-cols-2 gap-10 md:gap-16 items-start pt-8 md:pt-12 border-t">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold flex items-center gap-3">
-                <Target className="text-primary size-8" />
+              <h2 className="text-3xl font-bold flex items-center gap-3 text-foreground">
+                <Target className="text-emerald-500 size-8" />
                 Our Philosophy
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed font-medium font-inter">
@@ -82,26 +73,25 @@ export default function AboutPage() {
           </div>
 
           <div className="bg-muted/30 rounded-3xl p-10 border-2 border-primary/10 shadow-inner grid grid-cols-2 gap-8">
-            {[
+            { [
               { label: "Precision", value: "99.9%", desc: "Optimisation Accuracy" },
               { label: "Traffic", value: "2.4x", desc: "Average Growth" },
               { label: "Speed", value: "500ms", desc: "LCP Improvement" },
               { label: "Scale", value: "150M+", desc: "Pages Optimised" }
             ].map((stat, i) => (
               <div key={i} className="space-y-1">
-                <span className="text-4xl font-bold text-primary tracking-tight">{stat.value}</span>
+                <span className="text-4xl font-bold text-foreground tracking-tight">{stat.value}</span>
                 <p className="text-sm font-semibold text-foreground uppercase tracking-wider">{stat.label}</p>
                 <p className="text-xs text-muted-foreground">{stat.desc}</p>
               </div>
-            ))}
-          </div>
+            ))} </div>
         </section>
 
         <FeaturesGrid11 />
 
         {/* Our Journey - Timeline */}
         <section className="space-y-8 md:space-y-12 py-8 md:py-12 border-y border-border/50">
-          <h2 className="text-3xl font-bold text-center">Our Journey So Far</h2>
+          <h2 className="text-3xl font-bold text-center text-foreground transition-colors">Our Journey So Far</h2>
           <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
             {[
               { year: "2022", title: "The Inception", desc: "SEO Speeder was founded with a mission to make speed accessible to all." },
@@ -110,7 +100,7 @@ export default function AboutPage() {
               { year: "2025", title: "The Future", desc: "Pioneering the next generation of predictive performance engineering." }
             ].map((milestone, i) => (
               <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-500">
                   <div className="size-2.5 rounded-full bg-primary animate-pulse" />
                 </div>
                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] relative group/card rounded-[2rem] p-[2px] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 ease-in-out cursor-default">
@@ -148,7 +138,7 @@ export default function AboutPage() {
         <CoreValues />
 
         {/* Minimalist CTA Section */}
-        <section className="py-12 md:py-20 relative">
+        <section className="relative">
           <CallToAction />
         </section>
       </div>

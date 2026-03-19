@@ -2,10 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
-import { LightRays } from '@/components/ui/light-rays'
+import DashboardPage from '@/app/dashboard/page'
 
 
 const transitionVariants = {
@@ -32,24 +31,9 @@ export default function HeroSection() {
     return (
         <>
             <main className="overflow-hidden">
-                {/* Light Rays — rendered first so it sits behind ALL section content */}
-                    <LightRays
-                        className="absolute inset-0 z-0 h-full w-full"
-                        count={9}
-                        color="rgba(140, 200, 255, 0.5)"
-                        blur={38}
-                        speed={14}
-                        length="90vh"
-                    />
-                <div
-                    aria-hidden
-                    className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block">
-                    <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-                    <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-                    <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
-                </div>
+
                 <section className="relative overflow-visible min-h-[100svh] flex flex-col">
-                    <div className="relative z-10 pt-12 pb-6 md:pt-24 lg:pt-28 flex-1 flex flex-col">
+                    <div className="relative z-10 pt-12 pb-6 md:pt-20 lg:pt-24 flex-1 flex flex-col">
                         <div
                             aria-hidden
                             className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
@@ -161,24 +145,9 @@ export default function HeroSection() {
                                             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
                                         />
                                     </div>
-                                    <Image
-                                        className="relative hidden rounded-xl md:rounded-2xl dark:block w-full h-auto"
-                                        src="/assets/images/hero-img-dark.png"
-                                        alt="seospeeder SEO Dashboard Dark Mode"
-                                        width={1899}
-                                        height={1080}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                                        priority
-                                    />
-                                    <Image
-                                        className="relative rounded-xl md:rounded-2xl dark:hidden w-full h-auto"
-                                        src="/assets/images/hero-img-light.png"
-                                        alt="seospeeder SEO Dashboard Light Mode"
-                                        width={1899}
-                                        height={1080}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                                        priority
-                                    />
+                                    <div className="relative w-full h-[600px] md:h-[800px] rounded-xl md:rounded-2xl overflow-hidden [&>div]:h-full">
+                                        <DashboardPage />
+                                    </div>
 
                                     {/* Multi-layered Blur Gradient to Merge with Section Below */}
                                     <div className="absolute inset-x-0 bottom-0 z-10 h-16 md:h-24 lg:h-28 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />

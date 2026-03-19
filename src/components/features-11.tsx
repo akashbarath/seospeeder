@@ -116,7 +116,7 @@ export default function FeaturesGrid11() {
                         <PremiumCard className="h-full">
                             <div className="flex flex-col md:flex-row h-full">
                                 <div className="p-6 md:p-10 md:w-1/2 space-y-6 relative z-10">
-                                    <Badge icon={Cpu} text="Intelligence" />
+                                    <Badge icon={Cpu} text="Intelligence" color="text-teal-500" />
                                     <div className="space-y-4">
                                         <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">Improve UX</h3>
                                         <p className="text-muted-foreground font-inter leading-relaxed text-sm">
@@ -124,7 +124,7 @@ export default function FeaturesGrid11() {
                                         </p>
                                     </div>
                                     <div className="pt-4 flex items-center gap-6">
-                                        <MetricBox label="Satisfaction" value="+16%" />
+                                        <MetricBox label="Satisfaction" value="+16%" color="text-teal-500" />
                                     </div>
                                 </div>
                                 <div className="relative md:w-1/2 min-h-[220px] md:min-h-0 bg-primary/[0.03] border-t-2 md:border-t-0 md:border-l-2 border-primary/10 flex items-center justify-center p-6 md:p-10 overflow-hidden group/viz">
@@ -162,9 +162,9 @@ export default function FeaturesGrid11() {
                     <div className="feature-card-wrapper sm:col-span-6 lg:col-span-4">
                         <PremiumCard className="h-full">
                             <div className="p-6 sm:p-8 md:p-10 space-y-6 md:space-y-8 flex flex-col h-full relative">
-                                <div className="size-16 rounded-2xl bg-primary/10 border-2 border-primary/20 flex items-center justify-center text-primary overflow-hidden relative">
+                                <div className="size-16 rounded-2xl bg-sky-500/10 border-2 border-sky-500/20 flex items-center justify-center text-sky-500 overflow-hidden relative">
                                     <Clock className="size-8 relative z-10" />
-                                    <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10" />
+                                    <div className="absolute inset-0 bg-sky-500 opacity-0 group-hover:opacity-10" />
                                 </div>
                                 <div className="space-y-4">
                                     <h3 className="text-xl md:text-2xl font-bold">Reduce Bounce</h3>
@@ -175,7 +175,7 @@ export default function FeaturesGrid11() {
                                 <div className="mt-auto pt-6 border-t border-primary/10">
                                     <div className="flex items-center justify-between mb-4">
                                         <span className="font-semibold font-inter text-sm text-foreground">
-                                            Bounce Rate <span className="text-primary">(32%)</span>
+                                            Bounce Rate <span className="text-sky-500">(32%)</span>
                                         </span>
                                     </div>
                                     <ChartContainer config={bounceConfig} className="h-32 w-full">
@@ -205,7 +205,7 @@ export default function FeaturesGrid11() {
                     <div className="feature-card-wrapper sm:col-span-6 lg:col-span-5">
                         <PremiumCard className="h-full">
                             <div className="p-6 sm:p-8 md:p-10 space-y-6 h-full flex flex-col">
-                                <IconBox icon={Search} />
+                                <IconBox icon={Search} color="text-emerald-500" />
                                 <div className="space-y-3">
                                     <h3 className="text-xl md:text-2xl font-bold">Improve Visibility</h3>
                                     <p className="text-muted-foreground font-inter text-sm leading-relaxed">
@@ -215,7 +215,7 @@ export default function FeaturesGrid11() {
                                 <div className="mt-auto pt-8">
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="text-[10px] font-black tracking-widest text-muted-foreground uppercase">Visibility Score</div>
-                                        <div className="text-primary font-black text-sm">94.2%</div>
+                                        <div className="text-emerald-500 font-black text-sm">94.2%</div>
                                     </div>
                                     <ChartContainer config={visibilityConfig} className="h-32 w-full">
                                         <BarChart data={visibilityData} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
@@ -242,7 +242,7 @@ export default function FeaturesGrid11() {
                         <PremiumCard className="h-full">
                             <div className="p-6 md:p-10 flex flex-col md:flex-row gap-6 md:gap-10 h-full">
                                 <div className="space-y-6 md:w-1/2">
-                                    <IconBox icon={Zap} shiny />
+                                    <IconBox icon={Zap} shiny color="text-amber-500" />
                                     <div className="space-y-3">
                                         <h3 className="text-xl md:text-2xl font-bold">Boost Conversions</h3>
                                         <p className="text-muted-foreground font-inter text-sm leading-relaxed">
@@ -252,7 +252,7 @@ export default function FeaturesGrid11() {
                                 </div>
                                 <div className="md:w-1/2 bg-primary/5 border-2 border-primary/20 rounded-[2rem] p-6 md:p-8 flex flex-col justify-center gap-4 md:gap-6 shadow-inner relative overflow-hidden group/inner">
                                     <div className="space-y-2">
-                                        <div className="flex justify-between items-center text-[10px] font-black text-primary tracking-widest">
+                                        <div className="flex justify-between items-center text-[10px] font-black text-foreground tracking-widest">
                                             <span>SPEED LIFT</span>
                                             <span className="text-lg">+7.4%</span>
                                         </div>
@@ -260,7 +260,7 @@ export default function FeaturesGrid11() {
                                             <motion.div 
                                                 animate={{ width: ["0%", "100%", "92%"] }}
                                                 transition={{ duration: 2, ease: "easeInOut" }}
-                                                className="h-full bg-primary rounded-full" 
+                                                className="h-full bg-foreground rounded-full" 
                                             />
                                         </div>
                                     </div>
@@ -282,8 +282,8 @@ export default function FeaturesGrid11() {
                         <PremiumCard className="h-full">
                             <div className="p-6 sm:p-8 md:p-10 flex flex-col h-full gap-6 md:gap-8 relative overflow-hidden">
                                 <div className="flex justify-between items-start">
-                                    <IconBox icon={ShoppingCart} />
-                                    <div className="px-4 py-1.5 rounded-full bg-primary/10 border-2 border-primary/20 text-primary text-[10px] font-black tracking-widest">ROI RECOVERY</div>
+                                    <IconBox icon={ShoppingCart} color="text-rose-500" />
+                                    <div className="px-4 py-1.5 rounded-full bg-rose-500/10 border-2 border-rose-500/20 text-rose-500 text-[10px] font-black tracking-widest uppercase">ROI RECOVERY</div>
                                 </div>
                                 <div className="space-y-3">
                                     <h3 className="text-xl md:text-2xl font-bold">Reduce Abandonment</h3>
@@ -294,18 +294,18 @@ export default function FeaturesGrid11() {
                                 <div className="mt-auto p-5 md:p-6 rounded-2xl border-2 border-primary/20 bg-primary/5 relative overflow-hidden transition-all duration-500 group-hover/card:border-primary/40 group-hover/card:bg-primary/10">
                                     <div className="flex justify-between items-end mb-4">
                                         <div className="space-y-1">
-                                            <p className="text-2xl md:text-3xl font-black text-primary tracking-tighter transition-colors duration-500">
+                                            <p className="text-2xl md:text-3xl font-black text-foreground tracking-tighter transition-colors duration-500">
                                                 <span className="inline group-hover/card:hidden">70%</span>
                                                 <span className="hidden group-hover/card:inline">30%</span>
                                             </p>
-                                            <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-wider group-hover/card:text-primary transition-colors duration-500">Friction Rate</p>
+                                            <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-wider group-hover/card:text-foreground transition-colors duration-500">Friction Rate</p>
                                         </div>
                                         <div className="text-right opacity-0 group-hover/card:opacity-100 transition-all duration-500 transform translate-y-2 group-hover/card:translate-y-0">
-                                            <p className="text-sm font-black italic text-primary">RECOVERED</p>
+                                            <p className="text-sm font-black italic text-foreground">RECOVERED</p>
                                         </div>
                                     </div>
                                     <div className="h-2 w-full bg-background border border-primary/10 rounded-full overflow-hidden relative">
-                                        <div className="absolute top-0 bottom-0 left-0 bg-primary/50 w-[70%] group-hover/card:w-[30%] group-hover/card:bg-primary transition-all duration-700 ease-in-out" />
+                                        <div className="absolute top-0 bottom-0 left-0 bg-foreground/50 w-[70%] group-hover/card:w-[30%] group-hover/card:bg-foreground transition-all duration-700 ease-in-out" />
                                     </div>
                                 </div>
                             </div>
@@ -317,10 +317,10 @@ export default function FeaturesGrid11() {
                         <PremiumCard className="h-full">
                             <div className="p-6 sm:p-8 md:p-10 flex flex-col h-full gap-6 md:gap-8">
                                 <div className="flex items-center gap-6">
-                                    <IconBox icon={Users} />
+                                    <IconBox icon={Users} color="text-violet-500" />
                                     <div className="space-y-1">
-                                        <h3 className="text-xl md:text-2xl font-bold tracking-tight">Improve Retention</h3>
-                                        <p className="text-[10px] font-black text-muted-foreground uppercase opacity-60 tracking-widest">Trust Analytics</p>
+                                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground transition-colors duration-500">Improve Retention</h3>
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase opacity-60 tracking-widest text-foreground/60 transition-colors duration-500">Trust Analytics</p>
                                     </div>
                                 </div>
                                 <p className="text-muted-foreground font-inter text-sm leading-relaxed">
@@ -328,7 +328,7 @@ export default function FeaturesGrid11() {
                                 </p>
                                 <div className="mt-auto flex flex-wrap items-center justify-between gap-4">
                                     <div className="space-y-1">
-                                        <p className="text-4xl md:text-5xl font-black text-primary tracking-tighter">79%</p>
+                                        <p className="text-4xl md:text-5xl font-black text-foreground tracking-tighter">79%</p>
                                         <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Brand Erosion Factor</p>
                                     </div>
                                     <AvatarStack 
@@ -403,14 +403,16 @@ function PremiumCard({ children, className }: { children: React.ReactNode; class
 
 function IconBox({ 
     icon: Icon, 
-    shiny = false 
+    shiny = false,
+    color = "text-primary"
 }: { 
     icon: React.ElementType; 
     shiny?: boolean;
+    color?: string;
 }) {
     return (
-        <div className="size-16 rounded-2xl bg-primary/5 border-2 border-primary/20 flex items-center justify-center transition-all duration-500 relative isolate overflow-hidden group-hover:border-primary/40">
-            <Icon className="size-8 text-primary transition-transform duration-500 group-hover:scale-110" />
+        <div className={cn("size-16 rounded-2xl bg-muted border-2 border-border/50 flex items-center justify-center transition-all duration-500 relative isolate overflow-hidden group-hover:border-primary/40 text-muted-foreground", color.replace('text-', 'group-hover:text-'))}>
+            <Icon className={cn("size-8 transition-transform duration-500 group-hover:scale-110", color)} />
             {shiny && (
                 <div className="absolute inset-y-0 w-8 bg-white/5 skew-x-[-20deg] -z-10" />
             )}
@@ -418,20 +420,20 @@ function IconBox({
     );
 }
 
-function MetricBox({ label, value }: { label: string; value: string }) {
+function MetricBox({ label, value, color = "text-primary" }: { label: string; value: string; color?: string }) {
     return (
-        <div className="px-5 py-3 rounded-2xl bg-primary/5 border-2 border-primary/20 shadow-sm">
+        <div className="px-5 py-3 rounded-2xl bg-muted border-2 border-border/50 shadow-sm">
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60 mb-0.5">{label}</p>
-            <p className="text-2xl font-black text-primary tracking-tight">{value}</p>
+            <p className={cn("text-2xl font-black tracking-tight", color)}>{value}</p>
         </div>
     );
 }
 
-function Badge({ icon: Icon, text }: { icon: React.ElementType; text: string }) {
+function Badge({ icon: Icon, text, color = "text-primary" }: { icon: React.ElementType; text: string; color?: string }) {
     return (
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-primary/10 border-2 border-primary/20">
-            <Icon className="size-4 text-primary animate-pulse" />
-            <span className="text-xs font-black uppercase tracking-[0.15em] text-primary">{text}</span>
+        <div className={cn("inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-muted border-2 border-border/50", color.replace('text-', 'shadow-').replace('500', '500/20'))}>
+            <Icon className={cn("size-4 animate-pulse", color)} />
+            <span className={cn("text-xs font-black uppercase tracking-[0.15em]", color)}>{text}</span>
         </div>
     );
 }

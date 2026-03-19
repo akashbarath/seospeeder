@@ -34,7 +34,7 @@ export function FaqsSection() {
 	// Removed intro animations as per user request
 
 	return (
-		<section ref={containerRef} className="py-16 md:py-24 bg-background w-full overflow-hidden">
+		<section ref={containerRef} className="py-20 md:py-28 bg-background w-full overflow-hidden">
 			<div className="container px-4 md:px-6 mx-auto max-w-4xl">
 				<div ref={titleRef} className="text-center mb-8 md:mb-12">
 					<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">

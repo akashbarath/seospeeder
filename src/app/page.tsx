@@ -8,7 +8,7 @@ import { Stats, FeatureSection } from "@/components/landing-lazy-sections"
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col gap-16 md:gap-24 pb-20 md:pb-32">
       <HeroSection />
       <LogoCloud />
       <ResultsSection />

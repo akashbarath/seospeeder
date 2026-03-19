@@ -34,9 +34,9 @@ export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 						{!hasScrolled && (
 							<LightRays
 								className="absolute inset-0 z-0"
-								count={6}
-								color="rgba(140, 200, 255, 0.35)"
-								blur={30}
+								count={7}
+								color={["rgba(45, 187, 176, 0.35)", "rgba(45, 187, 176, 0.2)"]}
+								blur={35}
 								speed={18}
 								length="120%"
 							/>
@@ -82,9 +82,9 @@ export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 						{!hasScrolled && (
 							<LightRays
 								className="absolute inset-0 z-0"
-								count={5}
-								color="rgba(140, 200, 255, 0.35)"
-								blur={30}
+								count={6}
+								color={["rgba(45, 187, 176, 0.2)", "rgba(45, 187, 176, 0.35)"]}
+								blur={35}
 								speed={18}
 								length="120%"
 							/>

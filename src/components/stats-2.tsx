@@ -12,36 +12,42 @@ const stats = [
     label: "PageSpeed",
     description: "We literally make your site load in the blink of an eye. Google loves fast sites, and we make sure yours passes every Core Web Vitals test with flying colours so you can easily grab those top search spots.",
     icon: Zap,
+    activeColor: "amber-500",
   },
   {
     value: "3.5x",
     label: "ROI Boost",
     description: "Think of speed as the secret sauce for your bottom line. When your site feels snappy, people actually stick around, read your stuff, and buy what you're selling. We help you turn site speed into real business growth.",
     icon: TrendingUp,
+    activeColor: "emerald-500",
   },
   {
     value: "100%",
     label: "Indexation",
     description: "There's nothing worse than publishing great content that Google never finds. We hook up a priority pipeline straight to search engines, so your new pages get scooped up and ranked the second they go live.",
     icon: Search,
+    activeColor: "blue-500",
   },
   {
     value: "0.5s",
     label: "LCP",
     description: "Ever click a link and stare at a blank white screen? Yeah, we hate that too. We optimise the biggest stuff on your page so it pops into view instantly. People don't like waiting, so we just remove the wait entirely.",
     icon: Trophy,
+    activeColor: "violet-500",
   },
   {
     value: "0px",
     label: "CLS",
     description: "We make sure buttons don't jump around when visitors try to click them. By locking everything in place instantly, we deliver a premium, smooth experience that protects your hard-earned traffic.",
     icon: Target,
+    activeColor: "rose-500",
   },
   {
     value: "24/7",
     label: "Monitoring",
     description: "We're your website's personal bodyguard. We monitor your performance around the clock and alert you if anything drops, so you never have to worry about unnoticed speed issues hurting your rankings.",
     icon: ShieldCheck,
+    activeColor: "sky-500",
   }
 ];
 
@@ -49,7 +55,7 @@ export function Stats() {
   const [activeStat, setActiveStat] = useState<number | null>(0);
 
   return (
-    <section className="bg-background py-16 sm:py-24 font-primary overflow-hidden">
+    <section className="bg-background py-20 md:py-28 font-primary overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-12 sm:mb-16">
           <div className="max-w-2xl space-y-4 text-center lg:text-left mx-auto lg:mx-0">
@@ -102,7 +108,20 @@ export function Stats() {
                      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] aspect-square transition-opacity duration-1000 ease-in-out pointer-events-none",
                      activeStat === index ? "opacity-100" : "opacity-0"
                    )}>
-                     <div className="w-full h-full animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,hsl(var(--primary))_10%,transparent_40%,transparent_100%)] will-change-transform" />
+                     <div 
+                       className="w-full h-full animate-[spin_6s_linear_infinite] will-change-transform" 
+                       style={{ 
+                         background: `conic-gradient(from 90deg at 50% 50%, transparent 0%, ${
+                           stat.activeColor === 'amber-500' ? 'rgb(245, 158, 11)' :
+                           stat.activeColor === 'emerald-500' ? 'rgb(16, 185, 129)' :
+                           stat.activeColor === 'blue-500' ? 'rgb(59, 130, 246)' :
+                           stat.activeColor === 'violet-500' ? 'rgb(139, 92, 246)' :
+                           stat.activeColor === 'indigo-500' ? 'rgb(99, 102, 241)' :
+                           stat.activeColor === 'rose-500' ? 'rgb(244, 63, 94)' :
+                           'rgb(14, 165, 233)'
+                         } 10%, transparent 40%, transparent 100%)`
+                       }}
+                     />
                    </div>
 
                    {/* Inner Card Content */}
@@ -112,8 +131,8 @@ export function Stats() {
                    )}>
                      {/* Soft interior glow */}
                      <div className={cn(
-                       "absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent transition-opacity duration-500 ease-in-out pointer-events-none",
-                       activeStat === index ? "opacity-100" : "opacity-0"
+                       "absolute inset-0 bg-gradient-to-br transition-opacity duration-500 ease-in-out pointer-events-none",
+                       activeStat === index ? `from-${stat.activeColor}/10 via-transparent to-transparent opacity-100` : "opacity-0"
                      )} />
 
                      {/* Top Section: Icon & Value */}
@@ -124,8 +143,8 @@ export function Stats() {
                         <div className={cn(
                           "size-10 md:size-12 lg:size-14 rounded-xl md:rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm shrink-0 border-2",
                           activeStat === index 
-                            ? "bg-primary text-primary-foreground border-primary scale-110 shadow-lg shadow-primary/20" 
-                            : "bg-muted/50 text-primary/70 border-border/50 group-hover/stat:border-primary/30"
+                            ? `bg-${stat.activeColor}/10 text-${stat.activeColor} border-${stat.activeColor} scale-110 shadow-lg shadow-${stat.activeColor}/20` 
+                            : `bg-muted/50 text-${stat.activeColor} border-border/50 group-hover/stat:border-${stat.activeColor}/30`
                         )}>
                           <stat.icon className="size-5 md:size-6 lg:size-7" strokeWidth={2} />
                         </div>

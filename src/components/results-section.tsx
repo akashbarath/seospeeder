@@ -27,7 +27,7 @@ export function ResultsSection() {
   // Removed intro animations as per user request
   
   return (
-    <section ref={containerRef} className="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
+    <section ref={containerRef} className="py-20 md:py-28 px-4 sm:px-6 md:px-8 bg-zinc-50 dark:bg-zinc-950 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* 1. Section Headline & Subheading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -74,14 +74,14 @@ export function ResultsSection() {
             {/* 4. Measurable Metrics */}
             <div ref={metricsRef} className="grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-10">
               <MetricItem 
-                icon={<Zap className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
+                icon={<Zap className="w-5 h-5 text-amber-500" />}
                 value={99}
                 suffix="+"
                 label="Mobile Performance"
                 description="Google PageSpeed score, up from 45."
               />
               <MetricItem 
-                icon={<Activity className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
+                icon={<Activity className="w-5 h-5 text-sky-500" />}
                 value={0.5}
                 suffix="s"
                 decimals={1}
@@ -89,14 +89,14 @@ export function ResultsSection() {
                 description="Reduced from 3.2s. Instant visual load."
               />
               <MetricItem 
-                icon={<Trophy className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
+                icon={<Trophy className="w-5 h-5 text-emerald-500" />}
                 value={100}
                 suffix="%"
                 label="SEO Health"
                 description="Perfect technical audit score."
               />
               <MetricItem 
-                icon={<Search className="w-5 h-5 text-zinc-900 dark:text-zinc-50" />}
+                icon={<Search className="w-5 h-5 text-violet-500" />}
                 value={42}
                 prefix="+"
                 suffix="%"

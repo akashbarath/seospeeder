@@ -24,6 +24,7 @@ interface TabConfig {
   badge?: string;
   header: string;
   description: string;
+  activeColor: string;
 }
 
 const TABS: TabConfig[] = [
@@ -33,6 +34,7 @@ const TABS: TabConfig[] = [
     icon: Rocket,
     header: "Core Web Vitals",
     description: "Real-time performance metrics.",
+    activeColor: "text-amber-500",
   },
   {
     id: "seo",
@@ -41,6 +43,7 @@ const TABS: TabConfig[] = [
     header: "Technical Audit",
     description: "Comprehensive site health check.",
     badge: "100%",
+    activeColor: "text-sky-500",
   },
   {
     id: "traffic",
@@ -48,6 +51,7 @@ const TABS: TabConfig[] = [
     icon: TrendingUp,
     header: "Growth Analytics",
     description: "Organic traffic and ranking trends.",
+    activeColor: "text-emerald-500",
   },
   {
     id: "reports",
@@ -56,6 +60,7 @@ const TABS: TabConfig[] = [
     header: "Audit Logs",
     description: "Detailed performance reports.",
     badge: "New",
+    activeColor: "text-violet-500",
   },
 ];
 
@@ -78,7 +83,7 @@ export function ProvenSection() {
   }, [activeTab.id]);
 
   return (
-    <section className="py-24 bg-zinc-50 dark:bg-zinc-950 font-primary">
+    <section className="py-20 md:py-28 bg-zinc-50 dark:bg-zinc-950 font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -124,7 +129,7 @@ export function ProvenSection() {
                       
                       <tab.icon 
                         size={18} 
-                        className={cn("relative z-10 shrink-0", isActive ? "text-primary" : "text-zinc-400")} 
+                        className={cn("relative z-10 shrink-0", isActive ? tab.activeColor : "text-zinc-400")} 
                       />
                       <span className="relative z-10 truncate">{tab.label}</span>
                       
@@ -132,7 +137,7 @@ export function ProvenSection() {
                         <span className={cn(
                             "relative z-10 ml-auto text-[10px] font-semibold px-2 py-0.5 rounded-full",
                              isActive 
-                                ? "bg-primary/10 text-primary" 
+                                ? tab.activeColor.replace('text-', 'bg-').concat('/10 ').concat(tab.activeColor)
                                 : "bg-zinc-200 dark:bg-zinc-800 text-zinc-500"
                         )}>
                             {tab.badge}
@@ -370,31 +375,39 @@ const ReportsDashboard = () => (
             size: "1.2 MB",
             type: "PDF",
             icon: Rocket,
+            color: "text-emerald-500"
           },
           {
             file: "seo_audit_v2.json",
             size: "450 KB",
             type: "JSON",
             icon: Globe,
+            color: "text-amber-500"
           },
           {
             file: "backlink_profile.csv",
             size: "2.8 MB",
             type: "CSV",
             icon: TrendingUp,
+            color: "text-sky-500"
           },
           {
             file: "competitor_analysis.pdf",
             size: "5.1 MB",
             type: "PDF",
             icon: BarChart2,
+            color: "text-violet-500"
           },
         ].map((item, i) => (
           <div
             key={i}
             className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-muted/30 transition-colors cursor-pointer group"
           >
-            <div className="w-6 h-6 rounded-md bg-muted/50 border border-border/40 flex items-center justify-center text-muted-foreground/60 group-hover:text-primary group-hover:bg-primary/5 transition-colors">
+            <div className={cn(
+              "w-6 h-6 rounded-md bg-muted/50 border border-border/40 flex items-center justify-center transition-all duration-300",
+              item.color,
+              `group-hover:bg-${item.color.split('-')[1]}-500/10`
+            )}>
               <item.icon size={12} />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
@@ -407,7 +420,7 @@ const ReportsDashboard = () => (
             </div>
             <ArrowUpRight
               size={10}
-              className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+              className={cn("opacity-0 group-hover:opacity-100 transition-opacity", item.color)}
             />
           </div>
         ))}

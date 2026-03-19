@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 import { motion } from "motion/react"
 import { cn } from "@/lib/utils"
 
-interface LightRaysProps extends React.HTMLAttributes<HTMLDivElement> {
+interface LightRaysProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {
   ref?: React.Ref<HTMLDivElement>
   count?: number
-  color?: string
+  color?: string | string[]
   blur?: number
   speed?: number
   length?: string
@@ -22,19 +22,24 @@ type LightRay = {
   delay: number
   duration: number
   intensity: number
+  color: string
 }
 
-const createRays = (count: number, cycle: number): LightRay[] => {
+const createRays = (count: number, cycle: number, colorProp: string | string[]): LightRay[] => {
   if (count <= 0) return []
+  const colors = Array.isArray(colorProp) ? colorProp : [colorProp]
   return Array.from({ length: count }, (_, index) => {
-    const left = 8 + Math.random() * 84
-    const rotate = -28 + Math.random() * 56
+    const step = 100 / count
+    const left = (index * step) + (Math.random() * step * 0.5)
+    // Fan out rotation based on horizontal position (-40deg for left, +40deg for right)
+    const rotate = ((left - 50) / 50) * 35 + (Math.random() * 14 - 7)
     const width = 140 + Math.random() * 180
     const swing = 0.8 + Math.random() * 1.6
     // Keep delays short so motion is visible immediately
     const delay = Math.random() * (cycle * 0.4)
     const duration = cycle * (0.7 + Math.random() * 0.4)
     const intensity = 0.55 + Math.random() * 0.45
+    const color = colors[index % colors.length]
 
     return {
       id: `${index}-${Math.round(left * 10)}`,
@@ -45,6 +50,7 @@ const createRays = (count: number, cycle: number): LightRay[] => {
       delay,
       duration,
       intensity,
+      color,
     }
   })
 }
@@ -103,8 +109,11 @@ export function LightRays({
   const cycleDuration = Math.max(speed, 0.1)
 
   useEffect(() => {
-    setRays(createRays(count, cycleDuration))
-  }, [count, cycleDuration])
+    setRays(createRays(count, cycleDuration, color))
+  }, [count, cycleDuration, color])
+
+  const baseColor = Array.isArray(color) ? color[0] : color
+
 
   return (
     <div
@@ -121,19 +130,19 @@ export function LightRays({
         aria-hidden
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 70% 50% at 20% 0%, ${color.replace(/[\d.]+\)$/, "0.25)")}, transparent 70%)`,
+          background: `radial-gradient(ellipse 70% 50% at 20% 0%, ${baseColor.replace(/[\d.]+\)$/, "0.25)")}, transparent 70%)`,
         }}
       />
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(ellipse 60% 40% at 80% 0%, ${color.replace(/[\d.]+\)$/, "0.18)")}, transparent 70%)`,
+          background: `radial-gradient(ellipse 60% 40% at 80% 0%, ${baseColor.replace(/[\d.]+\)$/, "0.18)")}, transparent 70%)`,
         }}
       />
       {/* Individual animated rays */}
       {rays.map((ray) => (
-        <Ray key={ray.id} {...ray} color={color} blur={blur} length={length} />
+        <Ray key={ray.id} {...ray} blur={blur} length={length} />
       ))}
     </div>
   )

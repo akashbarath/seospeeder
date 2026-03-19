@@ -84,7 +84,7 @@ export function FeatureSection() {
 	// Removed intro animations as per user request
 
 	return (
-		<div ref={container} className="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6 px-6 md:px-8 lg:px-4 py-16 md:py-24 overflow-hidden md:overflow-visible">
+		<div ref={container} className="relative mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible">
 			{features.map((feature) => (
 				<FeatureCard className={cn("feature-card", feature.className)} key={feature.id}>
 					{feature.children}
@@ -181,7 +181,7 @@ function SetupVisual() {
 					}}
 					className="relative z-20"
 				>
-					<Zap className="visual-zap size-14 text-primary fill-primary/10 filter drop-shadow(0 0 12px hsl(var(--primary)/0.3))" />
+					<Zap className="visual-zap size-14 text-amber-500 fill-amber-500/10 filter drop-shadow(0 0 12px rgba(245,158,11,0.3))" />
 				</motion.div>
 			</div>
 
@@ -266,7 +266,7 @@ function UserBasedSecurity() {
 					transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
 					className="relative z-20 translate-z-10"
 				>
-					<Bot className="visual-sparkles size-14 text-primary filter drop-shadow(0 0 15px hsl(var(--primary)/0.4))" />
+					<Bot className="visual-sparkles size-14 text-teal-500 filter drop-shadow(0 0 15px rgba(20,184,166,0.4))" />
 					
 					{/* Scanning Ray effect */}
 					<motion.div 
@@ -302,7 +302,7 @@ function ReportsVisual() {
 			<div className="h-44 md:h-48 w-full pt-2 relative overflow-visible visual-rankings">
 				<div className="absolute top-0 left-2 flex items-center gap-1.5 z-20 bg-background/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-border/50 shadow-sm scale-90 md:scale-100 origin-left">
 					<div className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-primary">
-						<TrendingUp className="size-3" />
+						<TrendingUp className="size-3 text-emerald-500" />
 					</div>
 					<div className="font-bold text-foreground text-[10px] md:text-xs font-inter">Goal: Top 3</div>
 				</div>
@@ -413,7 +413,7 @@ function DashboardVisual() {
 		>
 			<div className="relative z-10 space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10 pointer-events-none">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:scale-110 transition-transform duration-500">
-					<LayoutDashboard className="size-5 text-primary/80" />
+					<LayoutDashboard className="size-5 text-violet-500" />
 				</div>
 				<div className="space-y-2">
 					<FeatureTitle className="text-base group-hover:text-primary transition-colors duration-300">
@@ -457,7 +457,7 @@ function PresenceVisual() {
 		<div className="grid max-h-[600px] sm:max-h-120 sm:grid-cols-2 group/globe">
 			<div className="space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:bg-primary/5 transition-colors duration-500">
-					<Globe className="size-5 text-primary/80 group-hover:animate-spin" />
+					<Globe className="size-5 text-sky-500 group-hover:animate-spin" />
 				</div>
 				<div className="space-y-2">
 					<FeatureTitle className="text-base group-hover:text-primary transition-colors duration-300">
