@@ -1,0 +1,42 @@
+
+> seospeeder@0.1.0 lint
+> eslint
+
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\chart-area-interactive.tsx
+  8:10  warning  'useIsMobile' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\data-table.tsx
+  370:17  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\data-table.tsx:370:17
+  368 |   )
+  369 |
+> 370 |   const table = useReactTable({
+      |                 ^^^^^^^^^^^^^ TanStack Table's `useReactTable()` API returns functions that cannot be memoized safely
+  371 |     data,
+  372 |     columns,
+  373 |     state: {  react-hooks/incompatible-library
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\results-section.tsx
+  23:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\results-section.tsx:23:5
+  21 |
+  22 |   useEffect(() => {
+> 23 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |   }, []);
+  25 |
+  26 |   const headerVariants: Variants = {  react-hooks/set-state-in-effect
+
+✖ 3 problems (1 error, 2 warnings)
+

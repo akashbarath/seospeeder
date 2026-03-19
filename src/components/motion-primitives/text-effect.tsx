@@ -73,7 +73,13 @@ const presetVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: 'blur(12px)' },
-      visible: { opacity: 1, filter: 'blur(0px)' },
+      visible: { 
+        opacity: 1, 
+        filter: 'blur(0.1px)',
+        transition: {
+          filter: { type: 'tween' as const, ease: 'linear' as const, duration: 0.3 }
+        }
+      },
       exit: { opacity: 0, filter: 'blur(12px)' },
     },
   },
@@ -81,7 +87,14 @@ const presetVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, y: 20, filter: 'blur(12px)' },
-      visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+      visible: { 
+        opacity: 1, 
+        y: 0, 
+        filter: 'blur(0.1px)',
+        transition: {
+          filter: { type: 'tween' as const, ease: 'linear' as const, duration: 0.3 }
+        }
+      },
       exit: { opacity: 0, y: 20, filter: 'blur(12px)' },
     },
   },
@@ -260,6 +273,7 @@ export function TextEffect({
       }
     ),
     item: createVariantsWithTransition(variants?.item || baseVariants.item, {
+      type: 'tween' as const,
       duration: baseDuration,
       ...segmentTransition,
     }),

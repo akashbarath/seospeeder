@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Layers } from "lucide-react";
 
 export const metadata = {
   title: "SquareSpace Speed Optimisation | SEO Speeder",

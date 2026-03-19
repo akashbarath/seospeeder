@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from "react";
-import { motion, AnimatePresence, LayoutGroup, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup, useInView, useMotionValue, useSpring, Variants } from "framer-motion";
 import {
   Users,
   ArrowUpRight,
@@ -18,7 +18,6 @@ import {
   Cpu,
   Zap,
   Trophy,
-  Target,
   ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -107,16 +106,16 @@ const TABS: TabConfig[] = [
   },
 ];
 
-const dashboardVariants = {
-  hidden: { opacity: 0, y: 10, scale: 0.98, filter: "blur(4px)" },
+const dashboardVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.98, filter: "blur(4px)" },
   visible: { 
-    opacity: 1, y: 0, scale: 1, filter: "blur(0px)",
-    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1], staggerChildren: 0.08 }
+    opacity: 1, scale: 1, filter: "blur(0.1px)",
+    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] as [number, number, number, number], staggerChildren: 0.08 }
   },
   exit: { opacity: 0, scale: 0.98, filter: "blur(4px)", transition: { duration: 0.2 } }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 }
 };
@@ -214,7 +213,7 @@ export function ProvenSection() {
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.05]">
             Data-Driven Results
           </h2>
-          <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-inter font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto">
             See exactly how Seospeeder transforms your site&apos;s performance and search visibility with precision analytics.
           </p>
         </motion.div>
@@ -226,32 +225,32 @@ export function ProvenSection() {
           className="w-full max-w-5xl mx-auto bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row min-h-[520px]"
         >
           {/* Sidebar */}
-          <div className="w-full md:w-72 bg-zinc-50/50 dark:bg-zinc-900/50 border-b-2 md:border-b-0 md:border-r-2 border-zinc-200 dark:border-zinc-800 p-6 flex flex-col gap-2 overflow-y-auto">
+          <div className="w-full md:w-72 bg-zinc-50/50 dark:bg-zinc-900/50 border-b-2 md:border-b-0 md:border-r-2 border-zinc-200 dark:border-zinc-800 p-4 md:p-6 flex flex-row md:flex-col gap-3 md:gap-2 overflow-x-auto md:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] shrink-0">
             <LayoutGroup>
               {/* Analytics Group */}
               <div className="mb-1 px-2 hidden md:flex items-center gap-2">
-                <Cpu size={12} className="text-zinc-400" />
-                <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-[0.2em]">
+                <Cpu size={12} className="text-zinc-900 dark:text-white" />
+                <span className="text-[9px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.2em]">
                   Analytics
                 </span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-row md:flex-col gap-2 md:gap-1 shrink-0 items-center md:items-stretch">
                 {analyticsGroup.map((tab) => (
                   <TabButton key={tab.id} tab={tab} activeTab={activeTab} onSelect={setActiveTab} />
                 ))}
               </div>
 
               {/* Divider */}
-              <div className="my-3 h-px bg-zinc-200 dark:bg-zinc-800" />
+              <div className="my-3 h-px bg-zinc-200 dark:bg-zinc-800 hidden md:block" />
 
               {/* Metrics Group */}
               <div className="mb-1 px-2 hidden md:flex items-center gap-2">
-                <Activity size={12} className="text-zinc-400" />
-                <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-[0.2em]">
+                <Activity size={12} className="text-zinc-900 dark:text-white" />
+                <span className="text-[9px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.2em]">
                   Speed Metrics
                 </span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-row md:flex-col gap-2 md:gap-1 shrink-0 items-center md:items-stretch">
                 {metricsGroup.map((tab) => (
                   <TabButton key={tab.id} tab={tab} activeTab={activeTab} onSelect={setActiveTab} />
                 ))}
@@ -261,19 +260,19 @@ export function ProvenSection() {
             {/* Status Module */}
             <div className="mt-auto hidden md:block p-4 rounded-2xl bg-zinc-900/[0.03] dark:bg-zinc-100/[0.03] border border-dashed border-zinc-200 dark:border-zinc-800">
               <div className="flex items-center gap-2 mb-2">
-                <Activity size={12} className="text-zinc-400" />
-                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tighter">Live Status</span>
+                <Activity size={12} className="text-zinc-900 dark:text-white" />
+                <span className="text-[10px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-tighter">Live Status</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[11px] font-medium text-zinc-600 dark:text-zinc-400">All Systems Operational</span>
+                <span className="text-[11px] font-medium text-zinc-700 dark:text-zinc-300">All Systems Operational</span>
               </div>
             </div>
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 p-8 md:p-12 bg-white dark:bg-zinc-900 relative flex flex-col">
-            <header className="mb-10 flex flex-col gap-2">
+          <div className="flex-1 p-5 sm:p-8 md:p-12 bg-white dark:bg-zinc-900 relative flex flex-col overflow-hidden min-w-0">
+            <header className="mb-6 md:mb-10 flex flex-col gap-2">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab.id}
@@ -282,10 +281,10 @@ export function ProvenSection() {
                   exit={{ opacity: 0, x: 10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-2xl font-black text-zinc-900 dark:text-zinc-100 tracking-tight leading-none">
+                  <h3 className="text-2xl font-medium text-zinc-900 dark:text-zinc-100 tracking-tight leading-none">
                     {activeTab.header}
                   </h3>
-                  <p className="text-[15px] text-zinc-500 dark:text-zinc-400 mt-2 font-inter font-medium opacity-80">
+                  <p className="text-[15px] text-zinc-700 dark:text-zinc-300 mt-2 font-inter font-medium opacity-80">
                     {activeTab.description}
                   </p>
                 </motion.div>
@@ -320,10 +319,10 @@ function TabButton({ tab, activeTab, onSelect }: { tab: TabConfig; activeTab: Ta
     <button
       onClick={() => onSelect(tab)}
       className={cn(
-        "relative flex items-center gap-3 p-3 rounded-2xl text-[13px] font-bold transition-all cursor-pointer text-left outline-none group",
+        "relative flex items-center gap-2 md:gap-3 px-4 py-2.5 md:p-3 rounded-full md:rounded-2xl text-[13px] font-medium transition-all cursor-pointer text-left outline-none group whitespace-nowrap shrink-0",
         isActive
           ? "text-zinc-900 dark:text-zinc-100"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
+          : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-200"
       )}
     >
       {isActive && (
@@ -339,7 +338,7 @@ function TabButton({ tab, activeTab, onSelect }: { tab: TabConfig; activeTab: Ta
         "relative z-10 size-7 rounded-xl flex items-center justify-center border-2 transition-all duration-300",
         isActive
           ? "bg-zinc-900 text-white border-zinc-900 shadow-lg shadow-zinc-900/20"
-          : "bg-muted text-zinc-400 border-transparent group-hover:scale-110"
+          : "bg-muted text-zinc-900 dark:text-white border-transparent"
       )}>
         <tab.icon size={14} />
       </div>
@@ -351,7 +350,7 @@ function TabButton({ tab, activeTab, onSelect }: { tab: TabConfig; activeTab: Ta
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           className={cn(
-            "relative z-10 ml-auto text-[9px] font-black px-2 py-0.5 rounded-full tracking-wider shrink-0",
+            "relative z-10 ml-auto text-[9px] font-medium px-2 py-0.5 rounded-full tracking-wider shrink-0",
             isActive
               ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-black"
               : "bg-zinc-200 dark:bg-zinc-800 text-zinc-500"
@@ -368,40 +367,40 @@ function TabButton({ tab, activeTab, onSelect }: { tab: TabConfig; activeTab: Ta
 
 const PerformanceDashboard = () => (
   <div className="flex flex-col gap-4 h-full">
-    <motion.div variants={itemVariants} className="relative p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group">
+    <motion.div 
+      variants={itemVariants} 
+      className="relative p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+    >
       <div className="flex flex-col gap-4 relative z-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="size-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
               <Rocket size={14} className="text-emerald-500" />
             </div>
-            <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
               LCP (Largest Contentful Paint)
             </span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border-2 border-emerald-500/20">
             <Check size={12} className="text-emerald-500" strokeWidth={3} />
-            <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Passing</span>
+            <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Passing</span>
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-5xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 leading-none">
+          <span className="text-5xl font-semibold tracking-tighter text-zinc-900 dark:text-zinc-50 leading-none">
             0.8s
           </span>
-          <div className="w-full h-2.5 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden mt-4">
+          <div className="w-full h-1 bg-muted rounded-full overflow-hidden mt-1">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "92%" }}
-              transition={{ duration: 1.5, ease: "circOut" }}
-              className="h-full bg-emerald-500 rounded-full relative"
-            >
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)] animate-[shimmer_2s_infinite]" />
-            </motion.div>
+              className="h-full bg-green-500 rounded-full"
+            />
           </div>
         </div>
         <div className="flex items-center gap-2 mt-1">
           <div className="size-1.5 rounded-full bg-emerald-500" />
-          <span className="text-[11px] text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider">
+          <span className="text-[11px] text-zinc-700 dark:text-zinc-300 font-medium uppercase tracking-wider">
             Top 1% of sites globally
           </span>
         </div>
@@ -416,11 +415,10 @@ const PerformanceDashboard = () => (
         <motion.div 
           key={i}
           variants={itemVariants}
-          whileHover={{ y: -5 }}
-          className="p-5 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-3 transition-shadow hover:shadow-xl hover:shadow-black/5"
+          className="p-5 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-3 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
         >
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">
+            <span className="text-[10px] font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-[0.2em]">
               {card.label}
             </span>
             <div className="size-5 rounded-md bg-emerald-500/10 flex items-center justify-center">
@@ -428,10 +426,10 @@ const PerformanceDashboard = () => (
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter leading-none">
+            <span className="text-2xl font-normal text-zinc-900 dark:text-zinc-50 tracking-tighter leading-none">
               {card.val}
             </span>
-            <span className="text-[10px] text-zinc-500 mt-1 font-bold">{card.desc}</span>
+            <span className="text-[10px] text-zinc-600 dark:text-zinc-400 mt-1 font-medium">{card.desc}</span>
           </div>
         </motion.div>
       ))}
@@ -441,14 +439,16 @@ const PerformanceDashboard = () => (
 
 const SeoDashboard = () => (
   <div className="flex flex-col h-full not-prose gap-4">
-    <div className="rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 overflow-hidden flex flex-col h-full bg-zinc-50/50 dark:bg-zinc-900/50">
+    <motion.div 
+      className="rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 overflow-hidden flex flex-col h-full bg-zinc-50/50 dark:bg-zinc-900/50 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+    >
       <div className="px-5 py-4 border-b border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
-        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">
+        <span className="text-[10px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.2em]">
           Automated Health Checks
         </span>
-        <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-[9px] font-black uppercase tracking-tighter">
-          <Check size={10} strokeWidth={3} />
-          Optimized
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border-2 border-emerald-500/20">
+          <Check size={12} className="text-emerald-500" strokeWidth={3} />
+          <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Optimised</span>
         </div>
       </div>
       <div className="p-3 flex flex-col gap-1.5">
@@ -461,17 +461,16 @@ const SeoDashboard = () => (
           <motion.div
             key={i}
             variants={itemVariants}
-            whileHover={{ x: 5 }}
-            className="flex items-center gap-4 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-700/50 shadow-sm transition-all"
+            className="flex items-center gap-4 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 border-2 border-zinc-100 dark:border-zinc-700/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
           >
             <div className="size-9 rounded-xl bg-zinc-50 dark:bg-zinc-700 flex items-center justify-center text-zinc-400 group">
               <check.icon size={16} className="group-hover:text-emerald-500 transition-colors" />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-[12px] font-bold text-zinc-900 dark:text-zinc-50 truncate">
+              <span className="text-[12px] font-medium text-zinc-900 dark:text-zinc-50 truncate">
                 {check.name}
               </span>
-              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold truncate tracking-tight">
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium truncate tracking-tight">
                 {check.status}
               </span>
             </div>
@@ -479,13 +478,13 @@ const SeoDashboard = () => (
           </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   </div>
 );
 
 const TrafficDashboard = () => (
   <div className="flex flex-col gap-4 h-full">
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {[
         { title: "Organic Users", val: "+124%", icon: Users, color: "text-emerald-500" },
         { title: "Impressions", val: "+89%", icon: Search, color: "text-blue-500" },
@@ -493,41 +492,40 @@ const TrafficDashboard = () => (
         <motion.div
           key={i}
           variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-          className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-4 relative overflow-hidden group shadow-sm hover:shadow-xl hover:shadow-black/5"
+          className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex items-center justify-between relative overflow-hidden group shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
         >
           <div className="flex flex-col gap-1 z-10">
-            <span className="text-xs font-black text-zinc-400 uppercase tracking-widest">
+            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
               {card.title}
             </span>
-            <span className={cn("text-3xl font-black tracking-tighter tabular-nums", card.color)}>
+            <span className="text-3xl font-semibold tracking-tighter tabular-nums text-zinc-900 dark:text-white">
               {card.val}
             </span>
           </div>
-          <div className="size-10 rounded-full bg-muted/50 flex items-center justify-center">
+          <div className="size-10 rounded-full bg-muted/50 flex items-center justify-center shrink-0 z-10">
             <card.icon size={18} className="text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
           </div>
         </motion.div>
       ))}
     </div>
 
-    <motion.div variants={itemVariants} className="p-4 rounded-2xl bg-zinc-900 dark:bg-zinc-50 flex items-center justify-between group cursor-default">
+    <motion.div variants={itemVariants} className="p-4 rounded-2xl bg-zinc-900/[0.03] dark:bg-zinc-100/[0.03] border-2 border-dashed border-zinc-200 dark:border-zinc-800 flex items-center justify-between group cursor-default">
       <div className="flex items-center gap-3">
-        <div className="size-8 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center">
-          <Info size={14} className="text-white dark:text-black" />
+        <div className="size-8 rounded-full bg-zinc-200/50 dark:bg-zinc-800/50 flex items-center justify-center">
+          <Info size={14} className="text-zinc-900 dark:text-white" />
         </div>
         <div className="flex flex-col">
-          <span className="text-[11px] font-black text-white dark:text-black uppercase tracking-widest">
+          <span className="text-[11px] font-bold text-zinc-900 dark:text-white uppercase tracking-widest">
             Search Visibility
           </span>
-          <span className="text-[10px] text-zinc-400 dark:text-zinc-500">
+          <span className="text-[10px] text-zinc-600 dark:text-zinc-400">
             Ranking for 500+ high-intent keywords
           </span>
         </div>
       </div>
       <div className="flex -space-x-2">
         {[1,2,3].map(j => (
-          <div key={j} className="size-6 rounded-full border-2 border-zinc-900 dark:border-white bg-zinc-800 dark:bg-zinc-100 flex items-center justify-center text-[8px] font-bold text-white dark:text-black">
+          <div key={j} className="size-6 rounded-full border-2 border-white dark:border-zinc-900 bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-[8px] font-medium text-zinc-700 dark:text-zinc-300">
             {String.fromCharCode(64 + j)}
           </div>
         ))}
@@ -540,12 +538,12 @@ const ReportsDashboard = () => (
   <div className="flex flex-col gap-4 h-full overflow-hidden">
     <div className="rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 flex flex-col bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden">
       <div className="px-5 py-4 border-b border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
-        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">
+        <span className="text-[10px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.2em]">
           Export History
         </span>
         <div className="flex items-center gap-1.5 opacity-50">
           <div className="size-1.5 rounded-full bg-zinc-400" />
-          <span className="text-[9px] font-black uppercase">CSV/PDF/JSON</span>
+          <span className="text-[9px] font-medium uppercase">CSV/PDF/JSON</span>
         </div>
       </div>
       <div className="p-2 space-y-1">
@@ -558,18 +556,17 @@ const ReportsDashboard = () => (
           <motion.div
             key={i}
             variants={itemVariants}
-            whileHover={{ scale: 1.01, x: 2 }}
-            className="flex items-center gap-3 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-100 dark:border-transparent transition-all cursor-pointer group shadow-xs"
+            className="flex items-center gap-3 p-3 rounded-2xl bg-white dark:bg-zinc-800/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-2 border-zinc-100 dark:border-transparent cursor-pointer group shadow-xs transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
           >
             <div className="size-10 rounded-xl bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
               <item.icon size={16} />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-[12px] font-bold text-zinc-900 dark:text-zinc-50 truncate group-hover:text-primary transition-colors">
+              <span className="text-[12px] font-medium text-zinc-900 dark:text-zinc-50 truncate group-hover:text-primary transition-colors">
                 {item.file}
               </span>
               <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-[9px] text-zinc-400 tabular-nums font-bold">
+                <span className="text-[9px] text-zinc-400 tabular-nums font-medium">
                   {item.size}
                 </span>
                 <div className="size-1 rounded-full bg-zinc-300" />
@@ -579,7 +576,6 @@ const ReportsDashboard = () => (
               </div>
             </div>
             <motion.div 
-              whileHover={{ x: 3, y: -3 }}
               className="size-8 rounded-full bg-zinc-50 dark:bg-zinc-700 flex items-center justify-center text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors"
             >
               <ArrowUpRight size={14} />
@@ -599,7 +595,7 @@ function MetricPanel({ tab, data, inView }: { tab: TabConfig; data: { value: str
       {/* Big Value Hero */}
       <motion.div
         variants={itemVariants}
-        className="relative p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group"
+        className="relative p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
       >
         <div className="flex flex-col gap-4 relative z-10">
           <div className="flex items-center justify-between">
@@ -607,34 +603,31 @@ function MetricPanel({ tab, data, inView }: { tab: TabConfig; data: { value: str
               <div className="size-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
                 <tab.icon size={14} className="text-emerald-500" />
               </div>
-              <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+              <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
                 {tab.label}
               </span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border-2 border-emerald-500/20">
               <Check size={12} className="text-emerald-500" strokeWidth={3} />
-              <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Verified</span>
+              <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Verified</span>
             </div>
           </div>
 
           <div className="flex flex-col gap-1">
-            <span className="text-5xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 leading-none">
+            <span className="text-5xl font-semibold tracking-tighter text-zinc-900 dark:text-zinc-50 leading-none">
               <AnimatedValue value={data.value} inView={inView} />
             </span>
-            <div className="w-full h-2.5 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden mt-4">
+            <div className="w-full h-1 bg-muted rounded-full overflow-hidden mt-1">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "92%" }}
-                transition={{ duration: 1.5, ease: "circOut" }}
-                className="h-full bg-emerald-500 rounded-full relative"
-              >
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent)] animate-[shimmer_2s_infinite]" />
-              </motion.div>
+                className="h-full bg-green-500 rounded-full"
+              />
             </div>
           </div>
           <div className="flex items-center gap-2 mt-1">
             <div className="size-1.5 rounded-full bg-emerald-500" />
-            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider">
+            <span className="text-[11px] text-zinc-700 dark:text-zinc-300 font-medium uppercase tracking-wider">
               Optimised & Verified
             </span>
           </div>
@@ -644,18 +637,17 @@ function MetricPanel({ tab, data, inView }: { tab: TabConfig; data: { value: str
       {/* Description */}
       <motion.div
         variants={itemVariants}
-        whileHover={{ y: -3 }}
-        className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 transition-shadow hover:shadow-xl hover:shadow-black/5"
+        className="p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
       >
         <div className="flex items-center gap-2 mb-3">
           <div className="size-5 rounded-md bg-emerald-500/10 flex items-center justify-center">
             <Check size={10} className="text-emerald-500" />
           </div>
-          <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">
+          <span className="text-[10px] font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.2em]">
             What This Means
           </span>
         </div>
-        <p className="text-[15px] text-zinc-600 dark:text-zinc-400 leading-relaxed font-inter font-medium">
+        <p className="text-[15px] text-zinc-700 dark:text-zinc-300 leading-relaxed font-inter font-medium">
           {data.description}
         </p>
       </motion.div>

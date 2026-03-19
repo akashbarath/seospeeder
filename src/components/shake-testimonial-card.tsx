@@ -98,7 +98,7 @@ export function TestimonialSection() {
   }, []);
 
   return (
-    <section ref={container} className="relative w-full py-20 md:py-28 overflow-hidden bg-background">
+    <section ref={container} className="relative w-full py-16 md:py-24 overflow-hidden bg-background">
       {/* SVG Gradient Definition */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <defs>
@@ -195,21 +195,25 @@ export function TestimonialSection() {
                             isTop && isAnimating ? [0, 0, 0, 0, 0, 20, 60] : -index * 2,
                         x: isTop && isAnimating ? [0, -3, 3, -3, 0, 40, 150] : 0,
                         rotate: isTop && isAnimating ? [0, -2, 2, -2, 0, 10, 25] : 0,
-                        filter: isTop && isAnimating ? ["blur(0px)", "blur(0px)", "blur(0px)", "blur(0px)", "blur(0px)", "blur(2px)", "blur(4px)"] : "blur(0px)",
+                        filter: isTop && isAnimating ? ["blur(0.1px)", "blur(0.1px)", "blur(0.1px)", "blur(0.1px)", "blur(0.1px)", "blur(2px)", "blur(4px)"] : "blur(0.1px)",
                         opacity: index < 4 ? 1 : 0,
                         zIndex: cards.length - index,
 
                         transition:
                             isTop && isAnimating
                             ? {
-                                duration: 0.55, // Slightly faster for snappier feel
+                                duration: 0.55, 
                                 times: [0, 0.1, 0.2, 0.3, 0.4, 0.6, 1],
-                                ease: [0.4, 0.0, 0.2, 1], // Standard "Material" snappy ease
+                                ease: [0.4, 0.0, 0.2, 1], 
                             }
                             : {
-                                type: "spring",
-                                stiffness: 260,
-                                damping: 20,
+                                scale: { type: "spring", stiffness: 260, damping: 20 },
+                                y: { type: "spring", stiffness: 260, damping: 20 },
+                                rotateX: { type: "spring", stiffness: 260, damping: 20 },
+                                x: { type: "spring", stiffness: 260, damping: 20 },
+                                rotate: { type: "spring", stiffness: 260, damping: 20 },
+                                opacity: { duration: 0.3 },
+                                filter: { duration: 0.3, ease: "easeOut" }
                             },
                       }}
                        className={cn(

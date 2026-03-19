@@ -1,7 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
+import * as React from "react";
 import { SearchIcon, X, Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Highlighter } from "@/components/ui/highlighter";
@@ -102,9 +103,9 @@ export function FaqsSection() {
 									key={faq.id}
 									className="faq-item"
 								>
-									<div
+									<Card
 										className={cn(
-											"group border-2 rounded-2xl bg-card overflow-hidden transition-all duration-500 ease-out",
+											"group border-2 rounded-2xl bg-card overflow-hidden transition-all duration-500 ease-out shadow-none",
 											openId === faq.id
 												? "border-primary/50 shadow-lg shadow-primary/5 ring-1 ring-primary/5"
 												: "border-border hover:border-primary/30 hover:shadow-md"
@@ -163,7 +164,7 @@ export function FaqsSection() {
 												</motion.div>
 											)}
 										</AnimatePresence>
-									</div>
+									</Card>
 								</motion.div>
 							))
 						) : (

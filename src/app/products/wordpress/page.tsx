@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Globe } from "lucide-react";
 
 export const metadata = {
   title: "WordPress Speed Optimisation | SEO Speeder",

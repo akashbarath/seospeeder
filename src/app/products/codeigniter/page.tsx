@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Flame } from "lucide-react";
 
 export const metadata = {
   title: "CodeIgniter Speed Optimisation | SEO Speeder",

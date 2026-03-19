@@ -1,7 +1,5 @@
 import {
-  BarChart,
   FileText,
-  Globe,
   HelpCircle,
   Shield,
   Users,

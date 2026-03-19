@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} font-primary antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Zap } from "lucide-react";
 
 export const metadata = {
   title: "Core Web Vitals Optimisation | SEO Speeder",

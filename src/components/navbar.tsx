@@ -69,10 +69,11 @@ export function Navbar() {
               <div className="flex items-center">
                 <Button 
                   asChild 
-                  className="hidden lg:flex rounded-xl font-semibold h-9 px-6 shadow-lg shadow-zinc-950/10 border-2 border-transparent hover:border-border transition-all"
+                  className="group/btn hidden lg:flex rounded-xl font-bold h-9 px-6 bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
                 >
-                  <Link href="#audit" className="font-inter font-semibold">
-                    Test Your Website
+                  <Link href="#audit" className="font-inter font-semibold flex items-center justify-center">
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+                    <span className="relative z-10">Test Your Website</span>
                   </Link>
                 </Button>
               </div>

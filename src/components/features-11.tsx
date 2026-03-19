@@ -64,8 +64,8 @@ export default function FeaturesGrid11() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMounted(true);
+        const handle = requestAnimationFrame(() => setMounted(true));
+        return () => cancelAnimationFrame(handle);
     }, []);
 
     useGSAP(() => {
@@ -86,17 +86,20 @@ export default function FeaturesGrid11() {
         });
 
         // Floating ambient movement for icons
-        gsap.to(".floating-icon", {
-            y: -10,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            stagger: {
-                amount: 1,
-                from: "random"
-            }
-        });
+        const icons = gsap.utils.toArray(".floating-icon");
+        if (icons.length > 0) {
+            gsap.to(icons, {
+                y: -10,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                stagger: {
+                    amount: 1,
+                    from: "random"
+                }
+            });
+        }
     }, [mounted]);
 
     if (!mounted) return <div className="py-24 md:py-32 min-h-[900px]" />;
@@ -411,7 +414,7 @@ function IconBox({
     color?: string;
 }) {
     return (
-        <div className={cn("size-16 rounded-2xl bg-muted border-2 border-border/50 flex items-center justify-center transition-all duration-500 relative isolate overflow-hidden group-hover:border-primary/40 text-muted-foreground", color.replace('text-', 'group-hover:text-'))}>
+        <div className={cn("floating-icon size-16 rounded-2xl bg-muted border-2 border-border/50 flex items-center justify-center transition-all duration-500 relative isolate overflow-hidden group-hover:border-primary/40 text-muted-foreground", color.replace('text-', 'group-hover:text-'))}>
             <Icon className={cn("size-8 transition-transform duration-500 group-hover:scale-110", color)} />
             {shiny && (
                 <div className="absolute inset-y-0 w-8 bg-white/5 skew-x-[-20deg] -z-10" />
@@ -431,7 +434,7 @@ function MetricBox({ label, value, color = "text-primary" }: { label: string; va
 
 function Badge({ icon: Icon, text, color = "text-primary" }: { icon: React.ElementType; text: string; color?: string }) {
     return (
-        <div className={cn("inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-muted border-2 border-border/50", color.replace('text-', 'shadow-').replace('500', '500/20'))}>
+        <div className={cn("floating-icon inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-muted border-2 border-border/50", color.replace('text-', 'shadow-').replace('500', '500/20'))}>
             <Icon className={cn("size-4 animate-pulse", color)} />
             <span className={cn("text-xs font-black uppercase tracking-[0.15em]", color)}>{text}</span>
         </div>

@@ -96,7 +96,7 @@ export default function LogoCloud() {
     }, [])
 
     return (
-        <section className="bg-background relative py-4 md:py-5 lg:py-6 z-20 -mt-8 md:-mt-10 lg:-mt-12">
+        <section className="bg-background relative pt-4 md:pt-5 lg:pt-6 pb-0 z-20 -mt-8 md:-mt-10 lg:-mt-12 -mb-12 md:-mb-16 lg:-mb-20">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-32 md:h-40 lg:h-48 bg-background/60 blur-[40px] md:blur-[60px] lg:blur-[80px] pointer-events-none -z-10" />
             <div className="absolute inset-x-0 top-0 h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent to-background pointer-events-none -z-10" />
             <div className="mx-auto max-w-5xl px-6">
@@ -109,9 +109,13 @@ export default function LogoCloud() {
                                 key={`${currentGroup}-${i}`}
                                 className="**:fill-foreground! flex items-center justify-center"
                                 initial={{ opacity: 0, y: 12, filter: 'blur(6px)' }}
-                                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                animate={{ opacity: 1, y: 0, filter: 'blur(0.1px)' }}
                                 exit={{ opacity: 0, y: 12, filter: 'blur(6px)', scale: 0.5 }}
-                                transition={{ delay: i * 0.1, duration: 1.5, type: 'spring', bounce: 0.2 }}>
+                                transition={{ 
+                                    y: { type: 'spring', bounce: 0.2, duration: 1.5, delay: i * 0.1 },
+                                    opacity: { duration: 0.8, delay: i * 0.1 },
+                                    filter: { duration: 0.8, ease: 'easeOut', delay: i * 0.1 }
+                                }}>
                                 {logo}
                             </motion.div>
                         ))}

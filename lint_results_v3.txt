@@ -1,0 +1,21 @@
+
+> seospeeder@0.1.0 lint
+> eslint
+
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\data-table.tsx
+  370:17  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+D:\Madhan Kumar\Web Development Projects\seospeeder\src\components\data-table.tsx:370:17
+  368 |   )
+  369 |
+> 370 |   const table = useReactTable({
+      |                 ^^^^^^^^^^^^^ TanStack Table's `useReactTable()` API returns functions that cannot be memoized safely
+  371 |     data,
+  372 |     columns,
+  373 |     state: {  react-hooks/incompatible-library
+
+✖ 1 problem (0 errors, 1 warning)
+

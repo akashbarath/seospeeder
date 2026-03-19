@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, LayoutGroup, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup, useInView, useMotionValue, useSpring, Variants } from 'framer-motion';
 import { Zap, Search, Trophy, Target, ShieldCheck, TrendingUp, Activity, Cpu, ArrowUpRight, Check } from 'lucide-react';
 import { Highlighter } from "@/components/ui/highlighter";
 import { cn } from '@/lib/utils';
@@ -70,13 +70,13 @@ const STAT_TABS: StatTab[] = [
   },
 ];
 
-const dashboardVariants = {
+const dashboardVariants: Variants = {
   hidden: { opacity: 0, y: 10, scale: 0.98, filter: "blur(4px)" },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: "blur(0px)",
+    filter: "blur(0.1px)",
     transition: {
       duration: 0.4,
       ease: [0.23, 1, 0.32, 1],
@@ -91,7 +91,7 @@ const dashboardVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 },
 };

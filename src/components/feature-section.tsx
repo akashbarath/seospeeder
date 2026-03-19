@@ -26,6 +26,7 @@ import {
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
+import { Card } from "@/components/ui/card";
 
 
 
@@ -114,14 +115,14 @@ function FeatureCard({
 	className?: string;
 }) {
 	return (
-		<div
+		<Card
 			className={cn(
-				"group relative overflow-hidden rounded-2xl border-2 bg-background px-6 py-8 md:px-8 md:pt-10 md:pb-8",
+				"group relative overflow-hidden rounded-2xl border-2 bg-background px-6 py-8 md:px-8 md:pt-10 md:pb-8 shadow-none",
 				className
 			)}
 		>
 			{children}
-		</div>
+		</Card>
 	);
 }
 
@@ -313,7 +314,7 @@ function ReportsVisual() {
 		<>
 			<div className="h-44 md:h-48 w-full pt-2 relative overflow-visible visual-rankings">
 				<div className="absolute top-0 left-2 flex items-center gap-1.5 z-20 bg-background/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-border/50 shadow-sm scale-90 md:scale-100 origin-left">
-					<div className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-primary">
+					<div className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-primary border-2 border-primary/20">
 						<TrendingUp className="size-3 text-foreground group-hover:text-primary transition-colors duration-300" />
 					</div>
 					<div className="font-bold text-foreground text-[10px] md:text-xs font-inter">Goal: Top 3</div>

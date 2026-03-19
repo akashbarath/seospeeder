@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Code2 } from "lucide-react";
 
 export const metadata = {
   title: "Core PHP Speed Optimisation | SEO Speeder",

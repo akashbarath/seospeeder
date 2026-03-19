@@ -470,7 +470,7 @@ export const useThemeToggle = ({
 
   const styleId = "theme-transition-styles";
 
-  const updateStyles = useCallback((css: string, name: string) => {
+  const updateStyles = useCallback((css: string) => {
     if (typeof window === "undefined") return;
 
     let styleElement = document.getElementById(styleId) as HTMLStyleElement;
@@ -487,7 +487,7 @@ export const useThemeToggle = ({
   const toggleTheme = useCallback(() => {
     const animation = createAnimation(variant, start, blur, gifUrl);
 
-    updateStyles(animation.css, animation.name);
+    updateStyles(animation.css);
 
     if (typeof window === "undefined") return;
 
@@ -521,7 +521,7 @@ export const useThemeToggle = ({
   const setCrazyLightTheme = useCallback(() => {
     const animation = createAnimation(variant, start, blur, gifUrl);
 
-    updateStyles(animation.css, animation.name);
+    updateStyles(animation.css);
 
     if (typeof window === "undefined") return;
 
@@ -543,7 +543,7 @@ export const useThemeToggle = ({
   const setCrazyDarkTheme = useCallback(() => {
     const animation = createAnimation(variant, start, blur, gifUrl);
 
-    updateStyles(animation.css, animation.name);
+    updateStyles(animation.css);
 
     if (typeof window === "undefined") return;
 
@@ -572,7 +572,7 @@ export const useThemeToggle = ({
 
     const animation = createAnimation(variant, start, blur, gifUrl);
 
-    updateStyles(animation.css, animation.name);
+    updateStyles(animation.css);
 
     const switchTheme = () => {
       flushSync(() => {

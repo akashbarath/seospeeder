@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { useThemeToggle } from "@/components/ui/skiper-ui/skiper26"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
   const { toggleTheme } = useThemeToggle({
     variant: "circle-blur",

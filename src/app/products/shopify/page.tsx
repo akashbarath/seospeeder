@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { ShoppingBag } from "lucide-react";
 
 export const metadata = {
   title: "Shopify Speed Optimisation | SEO Speeder",

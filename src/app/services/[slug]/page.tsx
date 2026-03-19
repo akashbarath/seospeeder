@@ -27,7 +27,7 @@ export default async function ServicePage({
   }
 
   // Get the platform icon - fallback to Globe2 if not found
-  const PlatformIcon = (Icons as any)[slug] || Globe2;
+  const PlatformIcon = (Icons as Record<string, React.ElementType>)[slug] || Globe2;
 
   const features = [
     {

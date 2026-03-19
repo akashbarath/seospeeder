@@ -6,7 +6,7 @@ import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { ArrowUpRight, Mail, Instagram, Facebook, Loader2, Check } from "lucide-react";
+import { ArrowUpRight, Mail, Instagram, Facebook, Loader2 } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TwitterIcon } from "@/components/ui/twitter";
 import { toast } from "sonner";

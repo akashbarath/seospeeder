@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Workflow } from "lucide-react";
 
 export const metadata = {
   title: "Webflow Speed Optimisation | SEO Speeder",

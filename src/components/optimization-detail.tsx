@@ -2,12 +2,11 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, CheckCircle2, Zap, Shield, Cpu, Gauge, Globe, ShoppingBag, Code2, Flame, Server, Layers, Workflow } from "lucide-react";
+import { ArrowRight, Zap, Shield, Gauge, Globe, ShoppingBag, Code2, Flame, Server, Layers, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
-import { DecorIcon } from "@/components/ui/decor-icon";
 
 interface OptimizationDetailProps {
 	title: string;
@@ -25,12 +24,12 @@ const transitionVariants = {
 		},
 		visible: {
 			opacity: 1,
-			filter: "blur(0px)",
+			filter: "blur(0.1px)",
 			y: 0,
 			transition: {
-				type: "spring" as const,
-				bounce: 0.3,
-				duration: 0.8,
+				y: { type: "spring" as const, bounce: 0.3, duration: 0.8 },
+				opacity: { duration: 0.4 },
+				filter: { duration: 0.4, ease: "easeOut" as const },
 			},
 		},
 	},
@@ -142,7 +141,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 				<div className="text-center max-w-2xl mx-auto">
 					<h2 className="text-3xl font-bold mb-6">Start your {platform} transformation today.</h2>
 					<p className="text-muted-foreground mb-8 font-inter">
-						Don't let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
+						Don&apos;t let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
 					</p>
 					<Button size="lg" className="h-12 px-10 rounded-xl font-bold text-base" asChild>
 						<Link href="/contact" className="flex items-center gap-2">

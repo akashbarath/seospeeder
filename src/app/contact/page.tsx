@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, MessageSquareIcon, Loader2, CheckCircle2 } from "lucide-react";
+import { MailIcon, PhoneIcon, MapPinIcon, SendIcon, MessageSquareIcon, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,12 +20,12 @@ const transitionVariants = {
         },
         visible: {
             opacity: 1,
-            filter: 'blur(0px)',
+            filter: 'blur(0.1px)',
             y: 0,
             transition: {
-                type: 'spring' as const,
-                bounce: 0.3,
-                duration: 1.5,
+                y: { type: 'spring' as const, bounce: 0.3, duration: 1.5 },
+                opacity: { duration: 0.5 },
+                filter: { duration: 0.5, ease: 'easeOut' as const },
             },
         },
     },
@@ -134,7 +134,7 @@ export default function ContactPage() {
                         speedSegment={0.3}
                         as="span"
                     >
-                        Let's Talk
+                        Let&apos;s Talk
                     </TextEffect>
                 </h1>
                 <TextEffect
@@ -145,7 +145,7 @@ export default function ContactPage() {
                     as="p"
                     className="text-lg md:text-xl text-muted-foreground opacity-90 font-inter font-medium max-w-2xl mx-auto">
                     Have a project in mind or need help with your current SEO strategy? 
-                    Reach out and let's make it happen.
+                    Reach out and let&apos;s make it happen.
                 </TextEffect>
             </div>
 
@@ -282,7 +282,7 @@ export default function ContactPage() {
                                 </div>
                                 
                                 <div className="pt-2">
-                                    <Button disabled={isSubmitting} className="group/btn w-full h-14 rounded-md text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed" type="submit">
+                                    <Button size="lg" disabled={isSubmitting} className="group/btn w-full rounded-xl text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed" type="submit">
                                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
                                         <span className="relative z-10 flex items-center justify-center gap-2">
                                             {isSubmitting ? (

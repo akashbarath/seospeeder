@@ -1,5 +1,4 @@
 import { OptimizationDetail } from "@/components/optimization-detail";
-import { Server } from "lucide-react";
 
 export const metadata = {
   title: ".Net Application Speed Tuning | SEO Speeder",

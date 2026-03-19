@@ -16,12 +16,12 @@ const transitionVariants = {
         },
         visible: {
             opacity: 1,
-            filter: 'blur(0px)',
+            filter: 'blur(0.1px)',
             y: 0,
             transition: {
-                type: 'spring' as const,
-                bounce: 0.3,
-                duration: 1.5,
+                y: { type: 'spring' as const, bounce: 0.3, duration: 1.5 },
+                opacity: { duration: 0.5 },
+                filter: { duration: 0.5, ease: 'easeOut' as const },
             },
         },
     },
@@ -106,9 +106,10 @@ export default function HeroSection() {
                                         key={1}
                                         asChild
                                         size="lg"
-                                        className="w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter">
+                                        className="group/btn w-full sm:w-auto rounded-xl px-8 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden">
                                         <Link href="#audit">
-                                            <span className="text-nowrap">Test Your Website</span>
+                                            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+                                            <span className="relative z-10 text-nowrap">Test Your Website</span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -137,7 +138,7 @@ export default function HeroSection() {
                                 },
                                 ...transitionVariants,
                             }}>
-                            <div className="mask-b-from-55% relative mx-auto mt-8 md:mt-16 lg:mt-20 overflow-visible px-4 md:px-6 lg:px-0">
+                            <div className="relative mx-auto mt-8 md:mt-16 lg:mt-20 overflow-visible px-4 md:px-6 lg:px-0">
                                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border shadow-2xl shadow-zinc-950/20 ring-1">
                                     {/* Blur Gradient Effect Backgrounds */}
                                     <div className="absolute -top-24 left-1/2 -z-10 h-[20rem] md:h-[30rem] lg:h-[40rem] w-[20rem] md:w-[40rem] lg:w-[60rem] -translate-x-1/2 opacity-20 blur-[80px] md:blur-[100px] dark:opacity-10 pointer-events-none">
@@ -145,17 +146,16 @@ export default function HeroSection() {
                                             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
                                         />
                                     </div>
-                                    <div className="relative w-full h-[600px] md:h-[800px] rounded-xl md:rounded-2xl overflow-hidden [&>div]:h-full">
+                                    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden [&>div]:h-full">
                                         <DashboardPage />
                                     </div>
-
-                                    {/* Multi-layered Blur Gradient to Merge with Section Below */}
-                                    <div className="absolute inset-x-0 bottom-0 z-10 h-16 md:h-24 lg:h-28 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
-                                    <div className="absolute inset-x-0 -bottom-1 h-4 md:h-8 lg:h-10 bg-background z-10 pointer-events-none" />
                                 </div>
                             </div>
                         </AnimatedGroup>
                     </div>
+
+                    {/* Hero Section Ending Gradient to cover the dashboard bottom */}
+                    <div className="absolute inset-x-0 bottom-0 z-20 h-24 md:h-32 lg:h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
                 </section>
             </main>
         </>

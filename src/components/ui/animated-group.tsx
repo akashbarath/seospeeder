@@ -51,12 +51,21 @@ const presetVariants: Record<PresetType, Variants> = {
     visible: { scale: 1 },
   },
   blur: {
-    hidden: { filter: 'blur(4px)' },
-    visible: { filter: 'blur(0px)' },
+    hidden: { filter: 'blur(4px)', opacity: 0 },
+    visible: { 
+      filter: 'blur(0px)', 
+      opacity: 1,
+      transition: { type: 'tween' as const, duration: 0.4, ease: 'easeOut' as const }
+    },
   },
   'blur-slide': {
-    hidden: { filter: 'blur(4px)', y: 20 },
-    visible: { filter: 'blur(0px)', y: 0 },
+    hidden: { filter: 'blur(4px)', y: 20, opacity: 0 },
+    visible: { 
+      filter: 'blur(0px)', 
+      y: 0, 
+      opacity: 1,
+      transition: { type: 'tween' as const, duration: 0.4, ease: 'easeOut' as const }
+    },
   },
   zoom: {
     hidden: { scale: 0.5 },
