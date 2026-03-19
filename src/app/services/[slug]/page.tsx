@@ -5,6 +5,7 @@ import { TextEffect } from "@/components/ui/text-effect";
 import { CallToAction } from "@/components/cta";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Icons } from "@/components/icons";
 import { Globe2, Zap, Shield, Gauge, ArrowRight } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -24,6 +25,9 @@ export default async function ServicePage({
   if (!service) {
     notFound();
   }
+
+  // Get the platform icon - fallback to Globe2 if not found
+  const PlatformIcon = (Icons as any)[slug] || Globe2;
 
   const features = [
     {
@@ -46,12 +50,17 @@ export default async function ServicePage({
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+      <section className="relative pt-24 pb-20 md:pb-32 overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="flex flex-col items-center text-center space-y-10">
+          <div className="flex flex-col items-center text-center space-y-8">
+            {/* Added Platform Icon on top */}
+            <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-1000">
+               <PlatformIcon className="size-16 md:size-20 text-neutral-800 dark:text-neutral-200 opacity-90" strokeWidth={1.5} />
+            </div>
+
             {/* Platform Badge - Matching Vercel's subtle slate pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-neutral-200/50 bg-neutral-100/50 backdrop-blur-sm animate-in fade-in slide-in-from-top-4 duration-1000">
-              <Globe2 size={12} className="text-neutral-500" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-neutral-200/50 bg-neutral-100/50 backdrop-blur-sm animate-in fade-in slide-in-from-top-4 duration-1000 delay-100">
+              <PlatformIcon size={14} className="text-neutral-500" />
               <span className="text-xs font-bold tracking-tight uppercase text-neutral-600">
                 {service.title} Optimisation
               </span>
