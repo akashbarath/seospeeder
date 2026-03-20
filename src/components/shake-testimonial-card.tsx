@@ -111,9 +111,9 @@ export function TestimonialSection() {
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       
-      {/* Static Ambient Glow */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none opacity-40 dark:opacity-60"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 blur-[60px] rounded-full pointer-events-none opacity-40 dark:opacity-60"
+        style={{ WebkitFilter: 'blur(60px)', WebkitTransform: 'translateZ(0) translate(-50%, -50%)', transform: 'translate(-50%, -50%)' }}
       />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -155,7 +155,7 @@ export function TestimonialSection() {
           {/* Right Content - Cards */}
           <div className="testimonial-card-container relative h-[400px] md:h-[500px] w-full flex items-center justify-center -mt-8 md:mt-0">
             {/* Ambient Glow behind cards */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/30 blur-[120px] rounded-full pointer-events-none opacity-50" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/30 blur-[60px] rounded-full pointer-events-none opacity-50" style={{ WebkitFilter: 'blur(60px)', WebkitTransform: 'translateZ(0) translate(-50%, -50%)', transform: 'translate(-50%, -50%)' }} />
             
             <div
               className="relative w-[90vw] max-w-[340px] h-[260px] sm:max-w-[400px] sm:h-[280px] md:max-w-[450px] md:h-[300px]"

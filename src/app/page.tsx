@@ -5,6 +5,8 @@ import { ProvenSection } from "@/components/proven-section"
 import { TestimonialSection } from "@/components/shake-testimonial-card"
 import { FaqsSection } from "@/components/faqs"
 import { FeatureSection } from "@/components/landing-lazy-sections"
+import { EliteMlSection } from "@/components/elite-ml-section"
+import { InteractiveAiWorkflow } from "@/components/interactive-ai-workflow"
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <ResultsSection />
       <FeatureSection />
       <ProvenSection />
+      <EliteMlSection />
+      <InteractiveAiWorkflow />
       <TestimonialSection />
       <FaqsSection />
     </div>

@@ -57,8 +57,6 @@ export function ResultsSection() {
 
   return (
     <section ref={containerRef} className="pt-20 pb-10 md:pt-32 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black overflow-hidden relative">
-      {/* Ambient backgrounds */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_70%_30%,hsl(var(--primary)/0.03),transparent_70%)] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto space-y-12 md:space-y-20 relative z-10">
         {/* 1. Section Headline & Subheading */}
@@ -85,7 +83,7 @@ export function ResultsSection() {
             className="lg:col-span-7 space-y-4 md:space-y-6"
           >
             <div className="relative group mx-auto max-w-[500px] lg:max-w-none">
-                <div className="absolute -inset-1 bg-linear-to-r from-primary/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 <ImageComparison
                   className="aspect-[1905/1080] w-full rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-xl relative z-10"
                   enableHover
@@ -174,7 +172,7 @@ export function ResultsSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="mt-4 md:mt-6 flex flex-col sm:flex-row gap-6 items-center justify-between p-6 md:p-8 rounded-2xl bg-zinc-900 dark:bg-gradient-to-br dark:from-white/5 dark:to-transparent dark:border dark:border-white/10 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-primary/10 blur-[80px] hidden dark:block pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/10 blur-[60px] hidden dark:block pointer-events-none" style={{ WebkitFilter: 'blur(60px)', WebkitTransform: 'translateZ(0)' }} />
 
               <div className="space-y-1 text-center sm:text-left relative z-10">
                 <h3 className="text-lg xl:text-xl font-black text-white tracking-tight leading-tight">Stop losing traffic.</h3>
@@ -199,41 +197,7 @@ export function ResultsSection() {
           </div>
         </div>
 
-        {/* 5. Full Width Migration Insight */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          {/* Compact Migration Insight Card */}
-          <Card className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border-2 border-zinc-100 dark:border-zinc-800 shadow-sm relative overflow-hidden group cursor-default">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-              <div className="flex-1 flex flex-col gap-4">
-                <div className="flex items-center gap-2">
-                  <div className="size-8 rounded-lg bg-zinc-900 dark:bg-zinc-50 flex items-center justify-center border-2 border-zinc-900 dark:border-zinc-50 shadow-sm">
-                    <Activity size={14} className="text-white dark:text-zinc-900" />
-                  </div>
-                  <span className="text-[10px] font-black text-zinc-900 dark:text-white uppercase tracking-widest">Migration Insight</span>
-                </div>
-                <h3 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tight leading-snug">
-                  &ldquo;After SEO Speeder, DevScale saw their indexation hit 100% in 48 hours.&rdquo;
-                </h3>
-              </div>
-              
-              <div className="flex items-center gap-6 shrink-0 bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-xl border border-zinc-100 dark:border-zinc-800 transition-colors group-hover:bg-zinc-100 dark:group-hover:bg-zinc-800">
-                <div className="flex flex-col text-center">
-                  <span className="text-xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter">+100%</span>
-                  <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest leading-none">Discovery</span>
-                </div>
-                <div className="w-px h-6 bg-zinc-200 dark:border-zinc-700" />
-                <div className="flex flex-col text-center">
-                  <span className="text-xl font-black text-emerald-500 tracking-tighter">+20%</span>
-                  <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest leading-none">Retention</span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
+
       </div>
     </section>
   );

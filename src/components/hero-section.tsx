@@ -139,14 +139,35 @@ export default function HeroSection() {
                                 ...transitionVariants,
                             }}>
                             <div className="relative mx-auto mt-8 md:mt-16 lg:mt-20 overflow-visible px-4 md:px-6 lg:px-0">
-                                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border shadow-2xl shadow-zinc-950/20 ring-1">
+                                <div
+                                    className="bg-background relative mx-auto max-w-6xl overflow-hidden rounded-xl md:rounded-2xl border shadow-2xl shadow-zinc-950/20 ring-1 ring-background"
+                                    style={{
+                                        boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.06), 0 25px 50px -12px rgba(0,0,0,0.25)',
+                                        WebkitTransform: 'translateZ(0)',
+                                        isolation: 'isolate',
+                                    }}
+                                >
                                     {/* Blur Gradient Effect Backgrounds */}
-                                    <div className="absolute -top-24 left-1/2 -z-10 h-[20rem] md:h-[30rem] lg:h-[40rem] w-[20rem] md:w-[40rem] lg:w-[60rem] -translate-x-1/2 opacity-20 blur-[80px] md:blur-[100px] dark:opacity-10 pointer-events-none">
-                                        <div className="aspect-[1155/678] w-full bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-40"
-                                            style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
+                                    <div
+                                        className="absolute -top-24 left-1/2 -z-10 h-[20rem] md:h-[30rem] lg:h-[40rem] w-[20rem] md:w-[40rem] lg:w-[60rem] -translate-x-1/2 opacity-20 dark:opacity-10 pointer-events-none"
+                                        style={{
+                                            filter: 'blur(60px)',
+                                            WebkitFilter: 'blur(60px)',
+                                            WebkitTransform: 'translateZ(0) translateX(-50%)',
+                                        }}
+                                    >
+                                        <div
+                                            className="aspect-[1155/678] w-full bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-40"
+                                            style={{
+                                                borderRadius: '50%',
+                                                WebkitTransform: 'translateZ(0)',
+                                            }}
                                         />
                                     </div>
-                                    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden [&>div]:h-full">
+                                    <div
+                                        className="relative w-full h-[600px] md:h-[800px] overflow-hidden [&>div]:h-full"
+                                        style={{ WebkitTransform: 'translateZ(0)' }}
+                                    >
                                         <DashboardPage />
                                     </div>
                                 </div>

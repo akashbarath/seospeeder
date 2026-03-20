@@ -106,7 +106,7 @@ export const companyLinks: LinkItemType[] = [
     label: "Search Engine Optimisation",
     href: "/services/seo",
     description: "Improve online visibility and rankings",
-    icon: Icons.vitals,
+    icon: Icons.seo,
   },
   {
     label: "Local SEO",

@@ -41,6 +41,10 @@ export function DynamicLightRays() {
       return ["rgba(16, 185, 129, 0.35)", "rgba(14, 165, 233, 0.25)"]; // Emerald & Sky Blue two-toned
     }
 
+    if (pathname === "/contact") {
+      return ["rgba(245, 158, 11, 0.35)", "rgba(249, 115, 22, 0.25)"]; // Premium Gold & Orange
+    }
+
     return defaultColors;
   }, [pathname]);
 

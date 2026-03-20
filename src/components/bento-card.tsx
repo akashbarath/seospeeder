@@ -202,7 +202,7 @@ const BentoCard = () => {
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-background to-transparent pointer-none z-20" />
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-background to-transparent pointer-none z-20" />
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default BentoCard;
 
 const OverviewDashboard = () => (
   <div className="flex flex-col gap-3 h-full">
-    <div className="relative p-3.5 rounded-xl border border-border/40 bg-linear-to-br from-background to-muted/20 overflow-hidden">
+    <div className="relative p-3.5 rounded-xl border border-border/40 bg-gradient-to-br from-background to-muted/20 overflow-hidden">
       <div className="flex flex-col gap-2 relative z-10">
         <div className="flex items-center justify-between">
           <span className="text-[9px] font-semibold text-muted-foreground font-inter">

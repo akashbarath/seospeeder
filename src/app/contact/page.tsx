@@ -102,7 +102,6 @@ export default function ContactPage() {
   return (
     <main className="overflow-hidden min-h-screen pt-24 md:pt-32 lg:pt-40 pb-20">
       
-        {/* Page-specific background masking to allow global rays to show through at the top */}
         <div
             aria-hidden
             className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)] pointer-events-none"
@@ -201,7 +200,7 @@ export default function ContactPage() {
                         {/* Left Info Section */}
                         <div className="col-span-1 lg:col-span-2 flex flex-col justify-between p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-border/40 relative overflow-hidden">
                             {/* Ambient glow for left side */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2 pointer-events-none" style={{ WebkitFilter: 'blur(60px)', WebkitTransform: 'translateZ(0)' }} />
 
                             <div className="space-y-8 relative z-10">
                                 <div className="space-y-4">

@@ -149,7 +149,7 @@ function SetupVisual() {
 		<>
 			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border-2 bg-background shadow-xl transition-all duration-700 group-hover:border-primary/40">
 				{/* Background Glow */}
-				<div className="absolute inset-0 z-0 scale-150 bg-radial from-primary/10 via-transparent to-transparent blur-2xl group-hover:from-primary/25 transition-all duration-700" />
+				<div className="absolute inset-0 z-0 scale-150 bg-[radial-gradient(circle,hsl(var(--primary)/0.1),transparent)] blur-2xl group-hover:bg-[radial-gradient(circle,hsl(var(--primary)/0.25),transparent)] transition-all duration-700" />
 				
 				{/* Sonic Pulse Rings */}
 				{[0, 1, 2].map((i) => (
@@ -178,8 +178,8 @@ function SetupVisual() {
 					transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
 					className="absolute inset-[-8px] z-10"
 				>
-					<div className="h-full w-full rounded-full bg-conic-to-r from-primary/40 via-transparent to-transparent" />
-					<div className="absolute top-0 left-1/2 -translate-x-1/2 h-1/2 w-0.5 bg-linear-to-b from-primary to-transparent" />
+					<div className="h-full w-full rounded-full bg-[conic-gradient(from_0deg,hsl(var(--primary)/0.4),transparent)]" />
+					<div className="absolute top-0 left-1/2 -translate-x-1/2 h-1/2 w-0.5 bg-gradient-to-b from-primary to-transparent" />
 				</motion.div>
 
 				{/* High-Frequency Icon */}
@@ -267,7 +267,7 @@ function UserBasedSecurity() {
 								ease: "linear",
 								delay: i * 0.5
 							}}
-							className="absolute left-1/2 -ms-[0.5px] w-px h-20 bg-linear-to-b from-transparent via-primary to-transparent"
+							className="absolute left-1/2 -ms-[0.5px] w-px h-20 bg-gradient-to-b from-transparent via-primary to-transparent"
 							style={{ left: `${25 + i * 25}%` }}
 						/>
 					))}

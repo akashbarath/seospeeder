@@ -109,3 +109,20 @@
     margin-top: 6rem;
   }
 }
+
+/* Safari / iOS rendering fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Ensure backdrop-filter works on iOS Safari */
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-sm,
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur);
+    backdrop-filter: var(--tw-backdrop-blur);
+  }
+
+  /* Smooth scrolling for embedded content */
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}

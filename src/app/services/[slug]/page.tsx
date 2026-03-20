@@ -69,15 +69,13 @@ export default async function ServicePage({
             {/* Main Headline - Exact 72px/700 styling with 1.0 line-height */}
             <h1 className="text-[48px] md:text-[80px] lg:text-[96px] font-bold tracking-tighter leading-[0.95] text-[#0A0A0A] dark:text-neutral-100 max-w-5xl">
               <TextEffect preset="fade-in-blur" speedSegment={0.3}>
-                {`${service.title} Performance Perfected.`}
+                {(service as any).heroHeadline || `${service.title} Performance Perfected.`}
               </TextEffect>
             </h1>
 
             {/* Description - Exact 20px/400 styling with generous max-width */}
             <p className="max-w-3xl text-[18px] md:text-[22px] text-[#737373] font-medium leading-[1.6] font-inter animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-              Speed optimisation for {service.title} sites of all sizes. From complex e-commerce stores to 
-              high-traffic blogs, we make them fly. Our specialised {service.title} speed optimisation 
-              service eliminates bottlenecks and supercharges your performance metrics.
+              {(service as any).heroDescription || `Speed optimisation for ${service.title} sites of all sizes. From complex e-commerce stores to high-traffic blogs, we make them fly. Our specialised ${service.title} speed optimisation service eliminates bottlenecks and supercharges your performance metrics.`}
             </p>
 
             {/* Global Actions - Spaced and bold */}

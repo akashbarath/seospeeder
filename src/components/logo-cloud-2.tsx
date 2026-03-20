@@ -97,7 +97,7 @@ export default function LogoCloud() {
 
     return (
         <section className="bg-background relative pt-4 md:pt-5 lg:pt-6 pb-0 z-20 -mt-8 md:-mt-10 lg:-mt-12 -mb-12 md:-mb-16 lg:-mb-20">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-32 md:h-40 lg:h-48 bg-background/60 blur-[40px] md:blur-[60px] lg:blur-[80px] pointer-events-none -z-10" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-32 md:h-40 lg:h-48 bg-background/60 blur-[40px] md:blur-[60px] pointer-events-none -z-10" />
             <div className="absolute inset-x-0 top-0 h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent to-background pointer-events-none -z-10" />
             <div className="mx-auto max-w-5xl px-6">
                 <div className="mx-auto grid h-8 max-w-2xl grid-cols-3 items-center gap-8 md:gap-12 lg:gap-16">

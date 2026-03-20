@@ -35,7 +35,7 @@ export function SectionCards() {
     },
   }
 
-  const cardClassName = "h-full flex flex-col border-2 shadow-sm @container/card relative group overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-black/5 hover:border-zinc-300 dark:hover:border-zinc-800 bg-gradient-to-t from-primary/5 to-card dark:bg-card"
+  const cardClassName = "h-full flex flex-col border-2 shadow-sm @container/card relative group overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-black/5 hover:border-zinc-300 dark:hover:border-zinc-800 bg-gradient-to-t from-primary/5 to-card dark:bg-card will-change-transform isolate"
 
   return (
     <motion.div 

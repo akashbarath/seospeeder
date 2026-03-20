@@ -2,6 +2,7 @@ import {
   Command, 
   Search, 
   ShoppingBag, 
+  ShoppingCart,
   Code2, 
   Flame, 
   Globe, 
@@ -35,11 +36,11 @@ export const Icons = {
   workflow: Workflow,
   server: Server,
   zap: Zap,
-  // Platform Specific Icons using Lucide placeholders that look clean
+  // Platform Specific Icons
   wordpress: Globe2,
   shopify: ShoppingBag,
   magento: Box, 
-  bigcommerce: ShoppingBag,
+  bigcommerce: ShoppingCart,
   laravel: Terminal,
   codeigniter: Flame,
   php: FileCode,
@@ -52,6 +53,7 @@ export const Icons = {
   vitals: Zap,
   backend: Server,
   // Marketing Specific Icons
+  seo: Search,
   local: Globe,
   onPage: FileText,
   organic: BarChart,

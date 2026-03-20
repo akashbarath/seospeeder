@@ -12,9 +12,44 @@ import Link from "next/link";
 import React from "react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { LightRays } from "@/components/ui/light-rays";
+import { usePathname } from "next/navigation";
+import { SERVICES } from "@/config/services";
 
 export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 	const [isAuditHovered, setIsAuditHovered] = React.useState(false);
+	const pathname = usePathname();
+
+	const rayColor = React.useMemo(() => {
+		const defaultColors = ["rgba(45, 187, 176, 0.35)", "rgba(139, 92, 246, 0.25)"];
+		if (!pathname) return defaultColors;
+
+		const serviceMatch = pathname.match(/\/(services|products)\/([^/]+)/);
+		if (serviceMatch) {
+			const slug = serviceMatch[2];
+			const service = SERVICES.find((s) => s.slug === slug);
+			if (service) {
+				const primaryColor = service.color;
+				let secondaryColor = primaryColor.replace(/[\d.]+\)$/, "0.2)");
+				
+				if (slug === "wordpress") secondaryColor = "rgba(14, 165, 233, 0.25)";
+				if (slug === "shopify") secondaryColor = "rgba(16, 185, 129, 0.25)";
+				if (slug === "magento") secondaryColor = "rgba(245, 158, 11, 0.25)";
+				if (slug === "laravel") secondaryColor = "rgba(251, 146, 60, 0.25)";
+				
+				return [primaryColor, secondaryColor];
+			}
+		}
+
+		if (pathname === "/about") {
+			return ["rgba(16, 185, 129, 0.35)", "rgba(14, 165, 233, 0.25)"];
+		}
+
+		if (pathname === "/contact") {
+			return ["rgba(245, 158, 11, 0.35)", "rgba(249, 115, 22, 0.25)"];
+		}
+
+		return defaultColors;
+	}, [pathname]);
 
 	return (
 		<NavigationMenu className="hidden lg:flex">
@@ -35,7 +70,7 @@ export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 							<LightRays
 								className="absolute inset-0 z-0"
 								count={7}
-								color={["rgba(45, 187, 176, 0.35)", "rgba(45, 187, 176, 0.2)"]}
+								color={rayColor}
 								blur={35}
 								speed={18}
 								length="120%"
@@ -83,7 +118,7 @@ export function DesktopNav({ hasScrolled }: { hasScrolled?: boolean }) {
 							<LightRays
 								className="absolute inset-0 z-0"
 								count={6}
-								color={["rgba(45, 187, 176, 0.2)", "rgba(45, 187, 176, 0.35)"]}
+								color={rayColor}
 								blur={35}
 								speed={18}
 								length="120%"

@@ -51,15 +51,14 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 
 	return (
 		<main className="relative min-h-screen overflow-visible pt-24 md:pt-32 pb-20">
-			{/* Page-specific background masking to allow global rays to show through at the top */}
 			<div
 				aria-hidden
 				className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
 			/>
 			{/* Ambient Background Elements */}
 			<div className="absolute top-0 left-1/2 -z-10 h-[600px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.05),transparent_70%)] opacity-50" />
-			<div className="absolute top-[10%] right-[10%] -z-10 h-64 w-64 rounded-full bg-primary/10 blur-[100px]" />
-			<div className="absolute bottom-[20%] left-[5%] -z-10 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
+			<div className="absolute top-[10%] right-[10%] -z-10 h-64 w-64 rounded-full bg-primary/10 blur-[60px]" style={{ WebkitFilter: 'blur(60px)', WebkitTransform: 'translateZ(0)' }} />
+			<div className="absolute bottom-[20%] left-[5%] -z-10 h-96 w-96 rounded-full bg-primary/5 blur-[60px]" style={{ WebkitFilter: 'blur(60px)', WebkitTransform: 'translateZ(0)' }} />
 
 			<div className="container relative z-10 mx-auto px-4 md:px-6">
 				{/* Hero Section */}
