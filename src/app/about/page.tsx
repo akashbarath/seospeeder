@@ -10,13 +10,7 @@ import FeaturesGrid11 from "@/components/features-11";
 import { CallToAction } from "@/components/cta";
 import { CoreValues } from "@/components/core-values";
 
-import { useLayoutEffect } from 'react';
-
 export default function AboutPage() {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div id="about-section" className="container mx-auto px-4 py-20 md:py-28 min-h-screen max-w-5xl scroll-mt-24">
       <div className="flex flex-col gap-16 md:gap-24">

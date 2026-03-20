@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   description: "Skyrocket your search visibility and traffic with data-driven SEO strategies from seospeeder.",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,6 +47,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+
           <div className="relative flex min-h-screen flex-col">
             {/* Brand lighting for project-wide consistency */}
             <div
