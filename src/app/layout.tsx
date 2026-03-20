@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Poppins, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Poppins, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
@@ -26,6 +26,12 @@ const inter = Inter({
   display: "swap",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "seospeeder | AI-Powered SEO Services",
   description: "Skyrocket your search visibility and traffic with data-driven SEO strategies from seospeeder.",
@@ -40,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} font-primary antialiased`} suppressHydrationWarning>
+      <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} ${jetbrainsMono.variable} font-primary antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -33,6 +33,10 @@ const config = {
   			inter: [
   				'var(--font-inter)',
   				'sans-serif'
+  			],
+  			jetbrains: [
+  				'var(--font-jetbrains)',
+  				'monospace'
   			]
   		},
   		colors: {

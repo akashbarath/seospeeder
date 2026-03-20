@@ -2,8 +2,12 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView, LayoutGroup } from "framer-motion";
-import { Radar, Wand2, ServerCog, Network, Sparkles, Bot, LineChart, Zap, CheckCircle2, Cpu, ShieldCheck, Globe } from "lucide-react";
+import { Radar, Wand2, ServerCog, Network, Sparkles, Bot, LineChart, Zap, CheckCircle2, Cpu, ShieldCheck, Globe, TrendingUp, GitCommitVertical } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CodeBlock } from "@/components/ui/code-block";
+import { RadialBar, RadialBarChart, LineChart as RechartsLineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 
 const processes = [
   {
@@ -22,7 +26,7 @@ const processes = [
       { label: "Cluster Density", calc: "Maximized" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
+      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
         {/* Radar Sweep */}
         <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
           {/* Background rings */}
@@ -121,11 +125,11 @@ const processes = [
 
         {/* Status Bar */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border-2 border-blue-500/20">
             <div className="size-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-[8px] font-mono font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider">Mapping Intents</span>
+            <span className="text-[8px] font-jetbrains font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider">Mapping Intents</span>
           </div>
-          <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">6 CLUSTERS ACTIVE</span>
+          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">6 CLUSTERS ACTIVE</span>
         </div>
       </div>
     )
@@ -146,7 +150,7 @@ const processes = [
       { label: "Entity Density", calc: "Ideal" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
+      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
         {/* E-E-A-T Pillar Visualization */}
         <div className="relative w-full max-w-xs h-56 md:h-64 flex items-center justify-center">
           {/* Central LLM Core */}
@@ -246,12 +250,12 @@ const processes = [
 
         {/* Live Entity Score Footer */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border-2 border-emerald-500/20">
             <div className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[8px] font-mono font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Scoring Entities</span>
+            <span className="text-[8px] font-jetbrains font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Scoring Entities</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">SEMANTIC</span>
+            <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">SEMANTIC</span>
             <div className="w-16 h-1 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
               <motion.div 
                 initial={{ width: "0%" }}
@@ -260,7 +264,7 @@ const processes = [
                 className="h-full bg-emerald-500 rounded-full"
               />
             </div>
-            <span className="text-[8px] font-mono font-black text-emerald-600 dark:text-emerald-400">99%</span>
+            <span className="text-[8px] font-jetbrains font-black text-emerald-600 dark:text-emerald-400">99%</span>
           </div>
         </div>
       </div>
@@ -282,27 +286,24 @@ const processes = [
       { label: "DOM Complexity", calc: "Minimal" },
     ],
     demo: (
-      <div className="w-full h-full p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-[#0D1117] overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col font-mono text-[11px] shadow-inner leading-relaxed">
-        <div className="flex items-center gap-1.5 mb-6">
-          <div className="w-3 h-3 rounded-full bg-red-500/50" />
-          <div className="w-3 h-3 rounded-full bg-amber-500/50" />
-          <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
-        </div>
-        <div className="flex-1 overflow-hidden opacity-90 leading-relaxed">
-          <p className="text-blue-600 dark:text-blue-400">export <span className="text-emerald-600 dark:text-emerald-400">async</span> function <span className="text-amber-700 dark:text-yellow-200">optimizeLayout</span>() {'{'}</p>
-          <p className="text-zinc-400 dark:text-gray-400 ml-5 opacity-60">{'// Auto-inferred via ML'}</p>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse", repeatDelay: 1 }}
-            className="ml-5 border-l-2 border-emerald-500/30 pl-4 mt-2"
-          >
-            <p className="text-blue-700 dark:text-blue-200">hydration: <span className="text-orange-600 dark:text-orange-300">&apos;dynamic&apos;</span>,</p>
-            <p className="text-blue-700 dark:text-blue-200">compression: <span className="text-orange-600 dark:text-orange-300">&apos;brotli&apos;</span>,</p>
-            <p className="text-blue-700 dark:text-blue-200">priority: <span className="text-emerald-600 dark:text-emerald-400">true</span></p>
-          </motion.div>
-          <p className="text-blue-600 dark:text-blue-400 mt-2">{'}'}</p>
-        </div>
+      <div className="w-full h-full flex flex-col items-center md:items-start justify-center md:justify-start pt-6 md:pt-8 px-4 md:px-6 overflow-hidden">
+        <CodeBlock className="w-[95%] sm:w-[90%] max-w-xl h-fit rounded-2xl shadow-sm transition-all duration-500 hover:shadow-xl hover:shadow-black/5">
+          <div className="flex-1 overflow-hidden opacity-90 leading-relaxed font-jetbrains text-[11px] px-4 py-2 sm:p-2">
+            <p className="text-blue-600 dark:text-blue-400">export <span className="text-emerald-600 dark:text-emerald-400">async</span> function <span className="text-amber-700 dark:text-yellow-200">optimizeLayout</span>() {'{'}</p>
+            <p className="text-zinc-400 dark:text-gray-400 ml-5 opacity-60">{'// Auto-inferred via ML'}</p>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse", repeatDelay: 1 }}
+              className="ml-5 border-l-2 border-emerald-500/30 pl-4 mt-2"
+            >
+              <p className="text-blue-700 dark:text-blue-200">hydration: <span className="text-orange-600 dark:text-orange-300">&apos;dynamic&apos;</span>,</p>
+              <p className="text-blue-700 dark:text-blue-200">compression: <span className="text-orange-600 dark:text-orange-300">&apos;brotli&apos;</span>,</p>
+              <p className="text-blue-700 dark:text-blue-200">priority: <span className="text-emerald-600 dark:text-emerald-400">true</span></p>
+            </motion.div>
+            <p className="text-blue-600 dark:text-blue-400 mt-2">{'}'}</p>
+          </div>
+        </CodeBlock>
       </div>
     )
   },
@@ -322,7 +323,7 @@ const processes = [
       { label: "Link Diversity", calc: "Tier 1" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-6 relative">
+      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-6 relative">
         {/* Scanning overlay */}
         <motion.div 
           animate={{ top: ["-10%", "110%"] }}
@@ -406,11 +407,11 @@ const processes = [
 
         {/* Live Status Footer */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-500/10 border-2 border-orange-500/20">
             <div className="size-1.5 rounded-full bg-orange-500 animate-pulse" />
-            <span className="text-[8px] font-mono font-black text-orange-600 dark:text-orange-400 uppercase tracking-wider">Forging Links</span>
+            <span className="text-[8px] font-jetbrains font-black text-orange-600 dark:text-orange-400 uppercase tracking-wider">Forging Links</span>
           </div>
-          <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">DA 70+ TARGETS</span>
+          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">DA 70+ TARGETS</span>
         </div>
       </div>
     )
@@ -431,7 +432,7 @@ const processes = [
       { label: "CDN Latency", calc: "< 5ms" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
+      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
         {/* Scan overlay */}
         <motion.div 
           animate={{ left: ["-20%", "120%"] }}
@@ -441,23 +442,30 @@ const processes = [
 
         {/* Speedometer Visualization */}
         <div className="relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
-          {/* Background arc */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"
-              strokeDasharray="198 66" strokeDashoffset="-33"
-              className="text-zinc-200 dark:text-zinc-800"
-            />
-            <motion.circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"
-              strokeDasharray="198 66" strokeDashoffset="-33"
-              className="text-cyan-500"
-              initial={{ strokeDasharray: "0 264" }}
-              animate={{ strokeDasharray: "190 74" }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-            />
-          </svg>
+          {/* Recharts Arc */}
+          <ChartContainer
+            config={{ performance: { label: "Performance", color: "#06b6d4" } }}
+            className="absolute inset-0 w-full h-full [&_.recharts-layer]:origin-center [&_.recharts-layer]:animate-in [&_.recharts-layer]:fade-in [&_.recharts-layer]:zoom-in-95 [&_.recharts-layer]:duration-1000"
+          >
+            <RadialBarChart 
+              data={[{ name: "Performance", value: 98, fill: "#06b6d4" }]} 
+              innerRadius="86%" 
+              outerRadius="100%" 
+              startAngle={225} 
+              endAngle={-45}
+            >
+              <RadialBar 
+                dataKey="value" 
+                cornerRadius={10} 
+                background={{ fill: 'currentColor', className: 'text-zinc-200 dark:text-zinc-800' }} 
+                animationDuration={2000}
+                animationEasing="ease-in-out"
+              />
+            </RadialBarChart>
+          </ChartContainer>
 
           {/* Center score */}
-          <div className="flex flex-col items-center z-10">
+          <div className="flex flex-col items-center z-10 pointer-events-none mt-2">
             <motion.span 
               className="text-3xl md:text-4xl font-black text-zinc-900 dark:text-white tabular-nums"
               animate={{ opacity: [0.7, 1, 0.7] }}
@@ -472,36 +480,32 @@ const processes = [
         {/* Metric Tiles */}
         <div className="flex gap-3 w-full max-w-xs">
           {[
-            { label: "TTFB", value: "24ms", color: "text-emerald-600 dark:text-emerald-400" },
-            { label: "FCP", value: "0.8s", color: "text-cyan-600 dark:text-cyan-400" },
-            { label: "CLS", value: "0.01", color: "text-violet-600 dark:text-violet-400" },
+            { label: "TTFB", value: "24ms" },
+            { label: "FCP", value: "0.8s" },
+            { label: "CLS", value: "0.01" },
           ].map((metric, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.15 }}
-              className="flex-1 flex flex-col items-center gap-1 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm"
+              className="flex-1 flex flex-col items-center gap-1 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-800 shadow-sm"
             >
               <span className="text-[7px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">{metric.label}</span>
-              <motion.span 
-                className={`text-sm font-black tabular-nums ${metric.color}`}
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-              >
+              <span className="text-sm font-black tabular-nums text-black dark:text-white">
                 {metric.value}
-              </motion.span>
+              </span>
             </motion.div>
           ))}
         </div>
 
         {/* CDN Status */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-500/10 border-2 border-cyan-500/20">
             <div className="size-1.5 rounded-full bg-cyan-500 animate-pulse" />
-            <span className="text-[8px] font-mono font-black text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">CDN Active</span>
+            <span className="text-[8px] font-jetbrains font-black text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">CDN Active</span>
           </div>
-          <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">BROTLI + HTTP/3</span>
+          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">BROTLI + HTTP/3</span>
         </div>
       </div>
     )
@@ -522,109 +526,76 @@ const processes = [
       { label: "User Retention", calc: "99.9%" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
-        
-        {/* Scanning grid background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.05)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
-
-        {/* Abstract UI Component being optimized */}
-        <div className="relative w-full max-w-[260px] bg-white dark:bg-zinc-950 rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 p-4 shadow-xl z-20 flex flex-col gap-3 overflow-hidden">
-           
-           {/* Top bar */}
-           <div className="flex justify-between items-center mb-1">
-             <div className="flex gap-1">
-               <div className="size-2 rounded-full bg-zinc-200 dark:bg-zinc-800" />
-               <div className="size-2 rounded-full bg-zinc-200 dark:bg-zinc-800" />
-               <div className="size-2 rounded-full bg-zinc-200 dark:bg-zinc-800" />
-             </div>
-             <motion.div 
-               animate={{ opacity: [1, 0.4, 1] }} 
-               transition={{ duration: 4, repeat: Infinity, times: [0, 0.5, 1] }}
-               className="flex items-center gap-1 text-[7px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-widest px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20"
-             >
-                <Wand2 size={8} />
-                Mutating UI
-             </motion.div>
-           </div>
-
-           {/* UI Elements */}
-           <div className="w-3/4 h-2.5 bg-zinc-200 dark:bg-zinc-800 rounded-md" />
-           <div className="w-full h-1.5 bg-zinc-100 dark:bg-zinc-800/50 rounded-full" />
-           <div className="w-5/6 h-1.5 bg-zinc-100 dark:bg-zinc-800/50 rounded-full mb-1" />
-           
-           {/* Heatmap overlay for generic layout */}
-           <motion.div 
-             animate={{ opacity: [0.6, 0, 0.6] }}
-             transition={{ duration: 4, repeat: Infinity, times: [0, 0.5, 1] }}
-             className="absolute bottom-5 right-5 size-20 bg-orange-500/20 blur-xl rounded-full pointer-events-none"
-           />
-           
-           {/* The CTA being optimized */}
-           <div className="mt-1 flex justify-center relative w-full">
-              {/* AI Scanner passing over CTA */}
-              <motion.div 
-                animate={{ left: ["-20%", "120%", "-20%"] }} 
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 bottom-0 w-8 bg-gradient-to-r from-transparent via-orange-500/30 dark:via-orange-500/40 to-transparent z-30 pointer-events-none"
-              />
-              
-              {/* The mutating button */}
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.05, 1], 
-                  backgroundColor: ["rgba(249,115,22,0.05)", "rgba(249,115,22,1)", "rgba(249,115,22,0.05)"],
-                  borderColor: ["rgba(249,115,22,0.2)", "rgba(249,115,22,1)", "rgba(249,115,22,0.2)"],
-                  color: ["rgba(249,115,22,0.6)", "rgba(255,255,255,1)", "rgba(249,115,22,0.6)"],
-                  width: ["80%", "100%", "80%"]
+      <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4">
+        <Card className="w-full max-w-full sm:max-w-[340px] shadow-xl dark:shadow-2xl border-2 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+          <CardHeader>
+            <CardTitle>Forecasted Conversion Lift</CardTitle>
+            <CardDescription>Predictive Conversion AI Analysis</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={{ cvr: { label: "CVR (%)", color: "#f97316" } }}>
+              <RechartsLineChart
+                accessibilityLayer
+                data={[
+                  { month: "January", cvr: 1.2 },
+                  { month: "February", cvr: 1.4 },
+                  { month: "March", cvr: 2.1 },
+                  { month: "April", cvr: 2.9 },
+                  { month: "May", cvr: 3.5 },
+                  { month: "June", cvr: 4.8 },
+                ]}
+                margin={{
+                  left: 12,
+                  right: 12,
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="py-2.5 rounded-lg border flex items-center justify-center text-[9px] font-black uppercase tracking-wider relative overflow-hidden"
               >
-                 <span className="relative z-10 flex items-center gap-1.5">
-                   <Zap size={10} />
-                   High-Converting Variant
-                 </span>
-              </motion.div>
-           </div>
-        </div>
-
-        {/* Prediction Stats */}
-        <div className="flex gap-3 w-full max-w-[260px] z-20">
-           <div className="flex-1 p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
-              <span className="text-[7px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-0.5">Base CVR</span>
-              <motion.span 
-                animate={{ color: ["#a1a1aa", "#f97316", "#a1a1aa"] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="text-sm font-black text-zinc-400 dark:text-zinc-500 line-through"
-              >
-                1.2%
-              </motion.span>
-           </div>
-           <div className="flex-1 p-2.5 rounded-xl bg-orange-500 border border-orange-600 shadow-sm shadow-orange-500/20 flex flex-col items-center justify-center text-white relative overflow-hidden">
-              <motion.div 
-                animate={{ left: ["-50%", "150%"] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-                className="absolute top-0 bottom-0 w-8 bg-white/20 -skew-x-12"
-              />
-              <span className="text-[7px] font-black text-orange-200 uppercase tracking-widest mb-0.5 relative z-10">AI Predicted</span>
-              <motion.span 
-                animate={{ scale: [1, 1.1, 1] }} 
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="text-sm font-black relative z-10"
-              >
-                4.8%
-              </motion.span>
-           </div>
-        </div>
-
-        {/* Status */}
-        <div className="flex items-center gap-3 z-10 mt-1">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20">
-            <div className="size-1.5 rounded-full bg-orange-500 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]" />
-            <span className="text-[8px] font-mono font-black text-orange-600 dark:text-orange-400 uppercase tracking-wider">Predictive Engine</span>
-          </div>
-          <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">+300% LIFT FORECAST</span>
-        </div>
+                <CartesianGrid vertical={false} strokeDasharray="3 3" opacity={0.5} />
+                <XAxis
+                  dataKey="month"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  tickFormatter={(value) => value.slice(0, 3)}
+                  className="text-xs font-inter"
+                />
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Line
+                  dataKey="cvr"
+                  type="natural"
+                  stroke="var(--color-cvr)"
+                  strokeWidth={2}
+                  isAnimationActive={true}
+                  animationDuration={2000}
+                  dot={({ cx, cy, payload }) => {
+                    const r = 24
+                    return (
+                      <GitCommitVertical
+                        key={payload.month}
+                        x={cx - r / 2}
+                        y={cy - r / 2}
+                        width={r}
+                        height={r}
+                        fill="hsl(var(--background))"
+                        stroke="var(--color-cvr)"
+                      />
+                    )
+                  }}
+                />
+              </RechartsLineChart>
+            </ChartContainer>
+          </CardContent>
+          <CardFooter className="flex-col items-start gap-2 text-sm">
+            <div className="flex gap-2 leading-none font-medium text-zinc-900 dark:text-zinc-100">
+              Projected CVR lift of +300% <TrendingUp className="h-4 w-4 text-orange-500" />
+            </div>
+            <div className="leading-none text-muted-foreground font-medium">
+              Modeled via algorithmic bottleneck resolution
+            </div>
+          </CardFooter>
+        </Card>
       </div>
     )
   },
@@ -644,7 +615,7 @@ const processes = [
       { label: "Security Score", calc: "AAA" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
+      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
         {/* Threat scan line */}
         <motion.div 
           animate={{ top: ["-5%", "105%"] }}
@@ -717,20 +688,20 @@ const processes = [
               transition={{ delay: 0.5 + i * 0.15 }}
               className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
             >
-              <span className="text-[8px] font-mono font-black text-zinc-500 dark:text-zinc-400">{threat.type}</span>
-              <span className="text-[8px] font-mono font-black text-red-600 dark:text-red-400">{threat.status}</span>
-              <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">{threat.time}</span>
+              <span className="text-[8px] font-jetbrains font-black text-zinc-500 dark:text-zinc-400">{threat.type}</span>
+              <span className="text-[8px] font-jetbrains font-black text-red-600 dark:text-red-400">{threat.status}</span>
+              <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">{threat.time}</span>
             </motion.div>
           ))}
         </div>
 
         {/* Status */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/20">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border-2 border-red-500/20">
             <div className="size-1.5 rounded-full bg-red-500 animate-pulse" />
-            <span className="text-[8px] font-mono font-black text-red-600 dark:text-red-400 uppercase tracking-wider">Threat Monitor</span>
+            <span className="text-[8px] font-jetbrains font-black text-red-600 dark:text-red-400 uppercase tracking-wider">Threat Monitor</span>
           </div>
-          <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">0 BREACHES</span>
+          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">0 BREACHES</span>
         </div>
       </div>
     )
@@ -751,7 +722,7 @@ const processes = [
       { label: "Scaling", calc: "Elastic" },
     ],
     demo: (
-      <div className="w-full h-full p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
+      <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
         {/* Pulse wave */}
         <motion.div 
           animate={{ scale: [0.8, 2.5], opacity: [0.15, 0] }}
@@ -829,7 +800,7 @@ const processes = [
                   className="size-1.5 rounded-full"
                 />
                 <span className="text-[6px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">{node.label}</span>
-                <span className="text-[5px] font-mono font-bold text-blue-600 dark:text-blue-400">{node.ping}</span>
+                <span className="text-[5px] font-jetbrains font-bold text-blue-600 dark:text-blue-400">{node.ping}</span>
               </div>
             </motion.div>
           ))}
@@ -837,11 +808,11 @@ const processes = [
 
         {/* Status */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border-2 border-blue-500/20">
             <div className="size-1.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-[8px] font-mono font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider">Elastic Scale</span>
+            <span className="text-[8px] font-jetbrains font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider">Elastic Scale</span>
           </div>
-          <span className="text-[8px] font-mono font-bold text-zinc-400 dark:text-zinc-600">240+ EDGE NODES</span>
+          <span className="text-[8px] font-jetbrains font-bold text-zinc-400 dark:text-zinc-600">240+ EDGE NODES</span>
         </div>
       </div>
     )
@@ -861,70 +832,66 @@ export function InteractiveAiWorkflow() {
   const activeProcess = processes[activeTab];
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 relative overflow-hidden bg-zinc-50 dark:bg-zinc-950 font-primary">
+    <section ref={containerRef} className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-zinc-50 dark:bg-zinc-950 font-primary">
        {/* Divider Line Top */}
        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
       
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10 w-full overflow-hidden">
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto space-y-6 mb-20"
+          className="text-center max-w-3xl mx-auto space-y-5 sm:space-y-6 mb-12 sm:mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.05]">
-            Elite Execution. <br /> Flawless Delivery.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15] sm:leading-[1.05]">
+            Elite Execution. <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>Flawless Delivery.
           </h2>
-          <p className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto">
-            We don&apos;t rely on guesswork. Our full-stack SEO execution is powered by <span className="font-mono font-bold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded-md text-base">seospeeder.ai</span> — our proprietary software tool, mathematically structured and algorithmically perfect.
+          <p className="text-base sm:text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto px-2">
+            We don&apos;t rely on guesswork. Our full-stack SEO execution is powered by <span className="font-jetbrains font-bold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded-md text-[0.9em]">seospeeder.ai</span> — our proprietary software tool, mathematically structured and algorithmically perfect.
           </p>
 
           {/* Software Tool Terminal Badge */}
-          <div className="inline-flex flex-col items-center gap-3 pt-2">
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 shadow-xl dark:shadow-2xl overflow-hidden w-[320px] sm:w-[380px]">
-              {/* Window Chrome */}
-              <div className="flex items-center justify-between px-4 py-2.5 border-b border-zinc-100 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/50">
-                <div className="flex items-center gap-1.5">
-                  <div className="size-2.5 rounded-full bg-rose-500/80" />
-                  <div className="size-2.5 rounded-full bg-amber-500/80" />
-                  <div className="size-2.5 rounded-full bg-emerald-500/80" />
-                </div>
-                <span className="text-[9px] font-mono font-bold text-zinc-500 dark:text-zinc-500 tracking-wider">seospeeder.ai.exe</span>
+          <div className="inline-flex flex-col items-center gap-2 sm:gap-3 sm:pt-2 w-full max-w-full px-2 sm:px-0">
+            <CodeBlock 
+              className="w-full max-w-[380px] shadow-xl dark:shadow-2xl border-2 dark:border-zinc-800"
+              headerTitle={<span className="text-[9px] font-jetbrains font-bold text-zinc-500 tracking-wider">seospeeder.ai.exe</span>}
+              headerRight={
                 <div className="flex items-center gap-1.5">
                   <div className="size-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.5)]" />
-                  <span className="text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-500">RUNNING</span>
+                  <span className="text-[8px] font-jetbrains font-bold text-emerald-600 dark:text-emerald-500">RUNNING</span>
+                </div>
+              }
+            >
+              <div className="font-jetbrains text-[9px] sm:text-[10px] leading-relaxed space-y-1.5 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full text-left">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-emerald-500 shrink-0">▸</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0">PID</span>
+                  <span className="text-zinc-700 dark:text-zinc-300 shrink-0">4821</span>
+                  <span className="text-zinc-300 dark:text-zinc-700 mx-0.5 sm:mx-1 shrink-0">│</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0">UPTIME</span>
+                  <span className="text-zinc-700 dark:text-zinc-300 shrink-0">99.99%</span>
+                  <span className="text-zinc-300 dark:text-zinc-700 mx-0.5 sm:mx-1 shrink-0">│</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0">MEM</span>
+                  <span className="text-zinc-700 dark:text-zinc-300 shrink-0">2.4GB</span>
+                </div>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-emerald-500 shrink-0">▸</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0">loading</span>
+                  <span className="text-zinc-900 dark:text-white font-bold shrink-0">seo_engine_v4.model</span>
+                  <span className="text-emerald-600 dark:text-emerald-500 font-bold ml-auto shrink-0 pl-2">✓ ready</span>
+                </div>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-emerald-500 shrink-0">▸</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0">modules</span>
+                  <span className="text-amber-600 dark:text-amber-500 font-bold shrink-0">8 active</span>
+                  <span className="text-zinc-300 dark:text-zinc-700 mx-0.5 sm:mx-1 shrink-0">│</span>
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0">signals</span>
+                  <span className="text-violet-600 dark:text-violet-400 font-bold shrink-0">12.4k/s</span>
                 </div>
               </div>
-              {/* Terminal Body */}
-              <div className="px-4 py-3 font-mono text-[10px] leading-relaxed space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-emerald-500">▸</span>
-                  <span className="text-zinc-400 dark:text-zinc-500">PID</span>
-                  <span className="text-zinc-700 dark:text-zinc-300">4821</span>
-                  <span className="text-zinc-300 dark:text-zinc-700 mx-1">│</span>
-                  <span className="text-zinc-400 dark:text-zinc-500">UPTIME</span>
-                  <span className="text-zinc-700 dark:text-zinc-300">99.99%</span>
-                  <span className="text-zinc-300 dark:text-zinc-700 mx-1">│</span>
-                  <span className="text-zinc-400 dark:text-zinc-500">MEM</span>
-                  <span className="text-zinc-700 dark:text-zinc-300">2.4GB</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-emerald-500">▸</span>
-                  <span className="text-zinc-400 dark:text-zinc-500">loading</span>
-                  <span className="text-zinc-900 dark:text-white font-bold">seo_engine_v4.model</span>
-                  <span className="text-emerald-600 dark:text-emerald-500 font-bold ml-auto">✓ ready</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-emerald-500">▸</span>
-                  <span className="text-zinc-400 dark:text-zinc-500">modules</span>
-                  <span className="text-amber-600 dark:text-amber-500 font-bold">8 active</span>
-                  <span className="text-zinc-300 dark:text-zinc-700 mx-1">│</span>
-                  <span className="text-zinc-400 dark:text-zinc-500">signals</span>
-                  <span className="text-violet-600 dark:text-violet-400 font-bold">12.4k/s</span>
-                </div>
-              </div>
-            </div>
+            </CodeBlock>
           </div>
         </motion.div>
 
@@ -932,7 +899,7 @@ export function InteractiveAiWorkflow() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full max-w-5xl mx-auto bg-white dark:bg-zinc-950 border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row min-h-[520px]"
+          className="w-full max-w-5xl mx-auto bg-white dark:bg-zinc-950 border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row min-h-[420px] sm:min-h-[520px]"
         >
           {/* Sidebar */}
           <div className="w-full md:w-72 bg-zinc-50/50 dark:bg-zinc-900/50 border-b-2 md:border-b-0 md:border-r-2 border-zinc-200 dark:border-zinc-800 p-4 md:p-6 flex flex-row md:flex-col gap-3 md:gap-2 overflow-x-auto md:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] shrink-0 z-20 relative">
@@ -943,10 +910,10 @@ export function InteractiveAiWorkflow() {
                   Modules
                 </span>
               </div>
-              <div className="flex flex-col gap-6 shrink-0">
+              <div className="flex flex-row md:flex-col gap-3 md:gap-6 shrink-0 items-center md:items-stretch">
                 {categories.map((cat, catIdx) => (
-                  <div key={catIdx} className="space-y-2">
-                    <div className="px-2 flex items-center gap-1.5 opacity-40 uppercase tracking-[0.2em] font-bold text-[9px] text-black dark:text-white">
+                  <div key={catIdx} className="flex flex-row md:flex-col gap-2 md:gap-0 md:space-y-2 shrink-0 items-center md:items-stretch">
+                    <div className="px-2 hidden md:flex items-center gap-1.5 opacity-40 uppercase tracking-[0.2em] font-bold text-[9px] text-black dark:text-white">
                       <span>{cat.name}</span>
                     </div>
                     <div className="flex flex-row md:flex-col gap-2 md:gap-1 shrink-0 items-center md:items-stretch">
@@ -1007,7 +974,7 @@ export function InteractiveAiWorkflow() {
 
           {/* Content Area */}
           <div className="flex-1 p-5 sm:p-8 md:p-12 bg-white dark:bg-zinc-950 relative flex flex-col overflow-hidden min-w-0">
-            <header className="mb-6 md:mb-10 flex flex-col gap-2">
+            <header className="mb-8 sm:mb-10 flex flex-col gap-2 text-left">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeProcess.id}
@@ -1023,11 +990,11 @@ export function InteractiveAiWorkflow() {
                     {activeProcess.description}
                   </p>
                   
-                  <div className="flex gap-8 mt-6">
+                   <div className="grid grid-cols-2 sm:flex sm:gap-8 gap-x-4 gap-y-6 mt-8 sm:mt-6">
                     {activeProcess.metrics.map((metric, idx) => (
-                      <div key={idx} className="flex flex-col gap-1">
-                        <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">{metric.label}</span>
-                        <span className={cn("font-mono font-semibold text-xl md:text-2xl", activeProcess.text)}>{metric.calc}</span>
+                      <div key={idx} className="flex flex-col gap-1.5 sm:gap-1">
+                        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-500">{metric.label}</span>
+                        <span className={cn("font-jetbrains font-semibold text-lg sm:text-xl md:text-2xl", activeProcess.text)}>{metric.calc}</span>
                       </div>
                     ))}
                   </div>
