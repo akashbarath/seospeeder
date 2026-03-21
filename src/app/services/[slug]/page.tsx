@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { Globe2, Zap, Shield, Gauge, ArrowRight } from "lucide-react";
-import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
-import { productLinks } from "@/components/nav-links";
 
 export async function generateStaticParams() {
   return SERVICES.map((service) => ({
@@ -31,24 +29,6 @@ export default async function ServicePage({
   // Get the platform icon - fallback to Globe2 if not found
   const PlatformIcon = (Icons as Record<string, React.ElementType>)[slug] || Globe2;
 
-  const features = [
-    {
-      title: "Core Web Vitals",
-      description: "Pass LCP, FID, and CLS with confidence. We target the specific metrics Google uses to rank your site.",
-      icon: Gauge
-    },
-    {
-      title: "Zero Downtime",
-      description: "Our optimisations are non-destructive and performed in a safe staging environment before deployment.",
-      icon: Zap
-    },
-    {
-      title: "Long-term Impact",
-      description: "We don't just patch issues; we rebuild for performance, ensuring your site stays fast as you grow.",
-      icon: Shield
-    }
-  ];
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -57,7 +37,7 @@ export default async function ServicePage({
           <div className="flex flex-col items-center text-center space-y-8">
             {/* Added Platform Icon on top */}
             <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-1000">
-               <PlatformIcon className="size-16 md:size-20 text-neutral-800 dark:text-neutral-200 opacity-90" strokeWidth={1.5} />
+              <PlatformIcon className="size-16 md:size-20 text-neutral-800 dark:text-neutral-200 opacity-90" strokeWidth={1.5} />
             </div>
 
 
@@ -116,27 +96,42 @@ export default async function ServicePage({
         </div>
       </section>
 
-      {/* Feature Grid - Large 7xl container with 32px gaps */}
-      <section className="py-24 md:py-32">
+      {/* Main Analysis Section: Interactive Performance Dashboard */}
+      <section className="py-24 md:py-32 bg-neutral-50 dark:bg-neutral-950/50 border-y border-neutral-200 dark:border-neutral-800/50">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-            {features.map((feature, i) => (
-              <div 
-                key={i} 
-                className="group relative p-10 rounded-[32px] bg-white dark:bg-neutral-900 border-2 border-neutral-100 dark:border-neutral-800 transition-all hover:border-neutral-200 hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="size-14 rounded-[20px] bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-8 text-neutral-600 dark:text-neutral-400 group-hover:bg-[#171717] group-hover:text-white transition-all">
-                  <feature.icon size={26} strokeWidth={2} />
-                </div>
-                <h3 className="text-[24px] font-bold mb-4 text-[#0A0A0A] dark:text-neutral-100">{feature.title}</h3>
-                <p className="text-[16px] text-[#737373] font-inter leading-relaxed">
-                   {feature.description}
-                </p>
-              </div>
-            ))}
+          <div className="flex flex-col items-center text-center mb-12 space-y-4">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-[#0A0A0A] dark:text-neutral-100">
+              {slug === "shopify" && "Shopify Growth, Unthrottled."}
+              {slug === "magento" && "Magento Speed, Tactically Engineered."}
+              {slug === "wordpress" && "WordPress Accelerated. Optimized in 48 Hours."}
+              {!["shopify", "magento", "wordpress"].includes(slug) && "Engineered for Viral Performance."}
+            </h2>
+            <p className="max-w-3xl text-lg md:text-xl text-[#737373] font-medium font-inter leading-relaxed">
+              {slug === "shopify" && "We rebuild your Liquid core for sub-millisecond response times. From checkout latency reduction to predictive asset caching, your store is designed to stay fast even during BFCM viral peaks."}
+              {slug === "magento" && "We overhaul your Magento PHP core and database indexing for elite-level performance. Optimized for massive catalogs and complex enterprise workflows, ensuring your site remains responsive under extreme volume."}
+              {slug === "wordpress" && "Stop losing sales to lag. Our surgical-grade WordPress optimization transforms bloated themes into lightning-fast, 90+ score powerhouses with zero design changes—guaranteed."}
+              {!["shopify", "magento", "wordpress"].includes(slug) && `We rebuild your ${service.title} core for sub-millisecond response times. From database indexing to predictive caching, your site is designed to stay fast even during viral traffic peaks.`}
+            </p>
+          </div>
+          <div className="w-full">
+            <ServiceDashboard slug={slug} />
           </div>
         </div>
       </section>
+
+      {/* WordPress Accelerated Experience Hub */}
+      {slug === "wordpress" && (
+        <ModernWordPressPerformance />
+      )}
+
+      {/* Mobile Performance Deep Dive */}
+      {slug === "wordpress" && (
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="border-t border-neutral-200 dark:border-white/5 pt-24 pb-24">
+            <MobilePerformanceShowcase />
+          </div>
+        </div>
+      )}
 
       {/* Transformation CTA */}
       <section className="py-24 md:py-32 container mx-auto px-4 max-w-4xl text-center space-y-10">
@@ -147,8 +142,8 @@ export default async function ServicePage({
           Don&apos;t let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
         </p>
         <div className="pt-2">
-          <Link 
-            href="#audit" 
+          <Link
+            href="#audit"
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 py-2 relative overflow-hidden h-11 px-8 w-full sm:w-auto rounded-xl font-bold text-base shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-500 group/btn"
           >
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0"></div>
