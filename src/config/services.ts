@@ -4,8 +4,8 @@ export const SERVICES = [
     title: "WordPress",
     description: "Speed optimisation for WordPress sites",
     color: "rgba(0, 116, 162, 0.45)", // WordPress Blue,
-    heroHeadline: "Unleash the True Speed of WordPress.",
-    heroDescription: "Stop losing readers to slow loading times. Our enterprise-grade WordPress optimisation transforms bloated themes and heavy plugins into a lightning-fast, core-web-vitals-passing powerhouse."
+    heroHeadline: "WordPress Accelerated. Optimized in 48 Hours.",
+    heroDescription: "Stop losing sales to lag. Our surgical-grade WordPress optimization transforms bloated themes into lightning-fast, 90+ score powerhouses with zero design changes—guaranteed."
   },
   {
     slug: "shopify",
