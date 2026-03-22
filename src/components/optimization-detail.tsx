@@ -2,12 +2,13 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Zap, Shield, Gauge, Globe, ShoppingBag, Code2, Flame, Server, Layers, Workflow } from "lucide-react";
+import { Zap, Shield, Gauge, Globe, ShoppingBag, Code2, Flame, Server, Layers, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
+import { CallToAction } from "@/components/cta";
 
 interface OptimizationDetailProps {
 	title: string;
@@ -72,7 +73,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 						</div>
 					</AnimatedGroup>
 
-					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-primary">
 						<TextEffect preset="fade-in-blur" speedSegment={0.3}>
 							{title}
 						</TextEffect>
@@ -93,7 +94,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 							asChild
 							variant="outline"
 							size="lg"
-							className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold"
+							className="w-full sm:w-auto rounded-xl px-8 text-base font-inter font-semibold border-2"
 						>
 							<Link href="/contact">
 								<span className="text-nowrap">Get Free Audit</span>
@@ -143,7 +144,7 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 								<div className="size-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
 									<feature.icon className="size-6" />
 								</div>
-								<h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+								<h3 className="text-xl font-bold mb-3 font-primary">{feature.title}</h3>
 								<p className="text-muted-foreground font-inter leading-relaxed">{feature.text}</p>
 							</motion.div>
 						))}
@@ -153,24 +154,9 @@ export function OptimizationDetail({ title, description, platform, iconName }: O
 
 
 				{/* CTA Section */}
-				<div className="text-center max-w-2xl mx-auto">
-					<h2 className="text-3xl font-bold mb-6">Start your {platform} transformation today.</h2>
-					<p className="text-muted-foreground mb-8 font-inter">
-						Don&apos;t let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
-					</p>
-					<Button
-						asChild
-						size="lg"
-						className="group/btn rounded-xl px-10 text-base font-bold font-inter bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
-					>
-						<Link href="/contact" className="flex items-center gap-2">
-							<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
-							<span className="relative z-10 flex items-center gap-2">
-								Request Free Audit <ArrowRight className="size-5" />
-							</span>
-						</Link>
-					</Button>
-				</div>
+				<section className="relative">
+					<CallToAction />
+				</section>
 			</div>
 		</main>
 	);

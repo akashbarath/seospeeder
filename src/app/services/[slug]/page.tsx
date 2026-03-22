@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { Globe2, Zap, Shield, Gauge, ArrowRight } from "lucide-react";
+import { BoostRankingsBadge } from "@/components/boost-rankings-badge";
+import { productLinks } from "@/components/nav-links";
+import ServiceDashboard from "@/components/service-dashboard";
+import { MobilePerformanceShowcase } from "@/components/mobile-performance-showcase";
+import { ModernWordPressPerformance } from "@/components/modern-wordpress-performance";
 
 export async function generateStaticParams() {
   return SERVICES.map((service) => ({
@@ -99,18 +104,21 @@ export default async function ServicePage({
       {/* Main Analysis Section: Interactive Performance Dashboard */}
       <section className="py-24 md:py-32 bg-neutral-50 dark:bg-neutral-950/50 border-y border-neutral-200 dark:border-neutral-800/50">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col items-center text-center mb-12 space-y-4">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-[#0A0A0A] dark:text-neutral-100">
-              {slug === "shopify" && "Shopify Growth, Unthrottled."}
-              {slug === "magento" && "Magento Speed, Tactically Engineered."}
-              {slug === "wordpress" && "WordPress Accelerated. Optimized in 48 Hours."}
-              {!["shopify", "magento", "wordpress"].includes(slug) && "Engineered for Viral Performance."}
+          <div className="flex flex-col items-center text-center mb-16 md:mb-24 space-y-8">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-[#0A0A0A] dark:text-neutral-100 leading-[0.95] font-primary max-w-5xl">
+              <TextEffect preset="fade-in-blur" speedSegment={0.3}>
+                {slug === "shopify" ? "Shopify Growth, Unthrottled." :
+                  slug === "magento" ? "Magento Speed, Tactically Engineered." :
+                    slug === "wordpress" ? "WordPress Performance Perfected." :
+                      "Engineered for Viral Performance."}
+              </TextEffect>
             </h2>
-            <p className="max-w-3xl text-lg md:text-xl text-[#737373] font-medium font-inter leading-relaxed">
-              {slug === "shopify" && "We rebuild your Liquid core for sub-millisecond response times. From checkout latency reduction to predictive asset caching, your store is designed to stay fast even during BFCM viral peaks."}
-              {slug === "magento" && "We overhaul your Magento PHP core and database indexing for elite-level performance. Optimized for massive catalogs and complex enterprise workflows, ensuring your site remains responsive under extreme volume."}
-              {slug === "wordpress" && "Stop losing sales to lag. Our surgical-grade WordPress optimization transforms bloated themes into lightning-fast, 90+ score powerhouses with zero design changes—guaranteed."}
-              {!["shopify", "magento", "wordpress"].includes(slug) && `We rebuild your ${service.title} core for sub-millisecond response times. From database indexing to predictive caching, your site is designed to stay fast even during viral traffic peaks.`}
+
+            <p className="max-w-4xl text-lg md:text-2xl text-[#737373] font-medium font-inter leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
+              {slug === "shopify" ? "We rebuild your Liquid core for sub-millisecond response times. From checkout latency reduction to predictive asset caching, your store is designed to stay fast even during BFCM viral peaks." :
+                slug === "magento" ? "We overhaul your Magento PHP core and database indexing for elite-level performance. Optimized for massive catalogs and complex enterprise workflows, ensuring your site remains responsive under extreme volume." :
+                  slug === "wordpress" ? "Expert speed optimisation for WordPress sites of all sizes. From complex WooCommerce stores to blogs, we eliminate bottlenecks and supercharge performance." :
+                    `We rebuild your ${service.title} core for sub-millisecond response times. From database indexing to predictive caching, your site is designed to stay fast even during viral traffic peaks.`}
             </p>
           </div>
           <div className="w-full">
@@ -119,6 +127,7 @@ export default async function ServicePage({
         </div>
       </section>
 
+
       {/* WordPress Accelerated Experience Hub */}
       {slug === "wordpress" && (
         <ModernWordPressPerformance />
@@ -126,42 +135,20 @@ export default async function ServicePage({
 
       {/* Mobile Performance Deep Dive */}
       {slug === "wordpress" && (
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="border-t border-neutral-200 dark:border-white/5 pt-24 pb-24">
+        <div className="w-full overflow-x-hidden">
+          <div className="border-t border-neutral-200 dark:border-white/5 pt-12 md:pt-20 pb-12 md:pb-20">
             <MobilePerformanceShowcase />
           </div>
         </div>
       )}
 
-      {/* Transformation CTA */}
-      <section className="py-24 md:py-32 container mx-auto px-4 max-w-4xl text-center space-y-10">
-        <h2 className="text-3xl font-black tracking-tight leading-[1.1]">
-          Start your {service.title} transformation today.
-        </h2>
-        <p className="text-xl text-muted-foreground mb-8 font-inter">
-          Don&apos;t let slow load times kill your conversions. Get a free, detailed manual audit from our specialised engineers.
-        </p>
-        <div className="pt-2">
-          <Link
-            href="#audit"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 py-2 relative overflow-hidden h-11 px-8 w-full sm:w-auto rounded-xl font-bold text-base shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-500 group/btn"
-          >
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0"></div>
-            <span className="relative z-10 flex items-center gap-2">
-              Get free audit
-              <div className="relative overflow-hidden flex items-center justify-center size-5 ml-1">
-                <ArrowRight className="absolute inset-0 size-5 transition-transform duration-500 ease-out group-hover/btn:translate-x-[200%]" strokeWidth={2.5} />
-                <ArrowRight className="absolute inset-0 size-5 -translate-x-[200%] transition-transform duration-500 ease-out group-hover/btn:translate-x-0" strokeWidth={2.5} />
-              </div>
-            </span>
-          </Link>
-        </div>
-      </section>
 
       {/* Final Site CTA */}
-      <div className="mt-8 border-t border-border/40">
-        <CallToAction />
-      </div>
+      {slug !== "wordpress" && (
+        <div className="mt-8 border-t border-border/40">
+          <CallToAction />
+        </div>
+      )}
     </div>
   );
 }

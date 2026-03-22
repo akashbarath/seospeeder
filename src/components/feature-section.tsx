@@ -13,6 +13,13 @@ import {
 import { Highlighter } from "@/components/ui/highlighter";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 import {
 	CartesianGrid,
 	Line,
@@ -27,8 +34,6 @@ import {
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Card } from "@/components/ui/card";
-
-
 
 const rankingData = [
 	{ month: "Jan", google: 45, bing: 52 },
@@ -83,11 +88,45 @@ const features = [
 export function FeatureSection() {
 	const container = useRef<HTMLDivElement>(null);
 
-	// Removed intro animations as per user request
+	   useGSAP(() => {
+      // Animate the header
+      gsap.from(".bento-header", {
+         y: 40,
+         opacity: 0,
+         duration: 1,
+         ease: "power3.out",
+         scrollTrigger: {
+            trigger: container.current,
+            start: "top 85%",
+         }
+      });
+
+      // Animate cards staggering in
+      const cards = gsap.utils.toArray(".feature-card");
+      gsap.fromTo(cards, 
+         {
+            y: 80,
+            opacity: 0,
+            scale: 0.95,
+         },
+         {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            stagger: 0.1,
+            ease: "back.out(1.2)",
+            scrollTrigger: {
+               trigger: container.current,
+               start: "top 75%",
+            }
+         }
+      );
+   }, { scope: container });
 
 	return (
 		<div ref={container} className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible">
-			<div className="text-center space-y-4 max-w-3xl mx-auto">
+			<div className="text-center space-y-4 max-w-3xl mx-auto bento-header">
 				<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
 					Next-Gen SEO <Highlighter color="hsl(var(--foreground) / 0.1)" padding={0} strokeWidth={1} iterations={1}>Infrastructure</Highlighter>
 				</h2>
@@ -117,7 +156,7 @@ function FeatureCard({
 	return (
 		<Card
 			className={cn(
-				"group relative overflow-hidden rounded-2xl border-2 bg-background px-6 py-8 md:px-8 md:pt-10 md:pb-8 shadow-none",
+				"group relative overflow-hidden rounded-2xl border-2 bg-background px-5 py-6 md:px-8 md:pt-10 md:pb-8 flex flex-col shadow-none",
 				className
 			)}
 		>
@@ -420,7 +459,7 @@ function DashboardVisual() {
 
 	return (
 		<div 
-			className="grid h-full sm:grid-cols-2"
+			className="flex flex-col sm:grid sm:h-full sm:grid-cols-2"
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
@@ -446,14 +485,14 @@ function DashboardVisual() {
 					<div className="aspect-video h-full overflow-hidden rounded-lg sm:rounded-none sm:rounded-tl-sm border-2 *:pointer-events-none *:size-full *:shrink-0 *:select-none">
 						<Image
 							alt="Dashboard preview"
-							className="dark:hidden"
+							className="dark:hidden object-cover object-left-top"
 							height={360}
 							src="https://storage.efferd.com/screen/dashboard-light.webp"
 							width={640}
 						/>
 						<Image
 							alt="Dashboard preview"
-							className="hidden dark:block"
+							className="hidden dark:block object-cover object-left-top"
 							height={360}
 							src="https://storage.efferd.com/screen/dashboard-dark.webp"
 							width={640}
@@ -467,7 +506,7 @@ function DashboardVisual() {
 
 function PresenceVisual() {
 	return (
-		<div className="grid max-h-[600px] sm:max-h-120 sm:grid-cols-2 group/globe">
+		<div className="flex flex-col sm:grid sm:max-h-120 sm:grid-cols-2 group/globe h-full">
 			<div className="space-y-6 p-6 md:pt-10 md:pb-8 md:pl-10">
 				<div className="flex size-12 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:bg-primary/5 transition-colors duration-500">
 					<Globe className="size-5 text-foreground group-hover:animate-spin group-hover:text-primary transition-colors duration-300" />
@@ -481,7 +520,7 @@ function PresenceVisual() {
 					</FeatureDescription>
 				</div>
 			</div>
-			<div className="relative h-64 sm:h-auto overflow-hidden sm:overflow-visible visual-globe">
+			<div className="relative h-64 sm:h-auto overflow-hidden sm:overflow-visible visual-globe mt-auto">
 				<motion.div
 					animate={{ 
 						scale: [1, 1.02, 1],

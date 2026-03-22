@@ -50,7 +50,7 @@ export function CallToAction() {
 				<h2 className="font-black text-4xl md:text-5xl lg:text-6xl tracking-tighter text-foreground leading-[1.1]">
 					Ready to outrun the <span className="text-primary pr-2">competition?</span>
 				</h2>
-				<p className="text-balance text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-inter font-medium bg-background/50 py-2 inline-block">
+				<p className="text-balance text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-inter bg-background/50 py-2 inline-block">
 					Join thousands of fast-growing brands who have transformed their digital presence. Your site&apos;s speed is your business&apos;s growth engine.
 				</p>
 			</div>

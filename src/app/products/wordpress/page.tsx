@@ -10,7 +10,7 @@ export default function WordPressPage() {
     <OptimizationDetail
       platform="WordPress"
       title="WordPress Performance Perfected."
-      description="Speed optimisation for WordPress sites of all sizes. From complex WooCommerce stores to high-traffic blogs, we make them fly."
+      description="Expert speed optimisation for WordPress sites of all sizes. From complex WooCommerce stores to blogs, we eliminate bottlenecks and supercharge performance."
       iconName="globe"
     />
   );

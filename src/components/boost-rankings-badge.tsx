@@ -14,7 +14,7 @@ export function BoostRankingsBadge({ className, children, icon: Icon = ArrowRigh
     <Link
       href="#audit"
       className={cn(
-        "hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950",
+        "hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-3 rounded-full border-2 px-4 py-2 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950",
         className
       )}
     >
