@@ -710,14 +710,14 @@ const generateSVG = (variant: AnimationVariant, start: AnimationStart) => {
   // circle-blur variant handles center case differently, so check it first
   if (variant === "circle-blur") {
     if (start === "center") {
-      return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="20" cy="20" r="18" fill="white" filter="url(%23blur)"/></svg>`;
+      return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><radialGradient id="grad"><stop offset="60%" stop-color="white"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><circle cx="20" cy="20" r="20" fill="url(%23grad)"/></svg>`;
     }
     const positionCoords = getPositionCoords(start);
     if (!positionCoords) {
       throw new Error(`Invalid start position: ${start}`);
     }
     const { cx, cy } = positionCoords;
-    return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="${cx}" cy="${cy}" r="18" fill="white" filter="url(%23blur)"/></svg>`;
+    return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><radialGradient id="grad"><stop offset="60%" stop-color="white"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><circle cx="${cx}" cy="${cy}" r="20" fill="url(%23grad)"/></svg>`;
   }
 
   if (start === "center") return;

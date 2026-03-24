@@ -104,7 +104,7 @@ export function ResultsSection() {
                     position="right"
                     className="object-cover"
                   />
-                  <ImageComparisonSlider className="w-1 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
+                  <ImageComparisonSlider className="w-[2px] bg-gradient-to-b from-zinc-200 via-zinc-500 to-zinc-200 dark:from-white/20 dark:via-white dark:to-white/20 shadow-[0_0_10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
                 </ImageComparison>
             </div>
             <div 
@@ -256,12 +256,19 @@ function MetricItem({
       className="p-6 rounded-2xl transition-all duration-300 bg-white dark:bg-zinc-900 border-2 border-zinc-100 dark:border-zinc-800/50 hover:shadow-xl hover:shadow-black/5 hover:border-zinc-300 dark:hover:border-zinc-700 group cursor-default"
     >
       <div className="flex items-center gap-4 mb-4">
-        <div className={cn(
-            "p-2 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 shadow-xs border-2 border-zinc-200 dark:border-zinc-800 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-zinc-100 dark:group-hover:text-zinc-900 group-hover:border-zinc-900 dark:group-hover:border-zinc-100 group-hover:scale-110",
-            color
-        )}>
-           {icon}
-        </div>
+        <motion.div 
+          animate={{ y: [0, -2, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          whileHover={{ 
+            rotate: [-1, 1, -1, 1, 0],
+            transition: { duration: 0.2, repeat: Infinity }
+          }}
+          className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 bg-card shadow-sm outline outline-border/80 outline-offset-2 group-hover:scale-110 group-hover:bg-primary/5 transition-all duration-500"
+        >
+           <div className="text-foreground group-hover:text-primary transition-colors duration-300 [&>svg]:size-[18px] leading-none flex">
+              {icon}
+           </div>
+        </motion.div>
         <span className="text-[11px] lg:text-[10px] font-black text-zinc-600 dark:text-zinc-300 uppercase tracking-[0.2em]">{label}</span>
       </div>
       <div className="text-3xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter leading-none mb-2">

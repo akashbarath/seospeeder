@@ -520,7 +520,7 @@ function PresenceVisual() {
 					</FeatureDescription>
 				</div>
 			</div>
-			<div className="relative h-64 sm:h-auto overflow-hidden sm:overflow-visible visual-globe mt-auto">
+			<div className="relative h-64 sm:h-full sm:min-h-[320px] overflow-hidden sm:overflow-visible visual-globe mt-auto">
 				<motion.div
 					animate={{ 
 						scale: [1, 1.02, 1],
