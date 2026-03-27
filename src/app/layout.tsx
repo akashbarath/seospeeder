@@ -33,8 +33,36 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "seospeeder | AI-Powered SEO Services",
-  description: "Skyrocket your search visibility and traffic with data-driven SEO strategies from seospeeder.",
+  title: {
+    default: "SEO SPEEDER | AI-Powered SEO Services",
+    template: "%s | SEO SPEEDER",
+  },
+  description: "Skyrocket your search visibility and organic traffic with our advanced, data-driven AI SEO strategies.",
+  keywords: ["SEO", "AI SEO", "Search Engine Optimization", "Organic Traffic", "SEO Agency", "Machine Learning SEO"],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://seospeeder.com",
+    title: "SEO SPEEDER | AI-Powered SEO Services",
+    description: "Skyrocket your search visibility and organic traffic with our advanced, data-driven AI SEO strategies.",
+    siteName: "SEO SPEEDER",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEO SPEEDER | AI-Powered SEO Services",
+    description: "Skyrocket your search visibility and organic traffic with our advanced, data-driven AI SEO strategies.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 
@@ -45,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${bricolageGrotesque.variable} ${poppins.variable} ${inter.variable} ${jetbrainsMono.variable} font-primary antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

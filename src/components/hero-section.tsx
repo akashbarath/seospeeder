@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import DashboardPage from '@/app/dashboard/page'
-import { BoostRankingsBadge } from '@/components/boost-rankings-badge'
 
 
 const transitionVariants = {
@@ -42,9 +41,7 @@ export default function HeroSection() {
 
                         <div className="mx-auto max-w-7xl px-6 flex-1 flex flex-col justify-center">
                             <div className="text-center mx-auto lg:mt-0">
-                                <AnimatedGroup variants={transitionVariants}>
-                                    <BoostRankingsBadge />
-                                </AnimatedGroup>
+                                    {/* Badge removed */}
 
                                 <h1 className="mx-auto mt-6 md:mt-8 max-w-5xl text-balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] text-center">
                                     <TextEffect
@@ -52,7 +49,7 @@ export default function HeroSection() {
                                         speedSegment={0.3}
                                         as="span"
                                     >
-                                        Dominate Search.
+                                        Dominate Search
                                     </TextEffect>
                                     <br />
                                     <TextEffect
@@ -61,7 +58,7 @@ export default function HeroSection() {
                                         as="span"
                                         delay={0.2}
                                     >
-                                        Not Just Rank.
+                                        Not Just Rank
                                     </TextEffect>
                                 </h1>
                                 <TextEffect

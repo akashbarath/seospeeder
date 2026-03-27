@@ -209,12 +209,12 @@ export function ProvenSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+          className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6 mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.05]">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1] md:leading-[1.05]">
             Data-Driven Results
           </h2>
-          <p className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-zinc-500 dark:text-zinc-400 font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
             See exactly how Seospeeder transforms your site&apos;s performance and search visibility with precision analytics.
           </p>
         </motion.div>
