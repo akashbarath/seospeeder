@@ -107,9 +107,11 @@ export function CoreValues() {
 
   return (
     <section ref={containerRef} className="space-y-8 py-12">
-      <div className="text-center space-y-4 max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">Our Core Values</h2>
-        <p className="text-muted-foreground font-inter text-lg">
+      <div className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1] md:leading-[1.05]">
+          Our Core Values
+        </h2>
+        <p className="text-base md:text-xl text-muted-foreground font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
           The foundational principles that guide every feature we ship and every partnership we build.
         </p>
       </div>

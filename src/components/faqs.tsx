@@ -10,17 +10,20 @@ import Link from "next/link";
 
 export function FaqsSection() {
 	const [searchTerm, setSearchTerm] = React.useState("");
-	const [activeCategory, setActiveCategory] = React.useState("all");
+	const [activeCategory, setActiveCategory] = React.useState("services");
 	const [openId, setOpenId] = React.useState<number | null>(null);
 	const [isLinkHovered, setIsLinkHovered] = React.useState(false);
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const titleRef = React.useRef<HTMLDivElement>(null);
 
 	const categories = [
-		{ id: "all", label: "All" },
-		{ id: "services", label: "Services" },
-		{ id: "pricing", label: "Pricing" },
-		{ id: "support", label: "Support" },
+		{ id: "services",          label: "Services" },
+		{ id: "web-development",   label: "Web Dev" },
+		{ id: "app-development",   label: "App Dev" },
+		{ id: "ai-development",    label: "AI Dev" },
+		{ id: "digital-marketing", label: "Marketing" },
+		{ id: "pricing",           label: "Pricing" },
+		{ id: "support",           label: "Support" },
 	];
 
 	const filtered = faqs.filter((faq) => {
@@ -37,11 +40,11 @@ export function FaqsSection() {
 	return (
 		<section ref={containerRef} className="py-20 md:py-28 bg-background w-full overflow-hidden">
 			<div className="container px-4 md:px-6 mx-auto max-w-4xl">
-				<div ref={titleRef} className="text-center mb-8 md:mb-12">
-					<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+				<div ref={titleRef} className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6 mb-8 md:mb-12">
+					<h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1] md:leading-[1.05]">
 						Frequently Asked Questions
 					</h2>
-					<p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto font-inter">
+					<p className="text-base md:text-xl text-muted-foreground font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
 						Everything you need to know about our SEO and speed optimisation services.
 					</p>
 				</div>
@@ -69,21 +72,30 @@ export function FaqsSection() {
 						</div>
 					</div>
 
-					<div className="flex flex-wrap justify-center gap-2 md:gap-3">
-						{categories.map((cat) => (
-							<button
-								key={cat.id}
-								onClick={() => setActiveCategory(cat.id)}
-								className={cn(
-									"faq-category-btn px-4 py-2 md:px-6 md:py-2.5 rounded-xl border-2 text-sm font-medium transition-all duration-500",
-									activeCategory === cat.id
-										? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25 scale-105"
-										: "bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground hover:-translate-y-0.5"
-								)}
-							>
-								{cat.label}
-							</button>
-						))}
+					<div className="w-full overflow-x-auto scrollbar-none pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+						<div className="flex items-center justify-start sm:justify-center gap-3 w-max mx-auto">
+							{categories.map((cat) => {
+								const isActive = activeCategory === cat.id;
+
+								return (
+									<button
+										key={cat.id}
+										onClick={() => setActiveCategory(cat.id)}
+										className={cn(
+											"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-xl px-6 text-sm font-inter transition-all duration-300 relative overflow-hidden group/btn",
+											isActive
+												? "font-bold bg-primary hover:bg-primary/95 text-primary-foreground shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)]"
+												: "font-semibold border-2 border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
+										)}
+									>
+										{isActive && (
+											<div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
+										)}
+										<span className="relative z-10 text-nowrap">{cat.label}</span>
+									</button>
+								);
+							})}
+						</div>
 					</div>
 				</div>
 
@@ -211,6 +223,7 @@ export function FaqsSection() {
 }
 
 const faqs = [
+	// ── Services (General) ───────────────────────────────────
 	{
 		id: 1,
 		category: "services",
@@ -230,7 +243,7 @@ const faqs = [
 		category: "services",
 		title: "Will this break my site or change the design?",
 		content:
-			"Absolutely not. We optimise the engine, not the paint. All work is performed with zero downtime and strict version control. Your website's design, functionality, and user experience will remain 100% pixel-perfect—just significantly faster.",
+			"Absolutely not. We optimise the engine, not the paint. All work is performed with zero downtime and strict version control. Your website's design, functionality, and user experience remain 100% pixel-perfect — just significantly faster.",
 	},
 	{
 		id: 4,
@@ -241,30 +254,231 @@ const faqs = [
 	},
 	{
 		id: 5,
-		category: "pricing",
-		title: "Do you offer a performance guarantee?",
+		category: "services",
+		title: "Do you provide end-to-end digital solutions?",
 		content:
-			"Yes. We deal in data, not guesses. If we fail to meaningfully improve your Google PageSpeed scores and load time metrics as agreed upon in our initial proposal, you will receive a full refund. Zero risk.",
+			"Yes. Beyond performance optimisation, we deliver full-cycle digital services — from strategy and design through to development, deployment, and ongoing maintenance. Startups, SMBs, and enterprises all benefit from our single-team, full-stack approach.",
 	},
 	{
 		id: 6,
-		category: "pricing",
-		title: "Is this a one-time fee or monthly?",
+		category: "services",
+		title: "Which industries do you serve?",
 		content:
-			"Our core speed optimisation is a comprehensive one-time service. However, we offer optional monthly 'Speed Guard' plans to monitor Core Web Vitals continuously and fix new issues as you publish content or add plugins.",
+			"We have delivered projects across Finance, Healthcare, Education, Logistics, Travel, Real Estate, Entertainment, and E-Commerce. Each solution is tailored to the compliance, performance, and scalability demands of the specific industry.",
 	},
+
+	// ── Web Development ──────────────────────────────────────
 	{
 		id: 7,
-		category: "support",
-		title: "How do I verify the results?",
+		category: "web-development",
+		title: "What technologies do you use for web development?",
 		content:
-			"Transparency is everything. We provide a detailed 'Before & After' technical report using third-party tools like Google PageSpeed Insights and GTmetrix. You will see exactly what was fixed and the direct impact on your load times.",
+			"Our front-end stack centres on React and Next.js, paired with modern CSS frameworks for pixel-precise UI. On the back end, we use Node.js, Laravel, and Python with cloud-native infrastructure on AWS, GCP, or Azure — chosen based on your scalability requirements.",
 	},
 	{
 		id: 8,
-		category: "support",
-		title: "How do I get a quote?",
+		category: "web-development",
+		title: "Can you build a fully custom e-commerce store?",
 		content:
-			"Click 'Test Your Website' above to request a comprehensive manual audit. Our engineers will analyse your site's specific bottlenecks and provide a custom roadmap and quote within 24 hours.",
+			"Yes. We build bespoke e-commerce solutions on WooCommerce, Shopify, and headless architectures. Every store is optimised for conversion, Core Web Vitals compliance, and sub-second load times — because a one-second delay costs up to 7% in conversions.",
+	},
+	{
+		id: 9,
+		category: "web-development",
+		title: "Do you handle CMS integration?",
+		content:
+			"We integrate and extend leading CMS platforms including WordPress, Contentful, Sanity, and Strapi. We build custom themes, plugins, and headless front-ends that give your editors a great experience while keeping performance uncompromised.",
+	},
+	{
+		id: 10,
+		category: "web-development",
+		title: "Will my website be responsive and mobile-friendly?",
+		content:
+			"Every project we deliver is built mobile-first. We test across a wide range of real devices and screen sizes, ensuring flawless layouts, touch-optimised interactions, and fast loading on both 4G and low-bandwidth connections.",
+	},
+	{
+		id: 11,
+		category: "web-development",
+		title: "Do you provide post-launch performance monitoring?",
+		content:
+			"Yes. We offer ongoing maintenance plans that include Core Web Vitals monitoring, automated uptime alerts, security patching, and monthly performance reviews — so your site stays fast as your content and traffic grow.",
+	},
+
+	// ── App Development ──────────────────────────────────────
+	{
+		id: 12,
+		category: "app-development",
+		title: "Do you build native or cross-platform apps?",
+		content:
+			"Both. We develop native iOS (Swift) and Android (Kotlin) apps when platform-specific performance is critical, and use React Native or Flutter for cross-platform products where speed-to-market and code reuse are the priority.",
+	},
+	{
+		id: 13,
+		category: "app-development",
+		title: "How do you handle App Store and Play Store submission?",
+		content:
+			"We manage the entire release process — from provisioning profiles and code signing to store listing optimisation (ASO), screenshot design, and compliance reviews. We handle rejections and resubmissions so you can focus on your product.",
+	},
+	{
+		id: 14,
+		category: "app-development",
+		title: "Can you integrate third-party APIs and payment gateways?",
+		content:
+			"Yes. We regularly integrate Stripe, PayPal, Razorpay, Google Maps, Firebase, Twilio, and dozens of other APIs. Complex integrations are handled with robust error handling, retry logic, and thorough end-to-end testing.",
+	},
+	{
+		id: 15,
+		category: "app-development",
+		title: "What does your app development process look like?",
+		content:
+			"We follow a five-phase approach: Discovery & Strategy → UX Design & Prototyping → Agile Development → QA & Testing → Deployment & Maintenance. You receive weekly sprint demos and have direct Slack access to your development team throughout.",
+	},
+	{
+		id: 16,
+		category: "app-development",
+		title: "How do you ensure app performance and speed?",
+		content:
+			"Performance is engineered from the first line of code. We implement lazy loading, efficient state management, optimised API calls with caching, and native gesture handling. Apps are profiled with Xcode Instruments and Android Profiler before every release.",
+	},
+
+	// ── AI Development ───────────────────────────────────────
+	{
+		id: 17,
+		category: "ai-development",
+		title: "What types of AI solutions do you build?",
+		content:
+			"We design and deploy AI-powered automation workflows, machine learning models, natural language processing (NLP) solutions, recommendation engines, and computer vision systems. Each solution is purpose-built to solve a tangible business problem, not just for the sake of technology.",
+	},
+	{
+		id: 18,
+		category: "ai-development",
+		title: "Can you integrate AI into an existing product?",
+		content:
+			"Yes. Most of our AI engagements start with augmenting an existing platform — adding a conversational AI layer, a predictive analytics module, or intelligent search. We design clean API boundaries so AI features plug directly into your current architecture.",
+	},
+	{
+		id: 19,
+		category: "ai-development",
+		title: "How do you handle model training and fine-tuning?",
+		content:
+			"We support the full MLOps lifecycle: data collection and labelling, model selection, training on GPU-optimised infrastructure, evaluation, fine-tuning, and production deployment with monitoring for model drift. We work with PyTorch, TensorFlow, and Hugging Face.",
+	},
+	{
+		id: 20,
+		category: "ai-development",
+		title: "Is my data secure during AI model development?",
+		content:
+			"Data security is non-negotiable. We work under strict NDAs, use encrypted data pipelines, and can operate entirely within your private cloud environment. Sensitive datasets never leave your infrastructure unless you explicitly authorise it.",
+	},
+	{
+		id: 21,
+		category: "ai-development",
+		title: "Can AI help improve our SEO strategy?",
+		content:
+			"Absolutely. Our AI systems analyse SERP patterns, competitor content strategies, and keyword intent signals at scale — surfacing opportunities that manual research misses entirely. We use predictive modelling to prioritise actions with the highest ranking impact.",
+	},
+
+	// ── Digital Marketing ────────────────────────────────────
+	{
+		id: 22,
+		category: "digital-marketing",
+		title: "What does your SEO service include?",
+		content:
+			"Our SEO service covers technical SEO auditing, on-page optimisation, semantic keyword clustering, content strategy, schema markup, Core Web Vitals, and link-building campaigns. We track every metric in a live dashboard shared with your team.",
+	},
+	{
+		id: 23,
+		category: "digital-marketing",
+		title: "Do you run paid advertising campaigns?",
+		content:
+			"Yes. We manage Google Ads, Meta Ads, and LinkedIn campaigns end-to-end — from audience targeting and creative strategy to bid management, A/B testing, and conversion tracking. Every campaign is tied to measurable ROI, not vanity reach metrics.",
+	},
+	{
+		id: 24,
+		category: "digital-marketing",
+		title: "How long does SEO take to show results?",
+		content:
+			"Technical fixes and on-page improvements produce measurable movement in crawlability within days. Ranking improvements for competitive keywords typically follow within 3–6 months. We set realistic, data-backed milestones from day one — no vague promises.",
+	},
+	{
+		id: 25,
+		category: "digital-marketing",
+		title: "Do you create content as part of your SEO service?",
+		content:
+			"Yes. Our content team produces SEO-optimised articles, landing pages, and pillar content guided by our AI keyword research engine. Every piece is fact-checked, on-brand, and written to satisfy both Google's E-E-A-T signals and your readers.",
+	},
+	{
+		id: 26,
+		category: "digital-marketing",
+		title: "How do you measure digital marketing success?",
+		content:
+			"We track organic traffic growth, keyword position changes, click-through rates, conversion rates, cost per acquisition, and return on ad spend — all in a single live reporting dashboard. Monthly strategy calls ensure we continuously align on priorities.",
+	},
+
+	// ── Pricing ──────────────────────────────────────────────
+	{
+		id: 32,
+		category: "pricing",
+		title: "Do you offer a performance guarantee?",
+		content:
+			"Yes. We deal in data, not guesses. If we fail to meaningfully improve your Google PageSpeed scores and load time metrics as agreed in our initial proposal, you receive a full refund. Zero risk.",
+	},
+	{
+		id: 33,
+		category: "pricing",
+		title: "Is this a one-time fee or a monthly subscription?",
+		content:
+			"Our core speed optimisation is a comprehensive one-time service. We also offer optional monthly 'Speed Guard' plans to monitor Core Web Vitals continuously and resolve new issues as you publish content or add third-party scripts.",
+	},
+	{
+		id: 34,
+		category: "pricing",
+		title: "How is project pricing determined?",
+		content:
+			"Every project is scoped individually. Pricing is based on complexity, timeline, and the technologies involved. After a free discovery call, we provide a fixed-price proposal with no hidden costs — what we quote is what you pay.",
+	},
+	{
+		id: 35,
+		category: "pricing",
+		title: "Do you offer retainer or ongoing support plans?",
+		content:
+			"Yes. Our retainer plans cover a fixed number of development hours per month, priority support, proactive monitoring, and quarterly strategy reviews. Retainer clients also receive priority scheduling for new feature work.",
+	},
+	{
+		id: 36,
+		category: "pricing",
+		title: "Can startups with limited budgets work with you?",
+		content:
+			"Absolutely. We offer phased engagement models specifically designed for early-stage companies — starting with an MVP or a targeted audit, and scaling the scope as your business grows. We would rather grow with you than price you out.",
+	},
+
+	// ── Support ──────────────────────────────────────────────
+	{
+		id: 37,
+		category: "support",
+		title: "How do I verify the results of an optimisation?",
+		content:
+			"Transparency is everything. We provide a detailed Before & After technical report using third-party tools including Google PageSpeed Insights, GTmetrix, and WebPageTest. You will see exactly what was fixed and the direct impact on your load times.",
+	},
+	{
+		id: 38,
+		category: "support",
+		title: "How do I get a quote or start a project?",
+		content:
+			"Click 'Test Your Website' to request a comprehensive manual audit. Our engineers will analyse your site's specific bottlenecks and provide a custom roadmap and quote within 24 hours — no automated reports, no sales pressure.",
+	},
+	{
+		id: 39,
+		category: "support",
+		title: "What communication channels do you use during a project?",
+		content:
+			"We keep communication simple and transparent. You will get a dedicated Slack channel with your project team, weekly written updates, and a shared project tracker (Notion or Linear) with real-time progress. You are never left wondering what is happening.",
+	},
+	{
+		id: 40,
+		category: "support",
+		title: "What happens if an issue arises after delivery?",
+		content:
+			"All projects include a 30-day post-launch support window at no extra cost. Any regression or unexpected behaviour is treated as a priority and resolved immediately. After the 30-day period, ongoing support is available through our retainer plans.",
 	},
 ];

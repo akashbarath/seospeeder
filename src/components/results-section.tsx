@@ -67,7 +67,7 @@ export function ResultsSection() {
           className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6"
         >
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1] md:leading-[1.05]">
-            Engineered for instant rankings.
+            Engineered for instant rankings
           </h2>
           <p className="text-base md:text-xl text-zinc-500 dark:text-zinc-400 font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
             Performance is the new SEO. See how we transform sluggish sites into lightning-fast experiences that Google loves.

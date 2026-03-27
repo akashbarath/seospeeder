@@ -540,18 +540,17 @@ export function InteractiveAiWorkflow() {
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
 
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10 w-full overflow-hidden">
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto space-y-5 sm:space-y-6 mb-12 sm:mb-20"
+          className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6 mb-12 sm:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.15] sm:leading-[1.05]">
-            Elite Execution. <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>Flawless Delivery.
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1] md:leading-[1.05]">
+            Elite Execution <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>Flawless Delivery
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-zinc-700 dark:text-zinc-300 font-inter font-medium leading-relaxed max-w-2xl mx-auto px-2">
+          <p className="text-base md:text-xl text-zinc-500 dark:text-zinc-400 font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
             We don&apos;t rely on guesswork. Our full-stack SEO execution is powered by <span className="font-jetbrains font-bold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded-md text-[0.9em]">seospeeder.ai</span> — our proprietary software tool, mathematically structured and algorithmically perfect.
           </p>
 

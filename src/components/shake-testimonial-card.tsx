@@ -126,7 +126,7 @@ export function TestimonialSection() {
               <span className="section-title-word inline-block mr-2 md:mr-3">by</span>
               <span className="section-title-word inline-block mr-2 md:mr-3">fast-growing</span>
               <span className="section-title-word inline-block text-primary">companies</span>
-              <span className="section-title-word inline-block ml-2 md:ml-3">worldwide.</span>
+              <span className="section-title-word inline-block ml-2 md:ml-3">worldwide</span>
             </h2>
             <p className="section-desc text-muted-foreground text-lg md:text-xl font-primary leading-relaxed max-w-lg">
               Don&apos;t just take our word for it. See how seospeeder transforms website performance and rankings for businesses like yours.

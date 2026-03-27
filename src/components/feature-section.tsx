@@ -126,11 +126,11 @@ export function FeatureSection() {
 
 	return (
 		<div ref={container} className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible">
-			<div className="text-center space-y-4 max-w-3xl mx-auto bento-header">
-				<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-					Next-Gen SEO <Highlighter color="hsl(var(--foreground) / 0.1)" padding={0} strokeWidth={1} iterations={1}>Infrastructure</Highlighter>
+			<div className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6 bento-header">
+				<h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1] md:leading-[1.05]">
+					Next-Gen SEO Infrastructure
 				</h2>
-				<p className="text-muted-foreground text-lg sm:text-xl font-inter font-medium leading-relaxed">
+				<p className="text-base md:text-xl text-muted-foreground font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
 					Scale your organic growth with a comprehensive suite of AI-driven performance and ranking tools designed for the modern web.
 				</p>
 			</div>

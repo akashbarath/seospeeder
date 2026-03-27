@@ -2,452 +2,538 @@
 
 import { cn } from "@/lib/utils";
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useInView, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { 
-  Zap, 
-  Brain, 
-  Network, 
-  Cpu, 
-  Sparkles, 
-  Check,
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import {
+  Zap,
   TrendingUp,
+  ArrowUp,
+  CheckCircle2,
+  Clock,
+  Globe2,
   Activity,
-  LineChart,
-  Target,
-  Search,
-  Bot,
-  MessageSquare,
-  Binary,
   Layers,
-  FileSearch,
+  ScanLine,
+  Terminal,
   Link2,
-  Anchor,
-  Globe,
-  Database,
-  CpuIcon
+  FileText,
+  MousePointerClick,
+  CodeXml,
+  Tag,
+  Smartphone,
+  Unlink,
+  Waypoints,
 } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
+import { Card } from "@/components/ui/card";
+import {
+  CartesianGrid,
+  Area,
+  AreaChart,
+  XAxis,
+  YAxis,
+  ReferenceLine,
+} from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+/* ── Data ─────────────────────────────────────────────────── */
+
+const trafficData = [
+  { month: "Jan", organic: 4200, paid: 1800 },
+  { month: "Feb", organic: 5100, paid: 1900 },
+  { month: "Mar", organic: 6800, paid: 2100 },
+  { month: "Apr", organic: 7400, paid: 2000 },
+  { month: "May", organic: 9200, paid: 2300 },
+  { month: "Jun", organic: 11500, paid: 2200 },
+  { month: "Jul", organic: 14800, paid: 2400 },
+  { month: "Aug", organic: 18021, paid: 2500 },
+];
+
+const chartConfig = {
+  organic: { label: "Organic", color: "hsl(var(--primary))" },
+  paid:    { label: "Paid",    color: "hsl(var(--muted-foreground))" },
+} satisfies ChartConfig;
+
+const clusters = [
+  { topic: "Page Speed",     icon: Zap,               keywords: 142, share: 88, tags: ["core web vitals", "lcp", "performance", "speed clusters", "mobile flow"] },
+  { topic: "On-Page SEO",    icon: FileText,          keywords: 318, share: 76, tags: ["title tags", "meta desc", "headings", "schema", "pillar content"] },
+  { topic: "Link Building",  icon: Link2,             keywords: 207, share: 61, tags: ["backlinks", "authority", "anchor text", "niche clusters", "referral flow"] },
+  { topic: "Content Gaps",   icon: MousePointerClick, keywords: 91,  share: 94, tags: ["topic clusters", "pillar pages", "voids", "competitor gaps", "intent mapping"] },
+];
+
+const vitals = [
+  { label: "LCP",         value: "1.2s",  status: "good",  icon: Clock },
+  { label: "CLS",         value: "0.03",  status: "good",  icon: Activity },
+  { label: "FID",         value: "12ms",  status: "good",  icon: Zap },
+  { label: "TTFB",        value: "0.4s",  status: "good",  icon: ScanLine },
+  { label: "Back\nLinks",   value: "4,812", status: "info",  icon: Layers },
+  { label: "Crawl\nErrors", value: "0",     status: "good",  icon: CheckCircle2 },
+];
+
+/* ── Section ──────────────────────────────────────────────── */
 export function EliteMlSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  useGSAP(() => {
+    gsap.from(".eml-header", {
+      y: 40, opacity: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: containerRef.current, start: "top 85%" },
+    });
+    gsap.fromTo(gsap.utils.toArray(".eml-card"),
+      { y: 60, opacity: 0, scale: 0.97 },
+      {
+        y: 0, opacity: 1, scale: 1,
+        duration: 0.9, stagger: 0.1, ease: "back.out(1.2)",
+        scrollTrigger: { trigger: containerRef.current, start: "top 75%" },
+      }
+    );
+  }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-32 overflow-hidden md:overflow-visible">
-      <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 leading-[0.95] md:leading-[1.05]">
-          Powered by Elite <br />
-          <Highlighter color="hsl(var(--foreground) / 0.1)" padding={0} strokeWidth={1} iterations={1}>
-            Machine Learning
-          </Highlighter>
+    <div
+      ref={containerRef}
+      className="relative mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 md:px-8 lg:px-4 py-20 md:py-28 overflow-hidden md:overflow-visible"
+    >
+      {/* Header */}
+      <div className="text-center space-y-4 md:space-y-6 max-w-4xl mx-auto eml-header">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1] md:leading-[1.05]">
+          Powered by Elite<br />
+          Machine Learning
         </h2>
-        <p className="text-muted-foreground text-lg sm:text-xl font-inter font-medium leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base md:text-xl text-muted-foreground font-inter font-medium leading-relaxed max-w-2xl mx-auto opacity-80 px-4 md:px-0">
           We don&apos;t guess. We compute. Our proprietary AI pipelines analyze billions of ranking signals to deliver an unfair mathematical advantage in search.
         </p>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6 items-stretch">
-        {/* Predictive Intent Modeling */}
-        <InteractiveFeatureCard 
-          className="lg:col-span-4 lg:row-span-1"
-          title="Predictive Intent Modeling"
-          description="Our high-parameter LLMs analyze semantic relationships across trillions of tokens to predict intent shifts before they manifest in search."
-          action="Run LLM Inference"
-          icon={Brain}
-          accentColor="violet"
-          isInView={isInView}
-          index={0}
-          widget={<LlmIntentStream />}
-        />
+      {/* Bento grid */}
+      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
 
-        {/* Neural Link Graphs */}
-        <InteractiveFeatureCard 
-          className="lg:col-span-2 lg:row-span-1"
-          title="Neural Link Graphs"
-          description="Modern search authority is about entity validation. We build impregnable link graphs, connecting your brand entity to high-authority nodes."
-          action="Validate Entities"
-          icon={Link2}
-          accentColor="emerald"
-          isInView={isInView}
-          index={1}
-          widget={<NeuralBubbleForge />}
-        />
+        {/* Card 1 — Organic Traffic Growth (wide) */}
+        <BentoCard className="eml-card md:col-span-2 lg:col-span-4">
+          <TrafficGrowthVisual />
+        </BentoCard>
 
-        {/* Algorithm Decoding */}
-        <InteractiveFeatureCard 
-          className="lg:col-span-2 lg:row-span-1"
-          title="Algorithm Decoding"
-          description="Reverse-engineer ranking factors via SERP volatility analysis."
-          action="Extract Signals"
-          icon={Cpu}
-          accentColor="amber"
-          isInView={isInView}
-          index={2}
-          widget={<MatrixScannerWidget />}
-        />
+        {/* Card 2 — AI Crawl Score (narrow) */}
+        <BentoCard className="eml-card md:col-span-1 lg:col-span-2">
+          <CrawlScoreVisual />
+        </BentoCard>
 
-        {/* AI-Automated Content Gaps */}
-        <InteractiveFeatureCard 
-          className="lg:col-span-4 lg:row-span-1"
-          title="AI-Automated Content Gaps"
-          description="Instant competitor sitemap scanning to detect and exploit structural weaknesses and content voids."
-          action="Scan Competitors"
-          icon={Sparkles}
-          accentColor="rose"
-          isInView={isInView}
-          index={3}
-          widget={<ContentGapDiscovery />}
-        />
+        {/* Card 3 — Semantic Clusters (narrow) */}
+        <BentoCard className="eml-card md:col-span-1 lg:col-span-2">
+          <SemanticClustersVisual />
+        </BentoCard>
+
+        {/* Card 4 — Technical Health (wide, split layout) */}
+        <BentoCard className="eml-card md:col-span-2 lg:col-span-4 p-0">
+          <TechnicalHealthVisual />
+        </BentoCard>
+
       </div>
     </div>
   );
 }
 
-function InteractiveFeatureCard({ 
-  className, 
-  title, 
-  description, 
-  action, 
-  icon: Icon, 
-  accentColor,
-  isInView,
-  index,
-  widget
-}: { 
-  className?: string;
-  title: string;
-  description: string;
-  action: string;
-  icon: any;
-  accentColor: "violet" | "rose" | "amber" | "emerald";
-  isInView: boolean;
-  index: number;
-  widget: React.ReactNode;
-}) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+/* ── Shared card shell ────────────────────────────────────── */
+function BentoCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <Card className={cn(
+      "group relative overflow-hidden rounded-2xl border-2 bg-background px-5 py-6 md:px-8 md:pt-10 md:pb-8 flex flex-col shadow-none",
+      className
+    )}>
+      {children}
+    </Card>
+  );
+}
 
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
+function CardTitle({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <h3 className={cn("font-medium text-foreground text-lg group-hover:text-primary transition-colors duration-300", className)}>
+      {children}
+    </h3>
+  );
+}
+function CardDesc({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <p className={cn("text-muted-foreground text-sm font-inter font-medium leading-relaxed", className)}>
+      {children}
+    </p>
+  );
+}
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["4deg", "-4deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-4deg", "4deg"]);
-
-  const colors = {
-    violet: {
-      light: "bg-violet-500/10 border-violet-500/20 text-violet-600 dark:text-violet-400",
-      icon: "text-violet-500",
-      accent: "violet-500",
-      bgHover: "group-hover:bg-violet-500/[0.02]"
-    },
-    rose: {
-      light: "bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400",
-      icon: "text-rose-500",
-      accent: "rose-500",
-      bgHover: "group-hover:bg-rose-500/[0.02]"
-    },
-    amber: {
-      light: "bg-amber-500/10 border-amber-500/20 text-amber-600 dark:text-amber-400",
-      icon: "text-amber-500",
-      accent: "amber-500",
-      bgHover: "group-hover:bg-amber-500/[0.02]"
-    },
-    emerald: {
-      light: "bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400",
-      icon: "text-emerald-500",
-      accent: "emerald-500",
-      bgHover: "group-hover:bg-emerald-500/[0.02]"
-    },
-  };
-
-  const c = colors[accentColor];
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    x.set(mouseX / width - 0.5);
-    y.set(mouseY / height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+/* ══════════════════════════════════════════════════════════
+   CARD 1 — Organic Traffic Growth
+══════════════════════════════════════════════════════════ */
+function TrafficGrowthVisual() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={cn(
-        "group relative flex flex-col rounded-[2.5rem] border-2 bg-white dark:bg-zinc-950 p-6 md:p-8 overflow-hidden transition-all duration-300 hover:border-zinc-200 dark:hover:border-zinc-800 shadow-none perspective-1000",
-        className,
-        c.bgHover
-      )}
-    >
-      <div className="flex flex-col h-full relative z-10 space-y-8">
-        <div className="flex items-start justify-between">
-          <div className="flex size-[52px] md:size-14 shrink-0 items-center justify-center rounded-full border-[3.5px] border-white dark:border-zinc-950 ring-[3.5px] ring-zinc-100 dark:ring-zinc-800/80 bg-white dark:bg-zinc-950 group-hover:ring-zinc-200 dark:group-hover:ring-zinc-700 transition-all duration-500">
-             <div className="flex size-full items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-300">
-                <div className="text-zinc-400 dark:text-zinc-500 transition-colors duration-300 flex leading-none group-hover:text-black dark:group-hover:text-white">
-                   <Icon size={20} />
-                </div>
-             </div>
+    <>
+      <div className="flex-1 relative">
+        {/* Stats row */}
+        <div className="flex items-start gap-6 mb-4">
+          <div>
+            <p className="text-3xl font-bold text-foreground tracking-tight">18,021</p>
+            <p className="text-xs text-muted-foreground mt-0.5 font-inter">Organic sessions / mo.</p>
           </div>
-          
-          <div className={cn("flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 transition-all duration-300 active:scale-95 group/btn cursor-pointer", c.light)}>
-            <Check size={12} strokeWidth={3} className="shrink-0" />
-            <span className="text-[10px] font-black uppercase tracking-[0.1em] leading-none mt-0.5">{action}</span>
+          <div className="flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-full border border-primary/20 bg-primary/5">
+            <ArrowUp className="size-3 text-primary" />
+            <span className="text-xs font-semibold text-primary">+336%</span>
+          </div>
+          <div className="ml-auto flex items-center gap-4 self-start mt-1">
+            <div className="flex items-center gap-1.5">
+              <span className="size-2 rounded-full bg-primary inline-block" />
+              <span className="text-[11px] text-muted-foreground font-medium">Organic</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="size-2 rounded-full bg-muted-foreground/50 inline-block" />
+              <span className="text-[11px] text-muted-foreground font-medium">Paid</span>
+            </div>
           </div>
         </div>
 
-        <div className="flex-1 min-h-[220px] flex items-center justify-center relative">
-           {widget}
-        </div>
-        
-        <div className="space-y-3 mt-auto">
-          <h3 className="text-xl md:text-2xl font-black tracking-tight text-zinc-900 dark:text-white leading-none">
-            {title}
-          </h3>
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base font-inter font-medium leading-relaxed max-w-xl group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors">
-            {description}
-          </p>
+        {/* Chart */}
+        <div className="h-44 md:h-52 w-full">
+          {mounted ? (
+            <ChartContainer config={chartConfig} className="h-full w-full aspect-auto">
+              <AreaChart data={trafficData} margin={{ top: 8, left: 0, right: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="organicGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%"  stopColor="hsl(var(--primary))" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                  </linearGradient>
+                  <linearGradient id="paidGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%"  stopColor="hsl(var(--muted-foreground))" stopOpacity={0.08} />
+                    <stop offset="95%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid vertical={false} strokeDasharray="3 3" strokeOpacity={0.1} />
+                <XAxis
+                  dataKey="month" tickLine={false} axisLine={false}
+                  tickMargin={8} fontSize={10} stroke="hsl(var(--muted-foreground))"
+                />
+                <YAxis hide domain={[0, 22000]} />
+                <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+                <Area
+                  dataKey="organic" type="monotone"
+                  stroke="hsl(var(--primary))" strokeWidth={2.5}
+                  fill="url(#organicGrad)"
+                  dot={false} activeDot={{ r: 5, strokeWidth: 0 }}
+                  isAnimationActive animationDuration={1800} animationEasing="ease-in-out"
+                />
+                <Area
+                  dataKey="paid" type="monotone"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth={1.5}
+                  strokeDasharray="5 4"
+                  fill="url(#paidGrad)"
+                  dot={false} opacity={0.6}
+                  isAnimationActive animationDuration={2200}
+                />
+              </AreaChart>
+            </ChartContainer>
+          ) : (
+            <div className="h-full w-full bg-muted/5 animate-pulse rounded-lg" />
+          )}
         </div>
       </div>
-    </motion.div>
+
+      <div className="mt-6 space-y-1.5">
+        <CardTitle>Organic Traffic Growth</CardTitle>
+        <CardDesc>
+          Our AI continuously adapts your content strategy to capture rising search demand — turning clicks into compounding organic growth.
+        </CardDesc>
+      </div>
+    </>
   );
 }
 
-/* ─── Widget Components ─── */
+/* ══════════════════════════════════════════════════════════
+   CARD 2 — AI Crawl Score
+══════════════════════════════════════════════════════════ */
+function CrawlScoreVisual() {
+  const score = 97;
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    let n = 0;
+    const t = setInterval(() => {
+      n += 2;
+      if (n >= score) { setVal(score); clearInterval(t); } else setVal(n);
+    }, 18);
+    return () => clearInterval(t);
+  }, []);
 
-function LlmIntentStream() {
-  const tokens = ["prediction", "intent", "cluster", "vector", "semantic", "ranking", "inference", "context", "analysis"];
-  
-  return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center gap-4 overflow-hidden py-4">
-       <div className="absolute inset-0 bg-violet-500/[0.02] rounded-[2rem]" />
-       
-       <div className="flex flex-wrap items-center justify-center gap-2 max-w-[200px]">
-          {tokens.map((token, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ 
-                opacity: [0, 1, 0], 
-                scale: [0.8, 1, 0.8],
-                y: [5, -5, 5]
-              }}
-              transition={{ 
-                duration: 3 + i * 0.2, 
-                repeat: Infinity, 
-                delay: i * 0.4,
-                ease: "easeInOut"
-              }}
-              className="px-2 py-1 rounded-md bg-violet-500/10 border border-violet-500/20 text-[8px] font-mono font-bold text-violet-500 uppercase tracking-tighter"
-            >
-               {token}
-            </motion.div>
-          ))}
-       </div>
+  const r = 45;
+  const circ = 2 * Math.PI * r;
 
-       <div className="relative size-16 flex items-center justify-center">
-          <div className="absolute inset-0 bg-violet-500/20 rounded-full blur-xl animate-pulse" />
-          <Bot className="size-8 text-violet-500 relative z-10" />
-          
-          {/* Animated Orbiting Spheres */}
-          {[0, 120, 240].map((angle, i) => (
-            <motion.div
-              key={i}
-              className="absolute size-1.5 bg-violet-400 rounded-full"
-              animate={{ 
-                top: `${(50 + 40 * Math.sin((angle + 360) * Math.PI / 180)).toFixed(3)}%`,
-                left: `${(50 + 40 * Math.cos((angle + 360) * Math.PI / 180)).toFixed(3)}%`,
-              }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
-          ))}
-       </div>
-
-       <div className="text-[10px] font-medium text-violet-500/60 font-mono tracking-widest uppercase">
-          inference_active
-       </div>
-    </div>
-  );
-}
-
-function NeuralBubbleForge() {
-  const bubbles = [
-    { x: 30, y: -60, size: 24, delay: 0 },
-    { x: -80, y: -20, size: 16, delay: 0.5 },
-    { x: -40, y: 70, size: 20, delay: 1 },
-    { x: 70, y: 40, size: 14, delay: 1.5 },
-    { x: 90, y: -10, size: 18, delay: 2 },
-    { x: -70, y: -70, size: 12, delay: 2.5 }
+  const checks = [
+    { label: "Schema markup",    icon: CodeXml },
+    { label: "Canonical tags",   icon: Tag },
+    { label: "Mobile-first",     icon: Smartphone },
+    { label: "Broken links",     icon: Unlink },
+    { label: "Redirect chains",  icon: Waypoints },
   ];
 
   return (
-    <div className="relative size-56 flex items-center justify-center">
-       <div className="absolute inset-0 bg-emerald-500/[0.03] rounded-full blur-3xl" />
-       
-       {/* Central Brand Identity Node */}
-       <motion.div 
-         animate={{ boxShadow: ["0 0 20px rgba(16,185,129,0.2)", "0 0 40px rgba(16,185,129,0.4)", "0 0 20px rgba(16,185,129,0.2)"] }}
-         transition={{ duration: 4, repeat: Infinity }}
-         className="relative size-16 bg-emerald-500 rounded-full flex items-center justify-center z-20 border-4 border-white dark:border-zinc-900 shadow-xl"
-       >
-          <Target className="text-white size-8" />
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-             BRAND_ENTITY
+    <>
+      <div className="flex flex-col items-center gap-6 flex-1">
+        {/* Donut */}
+        <div className="relative size-32 flex items-center justify-center mt-2 group">
+          {/* Subtle Glow Behind */}
+          <div className="absolute inset-0 bg-primary/10 rounded-full blur-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          
+          <svg className="absolute inset-0 size-full -rotate-90 drop-shadow-sm" viewBox="0 0 100 100">
+            {/* Background Track */}
+            <circle cx="50" cy="50" r={r} fill="none" stroke="currentColor"
+              strokeWidth="2.5" className="text-border/60" />
+            
+            {/* Animated Progress */}
+            <motion.circle
+              cx="50" cy="50" r={r} fill="none"
+              stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round"
+              strokeDasharray={circ}
+              initial={{ strokeDashoffset: circ }}
+              animate={{ strokeDashoffset: circ - (val / 100) * circ }}
+              transition={{ duration: 1.8, ease: "easeOut" }}
+              className="drop-shadow-[0_0_8px_rgba(var(--primary),0.8)]"
+            />
+            
+            {/* Outer faint dotted ring */}
+            <circle cx="50" cy="50" r={49} fill="none" stroke="currentColor"
+              strokeWidth="0.5" strokeDasharray="1 3" className="text-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+          </svg>
+          
+          <div className="flex flex-col items-center z-10 transform transition-transform duration-500 group-hover:scale-105">
+            <span className="text-4xl font-bold font-inter text-foreground tracking-tight leading-none drop-shadow-sm">{val}</span>
+            <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-[0.2em] mt-1.5 opacity-80">Health</span>
           </div>
-       </motion.div>
+        </div>
 
-       {/* Asymmetric Floating Bubbles */}
-       {bubbles.map((b, i) => (
-         <React.Fragment key={i}>
-            {/* Liquid Connection */}
-            <svg className="absolute inset-0 size-full pointer-events-none overflow-visible">
-               <motion.line 
-                 x1="50%" y1="50%" 
-                 x2={`calc(50% + ${b.x}px)`} 
-                 y2={`calc(50% + ${b.y}px)`}
-                 stroke="currentColor" 
-                 strokeWidth="1.5"
-                 className="text-emerald-500/20"
-                 initial={{ pathLength: 0, opacity: 0 }}
-                 animate={{ pathLength: 1, opacity: 1 }}
-                 transition={{ duration: 2, delay: b.delay }}
-               />
-            </svg>
-
-            {/* Entity Bubble */}
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: 1, 
-                opacity: 1,
-                x: [b.x, b.x + 5, b.x - 5, b.x],
-                y: [b.y, b.y - 5, b.y + 5, b.y]
-              }}
-              transition={{ 
-                type: "spring", 
-                delay: b.delay,
-                x: { duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
-                y: { duration: 5 + i, repeat: Infinity, ease: "easeInOut" }
-              }}
-              className="absolute rounded-full border-2 border-emerald-500/30 bg-white dark:bg-zinc-800 shadow-sm flex items-center justify-center p-1"
-              style={{
-                width: b.size,
-                height: b.size,
-                left: "calc(50% - " + (b.size/2) + "px)",
-                top: "calc(50% - " + (b.size/2) + "px)"
-              }}
-            >
-               <div className="size-full bg-emerald-500/10 rounded-full flex items-center justify-center">
-                  <motion.div 
-                     animate={{ opacity: [0.3, 0.7, 0.3] }}
-                     transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
-                     className="size-1 bg-emerald-500 rounded-full" 
-                  />
-               </div>
-            </motion.div>
-         </React.Fragment>
-       ))}
-    </div>
-  );
-}
-
-function ContentGapDiscovery() {
-  return (
-    <div className="relative w-full h-full p-6 flex items-center justify-center overflow-hidden">
-       <div className="absolute inset-0 bg-rose-500/[0.02] rounded-[2rem]" />
-       
-       <div className="w-full max-w-[280px] space-y-4">
-          {/* Competitor Sitemap Visualization */}
-          <div className="flex flex-col gap-3">
-             {[1, 2, 3].map((row) => (
-               <div key={row} className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((item) => {
-                    const isGap = (row === 2 && item === 3) || (row === 1 && item === 2) || (row === 3 && item === 5);
-                    return (
-                      <motion.div
-                        key={item}
-                        initial={false}
-                        animate={isGap ? { 
-                          background: ["rgba(244,63,94,0)", "rgba(244,63,94,0.4)", "rgba(244,63,94,0)"],
-                          borderColor: ["transparent", "rgba(244,63,94,0.4)", "transparent"]
-                        } : {}}
-                        transition={{ duration: 3, repeat: Infinity, delay: item * 0.2 }}
-                        className={cn(
-                          "flex-1 h-3 rounded-md border-2",
-                          isGap ? "border-dashed" : "bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
-                        )}
-                      >
-                         {isGap && (
-                            <motion.div 
-                               animate={{ opacity: [0, 1, 0] }}
-                               transition={{ duration: 1, repeat: Infinity }}
-                               className="w-full h-full flex items-center justify-center"
-                            >
-                               <Sparkles size={6} className="text-rose-500" />
-                            </motion.div>
-                         )}
-                      </motion.div>
-                    );
-                  })}
-               </div>
-             ))}
-          </div>
-
-          <div className="flex items-center gap-4 mt-6">
-             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-rose-500/20 to-transparent" />
-             <div className="flex items-center gap-2 group/status px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20">
-                <FileSearch size={10} className="text-rose-500 animate-bounce" />
-                <span className="text-[8px] font-black font-mono text-rose-500 tracking-tighter uppercase italic">Site_Map_Scanning...</span>
-             </div>
-             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-rose-500/20 to-transparent" />
-          </div>
-
-          <div className="flex justify-between items-center text-[9px] font-medium text-zinc-400 font-mono">
-             <span>SITEMAP_INDEX: 4,012</span>
-             <span className="text-rose-500 font-black">+32 GAPS DETECTED</span>
-          </div>
-       </div>
-    </div>
-  );
-}
-
-function MatrixScannerWidget() {
-  return (
-    <div className="w-full max-w-[260px] flex flex-col rounded-xl overflow-hidden shadow-xl dark:shadow-2xl border-2 border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 relative z-10 text-left font-jetbrains">
-      {/* OS Window Header */}
-      <div className="flex items-center px-4 py-2.5 bg-zinc-100 dark:bg-zinc-900 border-b-2 border-zinc-200 dark:border-zinc-800 justify-between">
-         <div className="flex gap-1.5">
-           <div className="size-2.5 rounded-full bg-rose-400 dark:bg-rose-500 border border-rose-500 dark:border-rose-600" />
-           <div className="size-2.5 rounded-full bg-amber-400 dark:bg-amber-500 border border-amber-500 dark:border-amber-600" />
-           <div className="size-2.5 rounded-full bg-emerald-400 dark:bg-emerald-500 border border-emerald-500 dark:border-emerald-600" />
-         </div>
-         <span className="text-[9px] text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">LIVE_DATA // NODE_04</span>
+        {/* Checks */}
+        <div className="w-max mx-auto space-y-2 mt-2">
+          {checks.map((c) => {
+            const Icon = c.icon;
+            return (
+              <div key={c.label} className="flex items-center gap-3">
+                <div className="flex size-5 items-center justify-center rounded-md bg-primary/10 border border-primary/20">
+                  <Icon className="size-3 text-primary shrink-0 opacity-90" />
+                </div>
+                <span className="text-xs text-foreground font-medium">{c.label}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      
-      {/* Code Editor Body */}
-      <div className="p-4 text-[9px] sm:text-[10px] leading-relaxed relative flex bg-white dark:bg-[#0d0d0d]">
-        <div className="flex flex-col text-zinc-400 dark:text-zinc-600 select-none pr-3 border-r-2 border-zinc-100 dark:border-zinc-800/50 text-right">
-          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+
+      <div className="mt-6 space-y-1.5 text-center">
+        <CardTitle>AI Site Health Audit</CardTitle>
+        <CardDesc>
+          Crawls 50,000 pages in minutes and surfaces every technical issue before it costs you rankings.
+        </CardDesc>
+      </div>
+    </>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════
+   CARD 3 — Semantic Keyword Clusters
+══════════════════════════════════════════════════════════ */
+function SemanticClustersVisual() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setActive((p) => (p + 1) % clusters.length), 2800);
+    return () => clearInterval(t);
+  }, []);
+
+  const cl = clusters[active];
+
+  return (
+    <>
+      <div className="flex flex-col gap-4 flex-1">
+        {/* Premium Animated Icon Tabs */}
+        <div className="relative flex w-full bg-muted/40 p-1.5 rounded-xl border border-border/60">
+          {clusters.map((c, i) => {
+            const isActive = i === active;
+            return (
+              <button
+                key={c.topic}
+                onClick={() => setActive(i)}
+                className={cn(
+                  "group relative z-10 flex flex-1 items-center justify-center p-2.5 sm:py-2.5 rounded-lg transition-all duration-300 outline-none",
+                  isActive
+                    ? "text-foreground drop-shadow-sm"
+                    : "text-muted-foreground hover:text-foreground/80"
+                )}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="cluster-active-pill"
+                    className="absolute inset-0 bg-background border border-border/50 shadow-sm rounded-lg"
+                    style={{ zIndex: -1 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                
+                <c.icon className="size-5" />
+              </button>
+            );
+          })}
         </div>
-        <div className="pl-3 flex flex-col w-full text-zinc-600 dark:text-zinc-300 whitespace-nowrap">
-           <span><span className="text-amber-600 dark:text-amber-400">SIGNALS_DETECTED</span>: <span className="text-emerald-600 dark:text-emerald-400">12,401</span></span>
-           <span><span className="text-violet-600 dark:text-violet-400">SERP_VOLATILITY</span>: <span className="text-rose-600 dark:text-rose-400">HIGH</span></span>
-           <span><span className="text-emerald-600 dark:text-emerald-400">LSI_NODES</span>: <span className="text-zinc-500 dark:text-[#a1a1aa]">VALIDATED</span></span>
-           <span><span className="text-amber-600 dark:text-amber-400">RANK_VELOCITY</span>: <span className="text-emerald-600 dark:text-emerald-400">+12.4%</span></span>
-           <span><span className="text-violet-600 dark:text-violet-400">E-E-A-T_SCORE</span>: <span className="text-sky-600 dark:text-sky-400">0.98</span></span>
-           <span><span className="text-rose-600 dark:text-rose-400">DOM_INTEGRITY</span>: <span className="text-emerald-600 dark:text-emerald-400">OPTIMAL</span></span>
+
+        {/* Active cluster detail */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, scale: 0.98, y: 5 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.98, y: -5 }}
+            transition={{ duration: 0.3 }}
+            className="flex-1 rounded-xl border border-border/70 bg-card p-5 shadow-sm flex flex-col gap-4 relative overflow-hidden group/cluster"
+          >
+            {/* Subtle aesthetic glow */}
+            <div className="absolute top-0 right-0 -m-8 size-32 bg-primary/10 rounded-full blur-3xl pointer-events-none transition-opacity duration-500 opacity-50 group-hover/cluster:opacity-100" />
+
+            <div className="flex items-start justify-between z-10">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <cl.icon className="size-3.5 text-primary" />
+                  <span className="text-[13px] font-bold text-foreground uppercase tracking-wide">{cl.topic}</span>
+                </div>
+                <p className="text-[11px] text-muted-foreground font-medium pl-5">{cl.keywords} high-intent terms</p>
+              </div>
+              
+              <div className="text-right">
+                <span className="text-[8px] font-semibold uppercase tracking-[0.1em] text-muted-foreground block mb-0">Opportunity</span>
+                <span className="text-lg font-black font-inter text-primary tracking-tighter drop-shadow-sm leading-none">{cl.share}%</span>
+              </div>
+            </div>
+
+            {/* Keyword pills - Limited to 2 lines */}
+            <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/40 z-10 max-h-[60px] overflow-hidden">
+              {cl.tags.map((t) => (
+                <span 
+                  key={t} 
+                  className="text-[10px] font-semibold px-2.5 py-1 rounded-md bg-muted/30 border border-border/50 text-foreground/80 hover:text-foreground hover:bg-primary/5 hover:border-primary/30 transition-all duration-300 cursor-default"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="mt-6 space-y-1.5 text-center">
+        <CardTitle>Semantic Keyword Clusters</CardTitle>
+        <CardDesc>
+          Groups thousands of keywords by topic so your content strategy always targets what people actually search for.
+        </CardDesc>
+      </div>
+    </>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════
+   CARD 4 — Technical Health (split layout)
+══════════════════════════════════════════════════════════ */
+function TechnicalHealthVisual() {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(useSpring(y), [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(useSpring(x), [-0.5, 0.5], ["-5deg", "5deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - r.left) / r.width - 0.5);
+    y.set((e.clientY - r.top) / r.height - 0.5);
+  };
+
+  return (
+    <div
+      className="flex flex-col sm:grid sm:h-full sm:grid-cols-2"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+    >
+      {/* Left: copy */}
+      <div className="relative z-10 space-y-4 p-6 pt-4 md:pt-6 md:pb-8 md:pl-10 pointer-events-none flex flex-col justify-start">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2.5 mb-2">
+            <span className="relative flex size-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 duration-1000"></span>
+              <span className="relative inline-flex size-2.5 rounded-full bg-primary"></span>
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Live Connection</span>
+          </div>
+          
+          <CardTitle className="text-xl leading-tight">Technical SEO Command Center</CardTitle>
+          <CardDesc className="text-pretty max-w-[300px]">
+            Core Web Vitals, crawl health, and backlink profiles — monitored in real time with actionable alerts before rankings slip.
+          </CardDesc>
         </div>
+
+        {/* Upgraded Stat Grid */}
+        <div className="grid grid-cols-2 gap-6 pt-5 mt-2 border-t border-border/50">
+          {[
+            { label: "Pages Monitored", val: "50,000+", fill: "100%" },
+            { label: "Avg. Audit Time", val: "58s",     fill: "85%"  },
+          ].map((s) => (
+            <div key={s.label} className="flex flex-col">
+              <span className="text-2xl font-bold font-inter text-foreground tracking-tight drop-shadow-sm">{s.val}</span>
+              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mt-1">{s.label}</span>
+              <div className="h-0.5 w-full bg-muted/40 mt-3 rounded-full overflow-hidden">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: s.fill }}
+                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+                  className="h-full bg-primary/80" 
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right: vitals grid */}
+      <div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto mt-4 sm:mt-0 px-4 sm:px-0 overflow-hidden sm:overflow-visible">
+        <motion.div
+          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          className="relative sm:absolute sm:-right-1 sm:-bottom-1 rounded-xl sm:rounded-none sm:rounded-tl-md border-2 bg-card p-4 shadow-2xl transition-shadow duration-500 group-hover:shadow-primary/10 w-full sm:w-auto"
+        >
+          <div className="grid grid-cols-2 gap-2 min-w-[160px]">
+            {vitals.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: i * 0.06 }}
+                  className="rounded-xl border border-border/60 bg-background px-3 py-2.5 hover:border-primary/30 transition-colors"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="text-[8px] font-semibold uppercase tracking-widest text-muted-foreground whitespace-pre-line leading-tight">{v.label}</p>
+                    <Icon className="size-2.5 text-foreground" />
+                  </div>
+                  <p className={cn(
+                    "text-xs font-bold",
+                    (v.status === "good" || v.status === "info") ? "text-foreground" : "text-muted-foreground"
+                  )}>{v.value}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
