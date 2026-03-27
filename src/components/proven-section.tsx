@@ -19,6 +19,7 @@ import {
   Zap,
   Trophy,
   ShieldCheck,
+  LayoutDashboard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -157,19 +158,19 @@ function AnimatedValue({ value, inView }: { value: string; inView: boolean }) {
 const METRIC_DATA: Record<string, { value: string; description: string }> = {
   pagespeed: {
     value: "99+",
-    description: "We literally make your site load in the blink of an eye. Google loves fast sites, and we make sure yours passes every Core Web Vitals test with flying colours so you can easily grab those top search spots.",
+    description: "We optimize your site to pass every Core Web Vitals test with flying colors, ensuring instant load times and top search rankings.",
   },
   roi: {
     value: "3.5x",
-    description: "Think of speed as the secret sauce for your bottom line. When your site feels snappy, people actually stick around, read your stuff, and buy what you're selling. We help you turn site speed into real business growth.",
+    description: "Scale your business by transforming site speed into a conversion engine that keeps users engaged and drives measurable growth.",
   },
   indexation: {
     value: "100%",
-    description: "There's nothing worse than publishing great content that Google never finds. We hook up a priority pipeline straight to search engines, so your new pages get scooped up and ranked the second they go live.",
+    description: "Direct priority pipeline to search engines ensuring your new content is discovered, crawled, and ranked the moment it's published.",
   },
   monitoring: {
     value: "24/7",
-    description: "We're your website's personal bodyguard. We monitor your performance around the clock and alert you if anything drops, so you never have to worry about unnoticed speed issues hurting your rankings.",
+    description: "24/7 performance surveillance with real-time alerts to proactively protect your search visibility from any speed drops.",
   },
 };
 
@@ -369,28 +370,33 @@ const PerformanceDashboard = () => (
   <div className="flex flex-col gap-4 h-full">
     <motion.div 
       variants={itemVariants} 
-      className="relative p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+      className="relative p-5 sm:p-6 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
     >
       <div className="flex flex-col gap-4 relative z-10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="size-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
-              <Rocket size={14} className="text-emerald-500" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="size-9 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
+              <Rocket size={16} className="text-emerald-500" />
             </div>
-            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
-              LCP (Largest Contentful Paint)
-            </span>
+            <div className="flex flex-col">
+              <span className="text-[10px] sm:text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest leading-none">
+                LCP
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-tight mt-1">
+                Largest Contentful Paint
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border-2 border-emerald-500/20">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border-2 border-emerald-500/20 w-fit">
             <Check size={12} className="text-emerald-500" strokeWidth={3} />
             <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Passing</span>
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-5xl font-semibold tracking-tighter text-zinc-900 dark:text-zinc-50 leading-none">
+          <span className="text-4xl sm:text-5xl font-semibold tracking-tighter text-zinc-900 dark:text-zinc-50 leading-none">
             0.8s
           </span>
-          <div className="w-full h-1 bg-muted rounded-full overflow-hidden mt-1">
+          <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden mt-1">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "92%" }}
@@ -400,42 +406,48 @@ const PerformanceDashboard = () => (
         </div>
         <div className="flex items-center gap-2 mt-1">
           <div className="size-1.5 rounded-full bg-emerald-500" />
-          <span className="text-[11px] text-zinc-700 dark:text-zinc-300 font-medium uppercase tracking-wider">
+          <span className="text-[10px] sm:text-[11px] text-zinc-700 dark:text-zinc-300 font-medium uppercase tracking-wider">
             Top 1% of sites globally
           </span>
         </div>
       </div>
     </motion.div>
 
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4">
       {[
-        { val: "0.01", label: "CLS", desc: "Stable Layout" },
-        { val: "12ms", label: "INP", desc: "Ultra Responsive" }
+        { val: "0.01", label: "CLS", desc: "Cumulative Layout Shift", icon: LayoutDashboard },
+        { val: "12ms", label: "INP", desc: "Interaction to Paint", icon: Zap }
       ].map((card, i) => (
         <motion.div 
           key={i}
           variants={itemVariants}
-          className="p-5 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-3 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+          className="p-4 sm:p-5 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-900 flex flex-col gap-3 transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
         >
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-[0.2em]">
-              {card.label}
-            </span>
-            <div className="size-5 rounded-md bg-emerald-500/10 flex items-center justify-center">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+               <div className="size-6 rounded-md bg-emerald-500/5 flex items-center justify-center">
+                  <card.icon size={12} className="text-emerald-500" />
+               </div>
+               <span className="text-[10px] font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-[0.2em]">
+                 {card.label}
+               </span>
+            </div>
+            <div className="size-5 rounded-md bg-emerald-500/10 flex items-center justify-center shrink-0">
               <Check size={10} className="text-emerald-500" />
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="text-2xl font-normal text-zinc-900 dark:text-zinc-50 tracking-tighter leading-none">
+            <span className="text-xl sm:text-2xl font-normal text-zinc-900 dark:text-zinc-50 tracking-tighter leading-none">
               {card.val}
             </span>
-            <span className="text-[10px] text-zinc-600 dark:text-zinc-400 mt-1 font-medium">{card.desc}</span>
+            <span className="text-[9px] sm:text-[10px] text-zinc-500 dark:text-zinc-400 mt-1 font-medium leading-tight line-clamp-1">{card.desc}</span>
           </div>
         </motion.div>
       ))}
     </div>
   </div>
 );
+
 
 const SeoDashboard = () => (
   <div className="flex flex-col h-full not-prose gap-4">

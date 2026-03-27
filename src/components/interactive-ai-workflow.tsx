@@ -7,7 +7,7 @@ import {
   Zap, CheckCircle2, Cpu, ShieldCheck, Globe, TrendingUp, 
   GitCommitVertical, ShoppingCart, Compass, BookOpen, MapPin, 
   Navigation, BarChart3, Brain, Server, Cloud, Satellite, 
-  Activity, Wifi, Layers 
+  Activity, Wifi, Layers, Trophy, Users, Database, Rocket,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/components/ui/code-block";
@@ -49,11 +49,11 @@ const processes = [
     shadow: "shadow-blue-500/20",
     bg: "bg-blue-500/10",
     text: "text-blue-500",
-    description: "Our semantic engines map entire user vertical journeys. We predict search intent clusters, evaluate query difficulty via neural transformers, and expose high-volume, low-competition gap clusters for rapid dominance.",
+    description: "Map entire user vertical journeys with neural transformers to expose high-volume, low-competition gap clusters for rapid market dominance.",
     metrics: [
-      { label: "LSI Vector Gap", calc: "Optimized" },
-      { label: "Predictive Intent", calc: "98.5%" },
-      { label: "Cluster Density", calc: "Maximized" },
+      { label: "LSI Vector Gap", calc: "Optimized", icon: Layers },
+      { label: "Predictive Intent", calc: "98.5%", icon: Brain },
+      { label: "Cluster Density", calc: "Maximized", icon: Activity },
     ],
     demo: (
       <div className="w-full h-full rounded-3xl border-2 border-zinc-200 dark:border-zinc-800 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden flex flex-col items-center justify-center gap-5 relative">
@@ -137,11 +137,11 @@ const processes = [
     shadow: "shadow-emerald-500/20",
     bg: "bg-emerald-500/10",
     text: "text-emerald-500",
-    description: "We architect content using Large Language Models mathematically fine-tuned for E-E-A-T. Utilizing semantic distance mapping, we ensure 100% entity coverage, topical authority, and algorithmic readability.",
+    description: "Architect content using fine-tuned LLMs for E-E-A-T, ensuring 100% entity coverage, topical authority, and algorithmic readability.",
     metrics: [
-      { label: "Topical Authority", calc: "Level 5" },
-      { label: "Semantic Score", calc: "99/100" },
-      { label: "Entity Density", calc: "Ideal" },
+      { label: "Topical Authority", calc: "Level 5", icon: Trophy },
+      { label: "Semantic Score", calc: "99/100", icon: Sparkles },
+      { label: "Entity Density", calc: "Ideal", icon: Database },
     ],
     demo: (
       <div className="w-full h-full rounded-3xl border-2 border-zinc-200 dark:border-zinc-800 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden flex flex-col items-center justify-center gap-4 relative">
@@ -178,11 +178,11 @@ const processes = [
     shadow: "shadow-violet-500/20",
     bg: "bg-violet-500/10",
     text: "text-violet-500",
-    description: "Google prioritizes speed and structural integrity. We implement dynamic hydration, critical path optimization, and Brotli compression to ensure your site is indexed with near-zero latency.",
+    description: "Optimize speed and structure with dynamic hydration and Brotli compression to ensure near-zero latency and instant indexing.",
     metrics: [
-      { label: "FID / INP", calc: "< 12ms" },
-      { label: "TTFB Latency", calc: "24ms" },
-      { label: "DOM Complexity", calc: "Minimal" },
+      { label: "FID / INP", calc: "< 12ms", icon: Zap },
+      { label: "TTFB Latency", calc: "24ms", icon: Activity },
+      { label: "DOM Complexity", calc: "Minimal", icon: Layers },
     ],
     demo: (
       <div className="w-full h-full flex flex-col items-center md:items-start justify-center md:justify-start pt-6 md:pt-8 px-4 md:px-6 overflow-hidden">
@@ -215,11 +215,11 @@ const processes = [
     shadow: "shadow-orange-500/20",
     bg: "bg-orange-500/10",
     text: "text-orange-500",
-    description: "Modern search authority is about entity validation. We build impregnable link graphs, connecting your brand entity to high-authority knowledge bases via neural PR and strategic digital footprinting.",
+    description: "Build impregnable link graphs connecting your brand to high-authority knowledge bases via neural PR and strategic digital footprinting.",
     metrics: [
-      { label: "Trust Velocity", calc: "High" },
-      { label: "Entity Match", calc: "A+" },
-      { label: "Link Diversity", calc: "Tier 1" },
+      { label: "Trust Velocity", calc: "High", icon: Rocket },
+      { label: "Entity Match", calc: "A+", icon: CheckCircle2 },
+      { label: "Link Diversity", calc: "Tier 1", icon: Network },
     ],
     demo: (
       <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-6 relative">
@@ -274,17 +274,17 @@ const processes = [
   {
     id: "optimization",
     title: "AI Speed Core Optimization",
-    label: "Speed Core",
+    label: "Core Web Vitals",
     icon: Zap,
     color: "from-cyan-500 to-blue-500",
     shadow: "shadow-cyan-500/20",
     bg: "bg-cyan-500/10",
     text: "text-cyan-500",
-    description: "Our AI engine performs ad-hoc adjustments to asset priority based on user interaction patterns. We intelligently compress, lazy-load, and orchestrate CDN delivery for a flawless, instant experience.",
+    description: "AI-driven asset prioritization and CDN orchestration based on user patterns for a flawless, instant browsing experience.",
     metrics: [
-      { label: "Asset Size", calc: "-85%" },
-      { label: "Execution Time", calc: "Optimized" },
-      { label: "CDN Latency", calc: "< 5ms" },
+      { label: "Asset Size", calc: "-85%", icon: Database },
+      { label: "Execution Time", calc: "Optimized", icon: Cpu },
+      { label: "CDN Latency", calc: "< 5ms", icon: Globe },
     ],
     demo: (
       <div className="w-full h-full p-4 sm:p-6 md:p-8 rounded-3xl border-2 border-zinc-100 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-black/5 flex flex-col items-center justify-center gap-5 relative">
@@ -328,19 +328,22 @@ const processes = [
         {/* Metric Tiles */}
         <div className="flex gap-3 w-full max-w-xs">
           {[
-            { label: "TTFB", value: "24ms" },
-            { label: "FCP", value: "0.8s" },
-            { label: "CLS", value: "0.01" },
+            { label: "TTFB", value: "24ms", icon: Activity },
+            { label: "FCP", value: "0.8s", icon: Zap },
+            { label: "CLS", value: "0.01", icon: Layers },
           ].map((metric, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.15 }}
-              className="flex-1 flex flex-col items-center gap-1 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-800 shadow-sm"
+              className="flex-1 flex flex-col items-center gap-1.5 p-2.5 rounded-xl bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-800 shadow-sm"
             >
+               <div className="size-5 rounded-md bg-zinc-100 dark:bg-zinc-700/50 flex items-center justify-center mb-0.5">
+                  <metric.icon size={10} className="text-zinc-500" />
+               </div>
               <span className="text-[7px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">{metric.label}</span>
-              <span className="text-sm font-black tabular-nums text-black dark:text-white">
+              <span className="text-sm font-black tabular-nums text-black dark:text-white leading-none">
                 {metric.value}
               </span>
             </motion.div>
@@ -367,11 +370,11 @@ const processes = [
     shadow: "shadow-orange-500/20",
     bg: "bg-orange-500/10",
     text: "text-orange-500",
-    description: "Move beyond standard analytics. We use predictive modeling to identify conversion bottlenecks and automatically adjust UI elements to maximize ROI and lower customer acquisition costs.",
+    description: "Identify conversion bottlenecks via predictive modeling to automatically optimize UI elements and maximize business ROI.",
     metrics: [
-      { label: "ROI Boost", calc: "+450%" },
-      { label: "CPA Reduction", calc: "Significant" },
-      { label: "User Retention", calc: "99.9%" },
+      { label: "ROI Boost", calc: "+450%", icon: TrendingUp },
+      { label: "CPA Reduction", calc: "Significant", icon: ShieldCheck },
+      { label: "User Retention", calc: "99.9%", icon: Users },
     ],
     demo: (
       <div className="w-full h-full flex flex-col items-center justify-center p-2 sm:p-4">
@@ -456,11 +459,11 @@ const processes = [
     shadow: "shadow-red-500/20",
     bg: "bg-red-500/10",
     text: "text-red-500",
-    description: "Enterprise-grade defense. We deploy a multi-layered security grid powered by AI that performs real-time packet inspection, automated patching, and cloud-firewall orchestration—ensuring your brand remains impregnable while maintaining peak performance.",
+    description: "Multi-layered AI security grid performing real-time packet inspection and automated patching to ensure brand invulnerability.",
     metrics: [
-      { label: "Threat Block", calc: "100%" },
-      { label: "Uptime", calc: "99.999%" },
-      { label: "Protocols", calc: "Zero-Trust" },
+      { label: "Threat Block", calc: "100%", icon: ShieldCheck },
+      { label: "Uptime", calc: "99.999%", icon: Activity },
+      { label: "Protocols", calc: "Zero-Trust", icon: Network },
     ],
     demo: (
       <div className="w-full h-full flex items-center justify-center p-4">
@@ -480,11 +483,11 @@ const processes = [
     shadow: "shadow-blue-600/20",
     bg: "bg-blue-600/10",
     text: "text-blue-600",
-    description: "Infrastructure that thinks. We deploy your site across a global edge network with predictive auto-scaling that prepares for traffic spikes before they happen, ensuring 0ms latency globally.",
+    description: "Global edge network with predictive auto-scaling to handle traffic spikes instantly, ensuring 0ms latency worldwide.",
     metrics: [
-      { label: "Global Ping", calc: "< 1ms" },
-      { label: "Nodes Active", calc: "240+" },
-      { label: "Scaling", calc: "Elastic" },
+      { label: "Global Ping", calc: "< 1ms", icon: Satellite },
+      { label: "Nodes Active", calc: "240+", icon: Server },
+      { label: "Scaling", calc: "Elastic", icon: Cloud },
     ],
     demo: (
       <div className="w-full h-full flex items-center justify-center p-0 overflow-hidden min-h-[380px] sm:min-h-0">
@@ -690,10 +693,17 @@ export function InteractiveAiWorkflow() {
                     {activeProcess.description}
                   </p>
 
-                  <div className="grid grid-cols-2 sm:flex sm:gap-8 gap-x-4 gap-y-6 mt-8 sm:mt-6">
-                    {activeProcess.metrics.map((metric, idx) => (
-                      <div key={idx} className="flex flex-col gap-1.5 sm:gap-1">
-                        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-zinc-500">{metric.label}</span>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 sm:flex sm:gap-8 gap-x-4 gap-y-6 mt-8 sm:mt-6">
+                    {activeProcess.metrics.map((metric: any, idx) => (
+                      <div key={idx} className="flex flex-col gap-2 sm:gap-1.5">
+                        <div className="flex items-center gap-2">
+                           {metric.icon && (
+                              <div className={cn("size-6 rounded-md bg-zinc-100 dark:bg-white/5 flex items-center justify-center shrink-0", activeProcess.bg)}>
+                                 <metric.icon size={12} className={activeProcess.text} />
+                              </div>
+                           )}
+                           <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-zinc-500 truncate">{metric.label}</span>
+                        </div>
                         <span className={cn("font-jetbrains font-semibold text-lg sm:text-xl md:text-2xl", activeProcess.text)}>{metric.calc}</span>
                       </div>
                     ))}
