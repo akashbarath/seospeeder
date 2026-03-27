@@ -2,92 +2,70 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { motion, useScroll } from "motion/react"
+import { AnimatePresence, motion, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
 import { DesktopNav } from "@/components/desktop-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
 
-import { useTheme } from "next-themes"
-import Image from "next/image"
-
+const INITIAL_WIDTH = "70rem"
+const MAX_WIDTH = "1000px"
 
 export function Navbar() {
   const { scrollY } = useScroll()
   const [hasScrolled, setHasScrolled] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const unsubscribe = scrollY.on("change", (latest) => {
       setHasScrolled(latest > 10)
     })
     return unsubscribe
   }, [scrollY])
 
-  const logoSrc = resolvedTheme === "dark"
-    ? "/assets/logos/dark-theme-logo.svg"
-    : "/assets/logos/light-theme-logo.svg"
-
   return (
-    <motion.header
-      initial={false}
-      animate={{
-        y: hasScrolled ? 16 : 0,
-      }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="sticky top-0 z-50 flex justify-center w-full px-4"
+    <header
+      className={cn(
+        "sticky z-50 flex justify-center transition-all duration-300",
+        hasScrolled ? "top-4 mx-4 md:top-8" : "top-0 mx-0"
+      )}
     >
       <motion.div
-        initial={false}
-        animate={{
-          maxWidth: hasScrolled ? "1000px" : "1152px", // 1152px = 72rem
+        initial={{ width: INITIAL_WIDTH }}
+        animate={{ 
+          width: hasScrolled 
+            ? (typeof window !== 'undefined' && window.innerWidth < 1024 ? "94%" : MAX_WIDTH) 
+            : INITIAL_WIDTH 
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className={cn(
-          "w-full rounded-2xl flex justify-center border-2 transition-[background-color,border-color,box-shadow,padding] duration-500 ease-in-out",
-          hasScrolled
-            ? "border-border bg-background/80 px-2 backdrop-blur-md shadow-lg shadow-zinc-950/5"
-            : "border-transparent bg-transparent px-4 md:px-8"
-        )}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="flex h-[56px] w-full items-center justify-between p-2 md:px-8">
-          <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
-              <div className="-mt-1 h-5 w-auto md:h-6 flex items-center">
-                {mounted ? (
-                  <Image
-                    src={logoSrc}
-                    alt="SEO SPEEDER Logo"
-                    width={100}
-                    height={24}
-                    className="h-full w-auto object-contain"
-                    priority
-                  />
-                ) : (
-                  <div className="size-5 md:size-6" />
-                )}
-              </div>
-              <p className="text-primary text-lg font-bold tracking-tight">
-                SEO SPEEDER
+        <div
+          className={cn(
+            "mx-auto rounded-2xl transition-all duration-300",
+            hasScrolled
+              ? "border-border bg-background/80 border-2 px-2 backdrop-blur-md shadow-lg shadow-zinc-950/5"
+              : "max-w-7xl px-4 md:px-8 shadow-none"
+          )}
+        >
+          <div className="flex h-[56px] items-center justify-between p-2 md:px-8">
+            <Link href="/" className="flex items-center gap-3">
+              <Icons.logo className="-mt-1 size-4 md:size-6" />
+              <p className="text-primary ml-1 text-lg font-bold tracking-tight">
+                SEO Speeder
               </p>
             </Link>
 
-            <DesktopNav hasScrolled={hasScrolled} />
+            <DesktopNav />
 
             <div className="flex shrink-0 flex-row items-center gap-2 md:gap-3 lg:gap-4">
               <div className="flex items-center">
-                <Button
-                  asChild
-                  className="group/btn hidden lg:flex rounded-xl font-bold h-9 px-6 bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-[0_0_20px_-10px_rgba(var(--primary),0.5)] hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.6)] relative overflow-hidden border-none"
+                <Link
+                  className="text-primary-foreground hidden h-8 w-fit items-center justify-center rounded-full bg-primary px-4 text-sm font-normal tracking-wide shadow-sm lg:flex transition-opacity hover:opacity-90"
+                  href="#audit"
                 >
-                  <Link href="#audit" className="font-inter font-semibold flex items-center justify-center">
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary-foreground/30 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover/btn:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none z-0" />
-                    <span className="relative z-10">Test Your Website</span>
-                  </Link>
-                </Button>
+                  Test Your Website
+                </Link>
               </div>
               <ThemeToggle />
               <div className="lg:hidden">
@@ -95,7 +73,8 @@ export function Navbar() {
               </div>
             </div>
           </div>
+        </div>
       </motion.div>
-    </motion.header>
+    </header>
   )
 }
